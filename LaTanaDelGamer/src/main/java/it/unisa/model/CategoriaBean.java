@@ -46,7 +46,7 @@ public class CategoriaBean implements Serializable {
 
 	@Override
 	public boolean equals(Object other) {
-		return this.getNome() ==  ((CategoriaBean) other).getNome();
+		return this.getNome().equals(((CategoriaBean) other).getNome());
 	}
 	
 	@Override
