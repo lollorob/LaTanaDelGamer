@@ -1,0 +1,44 @@
+@charset "utf-8";
+							
+							
+							/*  Utilizziamo quattro font face per ogni tipo di font  italico, grasseto ecc.  */
+@font-face{
+	font-family: 'Andika';
+	font-weight: bold;
+	font-style: italic;
+	src: url("../fonts/AndikaNewBasic-BI.ttf");
+}
+
+@font-face{
+	font-family: 'Andika';
+	font-weight: bold;
+	font-style: normal;
+	src: url("../fonts/AndikaNewBasic-B.ttf");
+}
+
+@font-face{
+	font-family: 'Andika';
+	font-weight: normal;
+	font-style: italic;
+	src: url("../fonts/AndikaNewBasic-I.ttf");
+}
+
+@font-face{
+	font-family: 'Andika';
+	font-weight: normal;
+	font-style: normal;
+	src: url("../fonts/AndikaNewBasic-R.ttf");
+}
+
+:root{
+	font-family: 'Andika';
+	font-weight: normal;
+	font-style: normal;	
+
+}
+
+
+body{
+	margin:0;
+}
+

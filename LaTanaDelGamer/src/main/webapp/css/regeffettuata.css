@@ -1,0 +1,53 @@
+
+#testo-header {
+  transform: translate(55%,700%);
+  font-size: 12px;
+  color: antiquewhite;
+}
+
+p
+{
+  font-family: verdana, arial, sans-serif;    
+}
+
+.paginareg{
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/benvenuto.jpg);
+    width:100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top:70px;
+    overflow:hidden;
+}
+
+#tasto-home{
+	transform: translate(55%,1020%);
+  font-size: 12px;
+  color: antiquewhite;
+	
+}
+
+#tasto-home a{
+	text-decoration:none;
+	color:primary;
+	border:10px solid cyan;
+	background:cyan;
+	border-radius:15px;
+}
+
+#tasto-home a:hover{
+	border:12px solid cyan;
+	transition:0.3s;
+}
+
+@media screen and (max-width: 600px) {
+  #tasto-home{
+  	transform: translate(5%,1020%);
+  }
+  
+  #testo-header{
+  transform: translate(5%,700%);
+  }
+}

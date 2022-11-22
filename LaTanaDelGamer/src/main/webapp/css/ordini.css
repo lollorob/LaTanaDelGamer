@@ -1,0 +1,217 @@
+@import "home.css";
+
+
+
+
+ table { 
+ 	
+    width: 98%;
+    margin-right: 10px;
+ } 
+ 
+ th{
+ 	color: white;
+    background: linear-gradient(120deg,#2980b9,#8e44ad);
+ }
+ 
+ td { 
+     border: 1px solid #c3c3c3; 
+     text-align: center; 
+ } 
+ thead { 
+     background-color: #f5f5f5; 
+ } 
+  
+ /* Media Query per il No More Tables */ 
+  
+ @media only screen and (max-width: 767px) { 
+     /* Forza la tabella a non comportarsi come una normale tabella */ 
+  
+ 	#tabella table,  
+ 	#tabella thead,  
+ 	#tabella tbody,  
+ 	#tabella th,  
+ 	#tabella td,  
+ 	#tabella tr {  
+ 		display: block;  
+ 	} 
+  
+ 	/* Nasconde le intestazioni della tabella */ 
+  
+ 	#tabella thead tr {  
+ 		position: absolute; 
+ 		top:-9999px; 
+ 		left:-9999px; 
+ 	} 
+   
+ 	#tabella tr { border: 1px solid #ccc; } 
+  
+ 	#tabella td {  
+ 		/* Inserisce il comportamento come una riga */ 
+  
+ 		border: none; 
+ 		border-bottom: 1px solid #eee;  
+ 		position: relative; 
+ 		padding-left: 50%;  
+ 		white-space: normal; 
+ 		text-align:left; 
+ 	} 
+  
+ 	#tabella td:before {  
+ 		/* Inserisce il comportamento come un'intestazione di tabella */ 
+  
+ 		position: absolute; 
+ 		/* I valori top/left agiscono come padding */ 
+  
+ 		top: 0; 
+ 		left: 6px; 
+ 		width: 45%;  
+ 		padding-right: 10px;  
+ 		white-space: nowrap; 
+ 		text-align:left; 
+ 		font-weight: bold; 
+ 	} 
+  
+ 	/* Aggiunge l'etichetta ai dati della tabella */ 
+  
+ 	#tabella td:before { content: attr(data-title); } 
+ }  
+ 
+ .bottone{
+	border:0px;
+ 	background:transparent;
+ 	color: blue;
+ 	cursor:pointer;
+}
+ 
+ 
+.Form {
+	min-width:600px;
+	margin:auto;
+	width:50%;
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+
+.Form h4{
+	text-align:center;
+}
+input, select ,textarea {
+ 	width: 100%;
+ 	padding: 12px;
+	border: 1px solid #ccc;
+  	border-radius: 4px;
+  
+}
+
+label {
+  	padding: 12px 12px 12px 0;
+  	display: inline-block;
+}
+
+
+
+.nome {
+  	float: left;
+ 	width: 25%;
+ 	margin-top: 6px;
+}
+
+.area {
+ 	float: left;
+ 	width: 75%;
+ 	margin-top: 6px;
+}
+
+/* elimina elementi float aggiungendo del contenuto e comportandosi come una tabella */
+.riga:after {
+ 	content: "";
+ 	display: table;
+ 	clear: both;
+}
+
+
+@media screen and (max-width: 767px) {
+  .Form, .nome, .area, input[type=submit] {
+   	min-width:0;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.bottone{
+	border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    width:50%;
+    padding: 8px 15px;
+    
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom:10px;
+	
+}
+.bottone:hover{
+	border-color:#2691d9;
+	transition: .5s;
+}
+
+.annulla{
+	border:1px solid;
+	background: #2691d9;
+	border-radius:25px; 
+	font-size: 18px;
+	color: white;
+	padding: 12px 20px;
+ 	width:50%;
+ 	transform: translateX(50%);
+ 	line-height:10px;
+ 	margin:auto;
+  	cursor: pointer;
+  	margin-top:10px;
+ 
+	
+}
+.annulla:hover{
+	border-color:#2691d9;
+	transition: .5s;
+}
+
+
+.add{
+	border: 1px solid;
+	margin-left:auto;
+	border:0;
+	border-radius:10px;
+	background: #2691d9;
+	color:white;
+	line-height:20px;
+	
+	
+}
+
+.add:hover{
+	border-color:#2691d9;
+	transition: .5s;
+}
+.selezione{
+	width:100%;
+	padding: 12px 20px;
+}
+
+.bottone1{
+	border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    width:50%;
+    padding: 8px 15px;
+    width:100%;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+ 
