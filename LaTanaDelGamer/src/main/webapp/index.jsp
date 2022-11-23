@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<p>Immagine caricata kitemmuo
+	<p>Immagine caricata
 	
 	<%
 	String message = (String)request.getAttribute("message");
