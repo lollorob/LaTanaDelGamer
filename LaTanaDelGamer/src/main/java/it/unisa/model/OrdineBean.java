@@ -17,7 +17,7 @@ public class OrdineBean implements Serializable {
 	String metodo_pagamento;
 	private Carrello carrello;
 	
-	private List<ProdottoBean> listaProdotti;
+	private List<ItemOrdineBean> listaProdotti;
 	
 	private AccountUserBean account;
 	
@@ -97,11 +97,11 @@ public class OrdineBean implements Serializable {
 		this.account = account;
 	}
 	
-	public List<ProdottoBean> getListaProdotti() {
+	public List<ItemOrdineBean> getListaProdotti() {
 		return listaProdotti;
 	}
 
-	public void setListaProdotti(List<ProdottoBean> listaProdotti) {
+	public void setListaProdotti(List<ItemOrdineBean> listaProdotti) {
 		this.listaProdotti = listaProdotti;
 	}
 	

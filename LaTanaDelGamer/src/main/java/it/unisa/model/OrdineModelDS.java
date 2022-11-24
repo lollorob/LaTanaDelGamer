@@ -395,6 +395,51 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 
 		 return somma;
 	}
+	
+	public Collection<ItemOrdineBean> doRetrieveProdottiByOrdine(int idOrdine) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT * FROM itemordine i WHERE i.id_ordine ='" + idOrdine + "'";
+		
+		
+		Collection<ItemOrdineBean> ordini = new LinkedList<ItemOrdineBean>();
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			Utility.print("doRetrieveProdottiByOrdine: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				ItemOrdineBean ordine = new ItemOrdineBean();
+				
+				ordine.setId_ordine(rs.getInt("id_ordine"));
+				ordine.setDescrizione(rs.getString("descrizione_prodotto"));
+				ordine.setNome(rs.getString("nome_prodotto"));
+				ordine.setPrezzo(rs.getFloat("prezzo_prodotto"));
+				ordine.setQuantita(rs.getInt("quantita_prodotto"));
+				
+				ordini.add(ordine);
+				
+				
+			}
+			
+		} finally {
+			try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			}finally {
+			if(connection != null)
+				connection.close();
+			}
+		  }
+		
+		return ordini;
+
+	}
 }
 
 

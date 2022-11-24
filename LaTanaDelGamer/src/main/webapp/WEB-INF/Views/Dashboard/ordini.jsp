@@ -38,7 +38,9 @@
 		
 		 <% 
 	    OrdineBean ordine = (OrdineBean) session.getAttribute("ordini");
+		Collection<?> itemOrdini = (Collection<?>)session.getAttribute("itemOrdini");
 	    	session.removeAttribute("ordini");
+	    	session.removeAttribute("itemOrdini");
     	%>
 	          
           
@@ -57,6 +59,7 @@
 			        <th>Importo</th>
 			        <th>Tipo di Pagamento</th>
 			        <th>Metodo di Pagamento</th>
+			        <th>Prodotti Acquistati</th>
 			        <th>Azioni</th>
 		        </tr>
 	        </thead> 
@@ -69,6 +72,17 @@
 	             <td data-title="Importo"><%=ordine.getImporto() %></td>
 	             <td data-title="Tipo di Pagamento"><%=ordine.getTipo_pagamento() %></td>
 	             <td data-title="Metodo di Pagamento"><%=ordine.getMetodo_pagamento() %></td>
+	             <td data-title="Prodotti Acquistati"><%  
+	           
+	     		if(itemOrdini != null && itemOrdini.size() > 0) {
+	     			
+	     			Iterator<?> it = itemOrdini.iterator();
+	     			while(it.hasNext()) {
+	     				ItemOrdineBean bean = (ItemOrdineBean)it.next();
+	     			
+	     		%><p>
+	            <%= bean.getNome() %> </p> 
+	            <% } } %></td>
 				 <td><form method="POST" action="/LaTanaDelGamer/ordini/elimina">
 	             		<button type="submit" name="id" class="bottone1" value="<%=ordine.getId_ordine()%>">Elimina</button>
 	             	 </form>

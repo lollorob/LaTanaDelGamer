@@ -15,6 +15,7 @@ import it.unisa.model.AccountUserBean;
 import it.unisa.model.AccountUserModelDS;
 import it.unisa.model.OrdineBean;
 import it.unisa.model.OrdineModelDS;
+import it.unisa.utils.Utility;
 
 
 @WebServlet(name="OrdineControl", value = "/ordini/*")
@@ -87,7 +88,8 @@ public class OrdineControl extends HttpServlet {
 				int id = Integer.parseInt(id_ordine);
 				request.removeAttribute("account");
 				session.setAttribute("ordini", model.doRetrieveByKey(id));
-				
+				session.setAttribute("itemOrdini", model.doRetrieveProdottiByOrdine(id));
+			
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
