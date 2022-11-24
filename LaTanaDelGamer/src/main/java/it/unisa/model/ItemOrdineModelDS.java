@@ -109,19 +109,106 @@ public class ItemOrdineModelDS implements EntityModel<ItemOrdineBean> {
 
 	@Override
 	public void doSave(ItemOrdineBean item) throws SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String insertSQL = "INSERT INTO itemordini" + " (id_ordine, nome_prodotto, prezzo_prodotto, descrizione_prodotto, quantita_prodotto) VALUES (?, ?, ?, ?, ?)";
+
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(insertSQL);
+
+			preparedStatement.setInt(1, item.getId_ordine());
+			preparedStatement.setString(2, item.getNome());
+			preparedStatement.setFloat(3, item.getPrezzo());
+			preparedStatement.setString(4, item.getDescrizione());
+			preparedStatement.setInt(5, item.getQuantita());
+			
+			Utility.print("doSave: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+
+			connection.commit();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
 		
 	}
 
 	@Override
 	public void doUpdate(ItemOrdineBean item) throws SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String updateSQL = "UPDATE itemordine SET " + "nome_prodotto = ?, prezzo_prodotto = ?, descrizione_prodotto = ?, quantita_prodotto = ? WHERE id_ordine = ?";
+
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(updateSQL);
+
+			
+			preparedStatement.setString(1, item.getNome());
+			preparedStatement.setFloat(2, item.getPrezzo());
+			preparedStatement.setString(3, item.getDescrizione());		
+			preparedStatement.setInt(4,item.getQuantita());
+			preparedStatement.setInt(5, item.getId_ordine());
+			
+			Utility.print("doUpdate: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+
+			connection.commit();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+
 		
 	}
 
 	@Override
 	public void doDelete(ItemOrdineBean item) throws SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String deleteSQL = "DELETE FROM itemordine WHERE id_ordine = ?";
+
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, item.getId_ordine());
+
+			Utility.print("doDelete: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+
+			connection.commit();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
 		
 	}
 	
