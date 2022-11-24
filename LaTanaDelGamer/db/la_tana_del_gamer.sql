@@ -106,7 +106,7 @@ create table Galleria
     FOREIGN KEY(id_prodotto) REFERENCES Prodotto(id_prodotto) ON UPDATE cascade ON DELETE cascade
 );
 
-INSERT INTO AccountUser VALUES ("robbest","balestrieri00@gmail.com",SHA1("Napoli1926"),"Roberto","Balestrieri","2000-10-03",2,"via Nazionale",6,80050,"Pimonte","Napoli",1);
+INSERT INTO AccountUser VALUES ("robbest","balestrieri00@gmail.com",SHA1("Napoli1926"),"Roberto","Balestrieri","2000-10-03",3,"via Nazionale",6,80050,"Pimonte","Napoli",1);
 INSERT INTO AccountUser VALUES ("lollo","lollo00@gmail.com",SHA1("lollo1926"),"Lorenzo Lucio","Ruocco","2000-04-27",0,"via Roma",48,80054,"Gragnano","Napoli",1);
 INSERT INTO AccountUser VALUES ("boomy07","pako@outlook.it",SHA1("ilovepizza"),"Pasquale","Sicignano","2000-05-07",0,"via San Sebastiano",5,80054,"Gragnano","Napoli",0);
 INSERT INTO AccountUser VALUES ("mason9321","antonellostarax@libero.it",SHA1("codismylife"),"Antonello","Starace","1993-10-12",0,"via Vittorio Veneto",121,80321,"Fisciano","Salerno",0);

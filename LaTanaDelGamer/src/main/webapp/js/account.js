@@ -21,6 +21,12 @@ function valida() {
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var lettere = /^[A-Za-z ]+$/;
 	
+	if(!email.value.match(mailformat)) {
+		alert("Formato email sbagliato");
+		email.focus();
+		return false;
+	}
+	
 	if(nome.value.length < 3 || nome.value.length > 50 || !nome.value.match(lettere)) {
 		alert("Inserisci un nome corretto");
 		nome.focus();
@@ -33,11 +39,7 @@ function valida() {
 		return false;
 	}	
 	
-	if(!email.value.match(mailformat)) {
-		alert("Formato email sbagliato");
-		email.focus();
-		return false;
-	}
+	
 		
 	if(!passwd.value.match(password)) {
 		alert("Il campo password deve contenere almeno 1 numero, 1 lettera maiuscola e 1 minuscola");
