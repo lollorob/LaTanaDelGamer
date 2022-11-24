@@ -11,15 +11,18 @@
  
   <% if(session.getAttribute("adminRoles") == null){	
 	  response.sendRedirect(request.getContextPath() + "/accounts/loginAdmin"); 
-	}%> 
-	
+	}%> 	
 	 <script type="text/javascript" src="/LaTanaDelGamer/js/account.js"></script>
 </head>
 
 <body>
 
 	<%@include file="/WEB-INF/Views/PagineComuni/menu.jsp" %> 
-
+	
+	 	<%	int errore=0;	
+ 	if(request.getAttribute("error")!=null){
+ 		errore=(int) request.getAttribute("error");
+ 	}%>
 	<img src="/LaTanaDelGamer/icone/freccia.svg" alt="Freccia" class="freccia" onmouseover="openMenu()" id="menu">
 	<div id="contenuto" onClick="closeMenu()">
 		 
@@ -31,7 +34,9 @@
           		<form class="tabella" name="utente" action="<%=response.encodeURL("/LaTanaDelGamer/accounts/crea")%>" method="POST">
 			
 				<h4><b>Crea Un Utente</b></h4>
-				
+				<%if (errore==1062){ %>
+			<p class="errore">Username/Email già esistente</p>	
+			<%} %>
 				<div class="riga">
 					<div class="nome">
 						<label for="username">Username</label>

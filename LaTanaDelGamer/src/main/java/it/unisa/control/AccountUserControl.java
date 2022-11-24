@@ -23,6 +23,7 @@ import it.unisa.model.OrdineBean;
 import it.unisa.model.OrdineModelDS;
 import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
+import it.unisa.utils.Utility;
 
 @WebServlet(name = "AccountUserControl", value = "/accounts/*")
 public class AccountUserControl extends HttpServlet {
@@ -135,7 +136,11 @@ public class AccountUserControl extends HttpServlet {
 					request.setAttribute("message", "Account " + account.getUsername() + " AGGIUNTO");
 					response.sendRedirect(request.getContextPath() + "/Dashboard/account");
 				} catch (SQLException e) {
-					e.printStackTrace();
+					Utility.print(e);
+					request.setAttribute("error", e.getErrorCode());
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Views/Dashboard/account.jsp");
+					dispatcher.forward(request, response);
+					return;
 				}
 		}
 			break;
