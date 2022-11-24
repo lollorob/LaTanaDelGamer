@@ -71,7 +71,9 @@
 	             <td data-title="Email Spedizione"><%=ordine.getEmail_spedizione() %></td>
 	             <td data-title="Importo"><%=ordine.getImporto() %></td>
 	             <td data-title="Tipo di Pagamento"><%=ordine.getTipo_pagamento() %></td>
-	             <td data-title="Metodo di Pagamento"><%=ordine.getMetodo_pagamento() %></td>
+	             <% String cifreTotali = ordine.getMetodo_pagamento(); 
+	             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
+	             <td data-title="Metodo di Pagamento"><%=metodo %></td>
 	             <td data-title="Prodotti Acquistati"><%  
 	           
 	     		if(itemOrdini != null && itemOrdini.size() > 0) {
