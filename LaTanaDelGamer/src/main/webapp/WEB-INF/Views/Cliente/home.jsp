@@ -57,9 +57,7 @@
 				}  %> 
 				    
 		    
-		    <div id="footer">
-		        <p>@Copyright,2021 - LaTanaDelGamer - All Rights Reserved</p>
-		    </div>
+		    <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 		 
  			
  		</div>
