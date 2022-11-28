@@ -10,6 +10,8 @@
 	padding: 20px;
 }
 
+
+
 .tabella h4{
 	text-align:center;
 }
@@ -124,4 +126,9 @@ label {
     cursor: pointer;
     margin-top: 10px;
     margin-bottom:10px;
+}
+
+.errore{
+	text-align:center;
+	color:red;	
 }

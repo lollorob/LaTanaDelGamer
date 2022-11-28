@@ -43,6 +43,7 @@ public class DashboardControl extends HttpServlet {
             
 		case "/home":
 		{
+			
 		    String username = (String) session.getAttribute("username");
 		    String passwd = (String) session.getAttribute("passwd");
 		   

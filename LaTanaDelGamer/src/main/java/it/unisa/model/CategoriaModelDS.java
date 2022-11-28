@@ -53,7 +53,7 @@ public class CategoriaModelDS implements EntityModel<CategoriaBean> {
 				}
 			}
 		}
-		return null;
+		return categoria;
 	}
 
 	@Override

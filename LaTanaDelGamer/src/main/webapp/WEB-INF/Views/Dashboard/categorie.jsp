@@ -20,8 +20,13 @@
  		System.out.println("Collection Categorie NULL");
  		return;
  	}
+ 	
+ 	CategoriaBean categoria1 = (CategoriaBean) session.getAttribute("categoriaSelezionata");
+	session.removeAttribute("categoriaSelezionata");
  %>
 
+
+ <script type="text/javascript" src="/LaTanaDelGamer/js/categoria.js"></script>
 </head>
 
 <body>
@@ -34,6 +39,71 @@
 		<header class="top">
 			Benvenuto <%= session.getAttribute("username") %>! Quale operazione desidera effettuare?
 		</header>
+		
+		
+		 
+		
+		<%
+		if(categoria1!= null) {
+	%>
+         		<h2>Dettagli</h2>
+		<div id="tabella"> 
+		
+		<table>
+		<thead>
+			<tr>
+				<th>Nome </th>
+				<th>Descrizione</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td data-title="Nome"><%=categoria1.getNome()%></td>
+				<td data-title="Descrizione"><%=categoria1.getDidascalia()%></td>
+			</tr>
+		</tbody>
+		</table>
+		
+			<div class="Form">
+          		<form  method="post" name="categoria" class="form"  action="<%=response.encodeURL("/LaTanaDelGamer/categorie/aggiorna")%>" >
+			
+				<h4><b>Aggiorna Categoria</b></h4>
+				
+				<div class="riga">
+					<div class="nome">
+						<label for="nome">Nome</label>
+					</div>
+				<div class="area">
+					<input id="nome" name="nome" readonly type="text" placeholder="Nome Categoria" value="<%=categoria1.getNome()%>"><br>
+				</div>
+			</div>
+		
+				<div class="riga">
+					<div class="nome">
+						<label for="didascalia">Descrizione</label>
+					</div>
+				<div class="area">
+					<input id="didascalia" name="didascalia" type="text" placeholder="Inserisci Descrizione" value="<%=categoria1.getDidascalia()%>"><br>
+				</div>			
+			</div>
+			
+			
+			<button type="submit" class="bottone" onClick="return valida()">Aggiorna</button>
+		
+			</form>
+			
+			<form action="/LaTanaDelGamer/Dashboard/categorie" method="POST">
+				<button class="annulla">Annulla</button>
+			</form>
+			</div>
+	</div>
+
+	
+			<%  } %>
+		
+		
+		
+		
 		<div class="selezione">
 			<a class="add" href="/LaTanaDelGamer/categorie/crea">Aggiungi Categoria</a>
 	 	</div>
@@ -43,6 +113,7 @@
           <tr> 
         <th>Nome</th>
         <th>Didascalia</th>
+        <th>Azioni</th>
           </tr> 
                <%
 		if(categorie != null && categorie.size() > 0) {
@@ -57,6 +128,13 @@
           <tr> 
              <td data-title="Nome"><%=bean.getNome() %></td> 
              <td data-title="Didascalia"><%=bean.getDidascalia() %></td>
+             <td data-title="Azioni"><form method="POST" action="/LaTanaDelGamer/categorie/cancella">
+             		<button type="submit" name="nome" class="bottone1" value="<%=bean.getNome()%>">Elimina</button>
+             	</form> 
+             	 <form method="POST" action="/LaTanaDelGamer/categorie/dettagli">
+             		<button type="submit" name="nome" class="bottone1" value="<%=bean.getNome()%>">Dettagli</button>
+             	</form>
+             </td>
           </tr>
       <% }
 		} else { %>
@@ -67,8 +145,8 @@
        </tbody>
     </table> 
  </div>
-       		
-       	</div>	
+ </div>      		
+       	
 
 
 </body>

@@ -208,3 +208,8 @@ label {
     margin-top: 10px;
     margin-bottom:10px;
 }
+
+.errore{
+	text-align:center;
+	color:red;	
+}

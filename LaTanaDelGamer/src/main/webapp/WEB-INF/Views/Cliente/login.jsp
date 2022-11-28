@@ -16,7 +16,7 @@
 <section>
 	<div class="form-container">
 		<h1>Login</h1>
-	<form action="<%= request.getAttribute("context")%>/cliente/login" method="POST">
+	<form action="<%= request.getAttribute("context")%>/it/login" method="POST">
 	<div class="control">
 		<label for="username">Username</label>
 		<input type="text" name="username" id="username" placeholder="Username">
@@ -30,7 +30,7 @@
 		</div>
 	</form>
 	<div class="link">
-		<a href="<%=request.getAttribute("context")%>/cliente/registrati">Registrati</a>
+		<a href="<%=request.getAttribute("context")%>/it/registrati">Registrati</a>
 		</div>
 	</div>
 </section>

@@ -23,7 +23,7 @@ import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
 import it.unisa.utils.Utility;
 
-@WebServlet(name= "ClienteControl" , value="/cliente/*")
+@WebServlet(name= "ClienteControl" , value="/it/*")
 public class ClienteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -51,6 +51,7 @@ public class ClienteControl extends HttpServlet {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
+			
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request,response);
 		
 				break;
@@ -154,7 +155,7 @@ public class ClienteControl extends HttpServlet {
 	                session.removeAttribute("passwd");
 	                session.setAttribute("failedlog",true);
 	                session.removeAttribute("cliente");
-	                response.sendRedirect("/LaTanaDelGamer/cliente/login");    
+	                response.sendRedirect("/LaTanaDelGamer/it/login");    
 	            }   
 	        }
 	            break;

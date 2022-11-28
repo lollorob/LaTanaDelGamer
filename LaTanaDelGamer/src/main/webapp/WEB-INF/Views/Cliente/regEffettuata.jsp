@@ -26,7 +26,7 @@
 	</header>
 	
 	<div id="tasto-home">
-		<a href="<%=request.getAttribute("context")%>/cliente/" class="link">Entra nella nostra Home</a>
+		<a href="<%=request.getAttribute("context")%>/it/home" class="link">Entra nella nostra Home</a>
 	</div>
 </div>
 </body>

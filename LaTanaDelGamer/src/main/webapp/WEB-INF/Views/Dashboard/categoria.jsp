@@ -17,6 +17,11 @@
 
 </head>
 
+	<%	int errore=0;	
+ 	if(request.getAttribute("error")!=null){
+ 		errore=(int) request.getAttribute("error");
+ 	}%>
+
 <body>
 
 	<%@include file="/WEB-INF/Views/PagineComuni/menu.jsp" %> 
@@ -35,6 +40,9 @@
 				
 					<h4><b>Crea Categoria</b></h4>
 					
+					<%if (errore==1062){ %>
+			<p class="errore">Nome categoria già esistente</p>	
+			<%} %>
 					
 					<div class="riga">
 						<div class="nome">

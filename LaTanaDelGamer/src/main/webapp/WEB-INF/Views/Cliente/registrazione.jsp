@@ -22,7 +22,7 @@
 	<section>
 		<div class="form-container">
 			<h1>Registrati</h1>
-		<form name="utente" action="<%=response.encodeURL("/LaTanaDelGamer/cliente/registrazione")%>" method="POST">
+		<form name="utente" action="<%=response.encodeURL("/LaTanaDelGamer/it/registrazione")%>" method="POST">
 		<%if (errore==1062){ %>
 			<p class="errore">Username/Email già esistente</p>	
 			<%} %>
@@ -70,13 +70,16 @@
 			<label for="provincia">Provincia</label>
 			<input type="text" name="provincia" id="provincia" placeholder="Es. Napoli">
 			</div>
+			
 		<div class="control">
 			<input type="submit" onClick="return valida()" value="Registrati">
 		</div>
-	</form>
 		<div class="link">
-			<a href="<%=request.getAttribute("context")%>/cliente/">Annulla</a>
+			<a href="<%=request.getAttribute("context")%>/it/home">Annulla</a>
 		</div>
+		
+	</form>
+		
 	</div>
 </section>
 </div>

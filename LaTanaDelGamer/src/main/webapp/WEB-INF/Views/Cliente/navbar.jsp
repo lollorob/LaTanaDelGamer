@@ -51,7 +51,7 @@
  						</li>
  						
  						<li>
- 							<a href="<%=request.getAttribute("context")%>/cliente/login">Login</a>
+ 							<a href="<%=request.getAttribute("context")%>/it/login">Login</a>
  						</li>
  						
  						<li>

@@ -116,3 +116,9 @@ label {
 	border-color:#2691d9;
 	transition: .5s;
 }
+
+
+.errore{
+	text-align:center;
+	color:red;	
+}
