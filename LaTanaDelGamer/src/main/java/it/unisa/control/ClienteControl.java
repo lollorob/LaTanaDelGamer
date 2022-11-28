@@ -59,6 +59,11 @@ public class ClienteControl extends HttpServlet {
 			case "/login": //pagina login cliente
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/login.jsp").forward(request,response);
 				break;
+				
+			case "/logout": 
+				session.invalidate();
+	            response.sendRedirect(request.getContextPath()+"/it/home");
+				break;
 			
 			case "/registrati":  //registrazione cliente
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/registrazione.jsp").forward(request,response);
@@ -137,7 +142,7 @@ public class ClienteControl extends HttpServlet {
 				}
 	            if (user.getUsername() != null && user.isAdmin()==false) { //SE IL CLIENTE ESISTE
 	        	 	OrdineModelDS ordine = new OrdineModelDS(ds);
-	        	 	session.setAttribute("cliente",true);
+	        	 	session.setAttribute("clienteBean", user);
 	                Collection<OrdineBean> ord;
 	                
 					try {

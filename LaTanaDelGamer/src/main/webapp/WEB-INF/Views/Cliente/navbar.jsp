@@ -8,6 +8,7 @@
  	<jsp:param name="style" value = "navbar.css"/>
  	<jsp:param name="script" value = "navbar.js"/>
  </jsp:include>
+   <% AccountUserBean clienteRole = (AccountUserBean)session.getAttribute("clienteBean");%> 
  
  </head>
     
@@ -43,15 +44,27 @@
  							<a href="#" onmouseover="mostra1()" onmouseleave="nascondi1()">Profilo   ▾</a>
  							<ul class="dropMenu" onmouseover="mostra1()" onmouseleave="nascondi1()">
  								<li>
- 									<a href="<%=request.getAttribute("context")%>/cliente/ordini">I miei ordini</a>
- 									<a href="#">Modifica</a>
- 									<a href="#">Elimina</a>
+ 							 	  <%  if(clienteRole != null && clienteRole.isAdmin() == false) {
+ 								  %>
+ 								  <a href="<%=request.getAttribute("context")%>/it/ordini">I miei ordini</a>
+ 								  <a href="<%=request.getAttribute("context")%>/it/modifica">Modifica</a>
+ 								  <a href="<%=request.getAttribute("context")%>/it/elimina">Elimina</a>
+ 								  <% } else {%>
+ 									<a href="<%=request.getAttribute("context")%>/it/login">I miei ordini</a>
+ 									<a href="<%=request.getAttribute("context")%>/it/login">Modifica</a>
+ 								    <a href="<%=request.getAttribute("context")%>/it/login">Elimina</a>
+ 									<%} %>
  								</li>
  							</ul>
  						</li>
- 						
+ 
  						<li>
+ 							   <%  if(clienteRole != null && clienteRole.isAdmin() == false) {
+ 								  %>
+ 								  <a href="<%=request.getAttribute("context")%>/it/logout">Logout</a>
+ 								   <% } else {%>
  							<a href="<%=request.getAttribute("context")%>/it/login">Login</a>
+ 							<%} %>
  						</li>
  						
  						<li>
