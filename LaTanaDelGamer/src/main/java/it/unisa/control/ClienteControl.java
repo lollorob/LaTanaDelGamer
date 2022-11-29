@@ -38,9 +38,18 @@ public class ClienteControl extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request, response);
 				break;
 			
-			case "/ordini":
-				request.getRequestDispatcher("/WEB-INF/Views/Cliente/ordini.jsp").forward(request,response);
-				break;
+			case "/ordini" : {
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+	        	OrdineModelDS ordine = new OrdineModelDS(ds);
+	        	try {
+					Collection<?> ordini= ordine.doRetrieveOrdiniByUsername1(cliente.getUsername());
+					request.setAttribute("ordiniCliente", ordini);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	        	request.getRequestDispatcher("/WEB-INF/Views/Cliente/ordini.jsp").forward(request, response);
+	        }
+			break;
 				
 			case "/home":
 				ProdottoModelDS proDS = new ProdottoModelDS(ds);

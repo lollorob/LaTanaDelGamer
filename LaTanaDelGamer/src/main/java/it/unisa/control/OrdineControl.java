@@ -86,7 +86,6 @@ public class OrdineControl extends HttpServlet {
 			try {
 				String id_ordine = request.getParameter("id");
 				int id = Integer.parseInt(id_ordine);
-				request.removeAttribute("account");
 				session.setAttribute("ordini", model.doRetrieveByKey(id));
 				session.setAttribute("itemOrdini", model.doRetrieveProdottiByOrdine(id));
 			
@@ -97,6 +96,25 @@ public class OrdineControl extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/Dashboard/ordini");
 		}
 		break;
+		
+		
+		case "/dettagliOrdineCliente" : {//qui devo mettere i dettagli del singolo ordine quando clicco su dettagli
+			OrdineModelDS model = new OrdineModelDS(ds);
+			try {
+				String id_ordine = request.getParameter("id");
+				int id = Integer.parseInt(id_ordine);
+				session.setAttribute("ordini", model.doRetrieveByKey(id));
+				session.setAttribute("itemOrdini", model.doRetrieveProdottiByOrdine(id));
+			
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			response.sendRedirect(request.getContextPath() + "/it/ordini");
+			
+		}
+		break;
+		
 
 	}
 	}

@@ -106,19 +106,27 @@ create table Galleria
     FOREIGN KEY(id_prodotto) REFERENCES Prodotto(id_prodotto) ON UPDATE cascade ON DELETE cascade
 );
 
-INSERT INTO AccountUser VALUES ("robbest","balestrieri00@gmail.com",SHA1("Napoli1926"),"Roberto","Balestrieri","2000-10-03",3,"via Nazionale",6,80050,"Pimonte","Napoli",1);
+INSERT INTO AccountUser VALUES ("robbest","balestrieri00@gmail.com",SHA1("Napoli1926"),"Roberto","Balestrieri","2000-10-03",3,"via Nazionale",6,80050,"Pimonte","Napoli",0);
 INSERT INTO AccountUser VALUES ("lollo","lollo00@gmail.com",SHA1("lollo1926"),"Lorenzo Lucio","Ruocco","2000-04-27",0,"via Roma",48,80054,"Gragnano","Napoli",1);
-INSERT INTO AccountUser VALUES ("boomy07","pako@outlook.it",SHA1("ilovepizza"),"Pasquale","Sicignano","2000-05-07",0,"via San Sebastiano",5,80054,"Gragnano","Napoli",0);
-INSERT INTO AccountUser VALUES ("mason9321","antonellostarax@libero.it",SHA1("codismylife"),"Antonello","Starace","1993-10-12",0,"via Vittorio Veneto",121,80321,"Fisciano","Salerno",0);
+INSERT INTO AccountUser VALUES ("boomy07","pako@outlook.it",SHA1("ilovepizza"),"Pasquale","Sicignano","2000-05-07",2,"via San Sebastiano",5,80054,"Gragnano","Napoli",0);
+INSERT INTO AccountUser VALUES ("mason9321","antonellostarax@libero.it",SHA1("codismylife"),"Antonello","Starace","1993-10-12",1,"via Vittorio Veneto",121,80321,"Fisciano","Salerno",0);
 
 INSERT INTO Ordine VALUES (1,"2021-05-04","robbest","giorgiameloni@gmail.com",79.99,"Master Card","5345 6548 2564 5612");
 INSERT INTO Ordine VALUES (2,"2021-11-12","robbest","luciano1293@gmail.com",69.99,"Visa","4931 6548 2564 5612");
-INSERT INTO Ordine VALUES (3,"2022-11-12","robbest","luciano1293@gmail.com",149.98,"Visa","4931 6548 2564 5612");
+INSERT INTO Ordine VALUES (3,"2021-05-08","robbest","luciano1293@gmail.com",149.98,"Visa","4931 6548 2564 5612");
+INSERT INTO Ordine VALUES (4,"2020-04-01","boomy07","pasqualepako@hotmail.it",43.50,"Visa","4652 3211 9865 4875");
+INSERT INTO Ordine VALUES (5,"2019-03-12","boomy07","giusysic@gmail.com",95.98,"Visa","4652 3211 9865 4875");
+INSERT INTO Ordine VALUES (6,"2022-12-05","mason9321","antonellostarax@libero.it",29.99,"Visa","5432 2198 7652 4159");
 
-INSERT INTO ItemOrdine VALUES (3,"Formula 1 2021",69.99,"F1 2021 e' il gioco F1 piu' completo di sempre, mettendo i giocatori saldamente al posto di guida mentre gareggiano contro i migliori piloti del mondo.",5);
-INSERT INTO ItemOrdine VALUES (3,"Efootball Pes 2022",79.99,"Pes 2022 e' un videogioco di calcio, sviluppato da Konami e appartenente alla serie PES, uscito sul mercato nel 2020 in Nord America e in Europa, e in Giappone per le piattaforme PlayStation 4, Xbox One e Microsoft Windows. Si tratta del ventunesimo capitolo della serie.",2);
-INSERT INTO ItemOrdine VALUES (2,"Formula 1 2021",69.99,"F1 2021 e' il gioco F1 piu' completo di sempre, mettendo i giocatori saldamente al posto di guida mentre gareggiano contro i migliori piloti del mondo.",5);
-INSERT INTO ItemOrdine VALUES (1,"Efootball Pes 2022",79.99,"Pes 2022 e' un videogioco di calcio, sviluppato da Konami e appartenente alla serie PES, uscito sul mercato nel 2020 in Nord America e in Europa, e in Giappone per le piattaforme PlayStation 4, Xbox One e Microsoft Windows. Si tratta del ventunesimo capitolo della serie.",2);
+INSERT INTO ItemOrdine VALUES (3,"Formula 1 2021",69.99,"F1 2021 e' il gioco F1 piu' completo di sempre, mettendo i giocatori saldamente al posto di guida mentre gareggiano contro i migliori piloti del mondo.",1);
+INSERT INTO ItemOrdine VALUES (3,"Efootball Pes 2022",79.99,"Pes 2022 e' un videogioco di calcio, sviluppato da Konami e appartenente alla serie PES, uscito sul mercato nel 2020 in Nord America e in Europa, e in Giappone per le piattaforme PlayStation 4, Xbox One e Microsoft Windows. Si tratta del ventunesimo capitolo della serie.",1);
+INSERT INTO ItemOrdine VALUES (2,"Formula 1 2021",69.99,"F1 2021 e' il gioco F1 piu' completo di sempre, mettendo i giocatori saldamente al posto di guida mentre gareggiano contro i migliori piloti del mondo.",1);
+INSERT INTO ItemOrdine VALUES (1,"Efootball Pes 2022",79.99,"Pes 2022 e' un videogioco di calcio, sviluppato da Konami e appartenente alla serie PES, uscito sul mercato nel 2020 in Nord America e in Europa, e in Giappone per le piattaforme PlayStation 4, Xbox One e Microsoft Windows. Si tratta del ventunesimo capitolo della serie.",1);
+INSERT INTO ItemOrdine VALUES (4,"Formula 1 2020",43.50,"F1 2020 e' il gioco F1 piu' completo di sempre, mettendo i giocatori saldamente al posto di guida mentre gareggiano contro i migliori piloti del mondo.",1);
+INSERT INTO ItemOrdine VALUES (5,"MotoGP 2021",50.99,"MotoGP 2021 e' il gioco MotoGP piu' completo di sempre, gareggia contro i migliori piloti del mondo.",1);
+INSERT INTO ItemOrdine VALUES (5,"Fifa 22",44.99,"Fifa 22 e' il gioco di calcio piu' completo di sempre",1);
+INSERT INTO ItemOrdine VALUES (6,"COD : Modern Warfare",29.99,"Call of Duty : Modern Warfare e' il migliore sparatutto in prima persona",1);
+
 
 INSERT INTO Categoria VALUES ("Azione","Videogiochi basati essenzialmente sull'azione, ricchi di combattimenti frenetici, sia con armi che senza.");
 INSERT INTO Categoria VALUES ("Avventura","Videogiochi caratterizzati dall'esplorazione, risoluzione di enigmi, interazione con personaggi di gioco ed ÃƒÂ¨ incentrato sulla narrazione piuttosto che sulle sfide");
