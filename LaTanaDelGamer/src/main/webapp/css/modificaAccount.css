@@ -1,0 +1,97 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+}
+
+body{
+	color: #fff;
+}
+
+section{
+	height: 100vh;
+	width: 100%;  
+}
+
+.reg{
+	
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo10.jpg);
+    width:100%;
+    height: 93%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top:70px;
+    box-shadow: 0 0 60px 60px #000000 inset;
+    overflow : auto;
+
+
+}
+
+.form-container{
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background: linear-gradient(#f9f9f96e,#f2f2f23b);
+	width: 380px;
+	padding: 50px 30px;
+	border-radius: 10px;
+	box-shadow: 7px 7px 60px #00ffff6b;
+}
+
+h1{
+	text-transform: uppercase;
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 0em;
+	color : #00ffff6b;
+}
+
+.control input{
+	width: 100%;
+	display: block;
+	padding: 10px;
+	color: #222;
+	border: none;
+	outline: none;
+	margin: 1em 0;
+	border-radius:5px;
+}
+
+.control input[type="submit"]{
+	background: var(--primary);
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	opacity: .7;
+	transition: opacity .3s ease;
+}
+
+.control input[type="submit"]:hover{
+	opacity: 1;
+}
+
+.link{
+	text-align: center;
+	color: black;
+}
+
+.link a{
+	text-decoration: none;
+	color: black;
+	opacity: .6;
+	transition: opacity .3s ease;
+}
+
+.link a:hover{
+	opacity: 1;
+}
+
+
+.errore{
+	text-align:center;
+	color:red;	
+}

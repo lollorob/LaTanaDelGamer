@@ -64,6 +64,10 @@ public class ClienteControl extends HttpServlet {
 				session.invalidate();
 	            response.sendRedirect(request.getContextPath()+"/it/home");
 				break;
+				
+			case "/modificaAccount": 
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/modificaAccount.jsp").forward(request,response);			
+				break;
 			
 			case "/registrati":  //registrazione cliente
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/registrazione.jsp").forward(request,response);
@@ -118,6 +122,45 @@ public class ClienteControl extends HttpServlet {
 				}	
 			}
 			break;
+			
+			case "/modificaCliente":
+			{
+				AccountUserModelDS model = new AccountUserModelDS(ds);
+				AccountUserBean account = new AccountUserBean();
+					try {
+						String username = request.getParameter("username");
+						String e_mail = request.getParameter("e_mail");
+					    String nome = request.getParameter("nome");
+					    String cognome = request.getParameter("cognome");
+					    String data = request.getParameter("datadinascita");
+					    String via = request.getParameter("via");
+					    int numero = Integer.parseInt(request.getParameter("numero"));
+					    long cap = Long.parseLong(request.getParameter("cap"));
+					    String citta = request.getParameter("citta");
+					    String provincia = request.getParameter("provincia");
+
+						account.setUsername(username);
+						account.seteMail(e_mail);
+
+						account.setNome(nome);
+						account.setCognome(cognome);
+						account.setData(data);
+
+						account.setVia(via);
+						account.setNumero(numero);
+						account.setCap(cap);
+						account.setCitta(citta);
+						account.setProvincia(provincia);
+						model.doUpdate(account);
+						request.setAttribute("message", "Account " + account.getUsername() + " AGGIORNATO");
+					} catch (SQLException e) {
+						e.printStackTrace();
+				}
+
+					session.setAttribute("clienteBean", account);
+					response.sendRedirect(request.getContextPath() + "/it/modificaAccount");
+		}
+				break;
 			
 	        case "/login": {// LOGIN CLIENTE
 	        	String username = (String) session.getAttribute("username");
