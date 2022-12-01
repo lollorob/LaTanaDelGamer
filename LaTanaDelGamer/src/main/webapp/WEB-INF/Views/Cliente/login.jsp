@@ -10,17 +10,15 @@
     	<jsp:param name="script" value = "loginCliente.js"/>
   </jsp:include>
   
-    
- <% 
-        AccountUserBean clienteRoles = (AccountUserBean) session.getAttribute("clienteRole");
-        
-	    if(clienteRoles != null && clienteRoles.isAdmin() == false) {
-	    	response.sendRedirect(request.getContextPath() + "/it/home");
-		
-	}%>  
+
 </head>
 <body>
- 	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
+ 	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp"%>
+ 	<% 
+ 		if(clienteRole != null && clienteRole.isAdmin() == false)
+ 			response.sendRedirect("/LaTanaDelGamer/it/home");
+ 	  	
+    %>
  	<div class="pagina1">
 <section>
 	<div class="form-container">

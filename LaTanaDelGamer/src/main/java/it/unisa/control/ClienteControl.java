@@ -40,6 +40,9 @@ public class ClienteControl extends HttpServlet {
 			
 			case "/ordini" : {
 				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				if(cliente==null) {
+					response.sendRedirect(request.getContextPath() + "/it/login");
+				} else {
 	        	OrdineModelDS ordine = new OrdineModelDS(ds);
 	        	try {
 					Collection<?> ordini= ordine.doRetrieveOrdiniByUsername1(cliente.getUsername());
@@ -48,6 +51,7 @@ public class ClienteControl extends HttpServlet {
 					e.printStackTrace();
 				}
 	        	request.getRequestDispatcher("/WEB-INF/Views/Cliente/ordini.jsp").forward(request, response);
+				}
 	        }
 			break;
 			
@@ -95,7 +99,12 @@ public class ClienteControl extends HttpServlet {
 				break;
 				
 			case "/modificaAccount": 
-				request.getRequestDispatcher("/WEB-INF/Views/Cliente/modificaAccount.jsp").forward(request,response);			
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				if(cliente==null) {
+					response.sendRedirect(request.getContextPath() + "/it/login");
+				} else {
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/modificaAccount.jsp").forward(request,response);
+				}
 				break;
 			
 			case "/registrati":  //registrazione cliente

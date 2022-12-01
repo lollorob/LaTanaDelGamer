@@ -24,10 +24,16 @@
     	%>
 	         
  </head> 
+ 	
  
  <body>
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
- 		
+ 	
+ 	<% 
+ 		if(clienteRole == null || clienteRole.isAdmin() != false)
+ 			response.sendRedirect("/LaTanaDelGamer/it/login");
+ 	  	
+    %>
  		
  		<div class="pagina1">
  		

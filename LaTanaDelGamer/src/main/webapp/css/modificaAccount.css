@@ -1,3 +1,4 @@
+
 *{
 	margin: 0;
 	padding: 0;
@@ -9,12 +10,13 @@ body{
 	color: #fff;
 }
 
+/**
 section{
 	height: 100vh;
 	width: 100%;  
 }
-
-.reg{
+*/
+.pagina{
 	
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo10.jpg);
     width:100%;
@@ -30,6 +32,14 @@ section{
 
 }
 
+h1{
+	text-transform: uppercase;
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 0em;
+	color : #00ffff6b;
+}
+/**
 .form-container{
 	position: absolute;
 	top: 90%;
@@ -95,3 +105,4 @@ h1{
 	text-align:center;
 	color:red;	
 }
+*/
