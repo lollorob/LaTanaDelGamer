@@ -397,5 +397,49 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 		}
 
 	}
+	
+	public Collection<ProdottoBean> doRetrieveProdottiByCategoria(String nome) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT * FROM prodotto p WHERE p.nome_categoria = '" + nome + "'";
+		
+		
+		Collection<ProdottoBean> prodotti = new LinkedList<ProdottoBean>();
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			Utility.print("doRetriveProdottiByCategory: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProdottoBean prodotto = new ProdottoBean(); 
+				prodotto.setId_prodotto(rs.getInt("id_prodotto"));
+				prodotto.setNome(rs.getString("nome"));
+				prodotto.setPrezzo(rs.getFloat("prezzo"));
+				prodotto.setCasaproduttrice(rs.getString("casaproduttrice"));
+				prodotto.setQuantita(rs.getInt("quantita"));
+				prodotto.setnomeCategoria(rs.getString("nome_categoria"));
+				
+				prodotti.add(prodotto);
+			}
+			
+		} finally {
+			try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			}finally {
+			if(connection != null)
+				connection.close();
+			}
+		  }
+		
+		return prodotti;
+
+	}
 }
 

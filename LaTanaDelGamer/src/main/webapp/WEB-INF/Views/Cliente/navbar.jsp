@@ -30,13 +30,13 @@
  							<a href="#" onmouseover="mostra()" onmouseleave="nascondi()">Categorie  ▾</a>
  							<ul class="dropMenu" onmouseover="mostra()" onmouseleave="nascondi()">
  								<li>
- 									<a href="#">Azione</a>
- 									<a href="#">Avventura</a>
- 									<a href="#">GDR</a>
- 									<a href="#">Simulazione</a>
- 									<a href="#">Sportivi</a>
- 									<a href="#">Guida</a>
- 									<a href="#">Mostra tutto</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Azione"%>">Azione</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Avventura"%>">Avventura</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="GDR"%>">GDR</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Simulazione"%>">Simulazione</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Sportivi"%>">Sportivi</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Guida"%>">Guida</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="MostraTutto"%>">Mostra tutto</a>
  								</li>
  							</ul>
  						</li>

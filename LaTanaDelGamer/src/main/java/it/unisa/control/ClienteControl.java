@@ -50,6 +50,26 @@ public class ClienteControl extends HttpServlet {
 	        	request.getRequestDispatcher("/WEB-INF/Views/Cliente/ordini.jsp").forward(request, response);
 	        }
 			break;
+			
+			case "/prodottiCategoria" : {
+				String str = request.getParameter("str");
+				ProdottoModelDS prodotto = new ProdottoModelDS(ds);
+				Collection<?> prodotti;
+				try {
+					if(str.equals("MostraTutto"))  {
+						prodotti = prodotto.doRetrieveAll("");
+					}else {
+						 prodotti = prodotto.doRetrieveProdottiByCategoria(str);
+					}
+					
+					
+					request.setAttribute("prodottiCat", prodotti);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/prodottiCategoria.jsp").forward(request, response);	
+			}
+			break;
 				
 			case "/home":
 				ProdottoModelDS proDS = new ProdottoModelDS(ds);

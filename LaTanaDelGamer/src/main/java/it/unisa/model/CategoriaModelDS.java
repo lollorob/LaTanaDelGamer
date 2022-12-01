@@ -197,7 +197,7 @@ public class CategoriaModelDS implements EntityModel<CategoriaBean> {
 	}
 	
 	
-	Collection<CategoriaBean> doRetrieveProdottiByCategoria(String nome) throws SQLException{
+	public Collection<CategoriaBean> doRetrieveProdottiByCategoria(String nome) throws SQLException{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
