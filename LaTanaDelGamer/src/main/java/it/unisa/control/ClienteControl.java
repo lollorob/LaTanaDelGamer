@@ -56,25 +56,15 @@ public class ClienteControl extends HttpServlet {
 			break;
 			
 			case "/prodottiCategoria" : {
-				String str = request.getParameter("str");
-				ProdottoModelDS prodotto = new ProdottoModelDS(ds);
-				Collection<?> prodotti;
-				try {
-					if(str.equals("MostraTutto"))  {
-						prodotti = prodotto.doRetrieveAll("");
-					}else {
-						 prodotti = prodotto.doRetrieveProdottiByCategoria(str);
-					}
-					
-					
-					request.setAttribute("prodottiCat", prodotti);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/prodottiCategoria.jsp").forward(request, response);	
 			}
 			break;
 				
+			case "/eliminaAccount" : {
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/eliminaAccount.jsp").forward(request, response);
+			}
+			break;
+			
 			case "/home":
 				ProdottoModelDS proDS = new ProdottoModelDS(ds);
 					try {
@@ -158,6 +148,37 @@ public class ClienteControl extends HttpServlet {
 					dispatcher.forward(request, response);
 					return;
 				}	
+			}
+			break;
+			
+			case "/home":
+				ProdottoModelDS proDS = new ProdottoModelDS(ds);
+					try {
+						Collection<ProdottoBean> prodotto;
+						prodotto = proDS.doRetrieveAll("");
+						session.setAttribute("listaProdotti",prodotto);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request,response);
+		
+				break;
+			
+			case "/eliminaAccount" : {
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				
+				AccountUserModelDS tmp = new AccountUserModelDS(ds);
+				
+				try {
+					tmp.doDelete(cliente);
+					
+				}catch (SQLException e) {
+					e.printStackTrace();
+				}
+				session.invalidate();
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/login.jsp").forward(request, response);
+				
 			}
 			break;
 			

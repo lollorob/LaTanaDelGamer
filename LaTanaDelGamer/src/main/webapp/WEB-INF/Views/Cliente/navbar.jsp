@@ -48,7 +48,7 @@
  								  %>
  								  <a href="<%=request.getAttribute("context")%>/it/ordini">I miei ordini</a>
  								  <a href="<%=request.getAttribute("context")%>/it/modificaAccount">Modifica</a>
- 								  <a href="<%=request.getAttribute("context")%>/it/elimina">Elimina</a>
+ 								  <a href="<%=request.getAttribute("context")%>/it/eliminaAccount">Elimina</a>
  								  <% } else {%>
  									<a href="<%=request.getAttribute("context")%>/it/login">I miei ordini</a>
  									<a href="<%=request.getAttribute("context")%>/it/login">Modifica</a>
