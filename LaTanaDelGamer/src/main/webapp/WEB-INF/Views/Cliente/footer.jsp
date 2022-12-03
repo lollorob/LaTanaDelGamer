@@ -6,13 +6,17 @@
 
 	
 div#footer{
+    margin-top: 20px;
     background: var(--primary);
-    color:white;
-    bottom:0;
-    height:100px;
-    position:initial;
-    width:100%;
-    text-align:center;
+    bottom: 0;
+    height: 100px;
+    position: initial;
+    width: 100%;
+    text-align: center;
+}
+
+p{
+padding-top:40px;
 }
 	
 </style>

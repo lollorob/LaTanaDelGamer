@@ -21,7 +21,9 @@
 	          		<form  method="POST" name="utente1" class="form"  action="<%=response.encodeURL("/LaTanaDelGamer/it/eliminaAccount")%>" name="utente">
 						<input class="bt" type="submit" value="Elimina Account">
 					</form>
-						<button class="bt" onClick="/LaTanaDelGamer/it/home">Torna Alla Home</button>	
+					<form method="GET" action="<%=response.encodeURL("/LaTanaDelGamer/it/home")%>">
+						<input class="bt" type="submit" value="Torna Alla Home">	
+						</form>
 					</div>
 			</section>	
 		</div>

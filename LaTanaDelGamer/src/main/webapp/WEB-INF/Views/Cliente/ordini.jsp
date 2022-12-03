@@ -36,7 +36,7 @@
     %>
  		
  		<div class="pagina1">
- 		
+ 			<section>
  				<%
 		if(ordineSingolo != null) {  
 	%>
@@ -93,16 +93,18 @@
  		
  		
  		
-		 			<div id="tabella"> 
-		    	<table> 
-			       <thead> 
-			          <tr> 
+		 			<div  class="tabella" id="tabella"> 
+		    	<table class="tab2"> 
+			       <thead>
+			       	
+			          <tr class="titolo"> 
 				        <th>Id Ordine</th>
 				        <th>Importo</th>
 				        <th>Email Spedizione</th>
 				        <th>Data Ordine</th>
 				        <th>Azioni</th>
-			          </tr> 
+			          </tr>
+			   
 		               <%
 				if(ordini != null && ordini.size() > 0) {
 					
@@ -133,10 +135,10 @@
 			    </table>
 			    	
 		       	</div>	
-				
+			</section>	
  		</div>
 	    
-	    
+<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>   
  </body>
  
  </html>

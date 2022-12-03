@@ -10,8 +10,8 @@
 </jsp:include>
 
  	<%
- 	Collection<?> prodotticat = (Collection<?>)request.getAttribute("prodottiCat");
- 	if(prodotticat == null) {
+ 	Collection<?> prodotticategoria = (Collection<?>)request.getAttribute("prodottiCategoria");
+ 	if(prodotticategoria == null) {
  		System.out.println("Collection PRODOTTI PER CATEGORIA NULL");
  	}
  %>
@@ -21,9 +21,9 @@
 	  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
  
  		 	<%
-				if(prodotticat != null && prodotticat.size() > 0) {
+				if(prodotticategoria != null && prodotticategoria.size() > 0) {
 					
-					Iterator<?> it = prodotticat.iterator();
+					Iterator<?> it = prodotticategoria.iterator();
 					while(it.hasNext()) {
 						ProdottoBean prodottocat = (ProdottoBean)it.next();
 					
