@@ -40,8 +40,8 @@
  				<%
 		if(ordineSingolo != null) {  
 	%>
-		<div id="tabella"> 
-	    	<table> 
+		<div id="tabella" class="tabella"> 
+	    	<table class="tab1"> 
 	        <thead> 
 		       <tr> 
 			        <th>Id Ordine</th>
@@ -74,8 +74,8 @@
 	     			while(it.hasNext()) {
 	     				ItemOrdineBean bean = (ItemOrdineBean)it.next();
 	     			
-	     		%><p>
-	            <%= bean.getNome() %> </p> 
+	     		%><p class="itemOrdine">
+	            <%= bean.getNome() %> x<%=bean.getQuantita() %> </p> 
 	            <% } } %></td>
 				 <td>
 	     			  <form action="/LaTanaDelGamer/it/ordini" method="GET">
@@ -135,10 +135,10 @@
 			    </table>
 			    	
 		       	</div>	
-			</section>	
+			</section>
+		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>  
  		</div>
-	    
-<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>   
+ 
  </body>
  
  </html>

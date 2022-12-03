@@ -1,5 +1,5 @@
 <div id="footer">
-		        <p>@Copyright,2023 - LaTanaDelGamer - All Rights Reserved</p>
+		        <p class="foot">@Copyright,2023 - LaTanaDelGamer - All Rights Reserved</p>
 </div>
 
 <style>
@@ -15,8 +15,9 @@ div#footer{
     text-align: center;
 }
 
-p{
+.foot{
 padding-top:40px;
+color:white;
 }
 	
 </style>
