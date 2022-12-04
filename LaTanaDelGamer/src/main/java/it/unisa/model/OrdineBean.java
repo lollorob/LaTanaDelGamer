@@ -15,7 +15,6 @@ public class OrdineBean implements Serializable {
 	float importo;
 	String tipo_pagamento;
 	String metodo_pagamento;
-	private Carrello carrello;
 	
 	private List<ItemOrdineBean> listaProdotti;
 	
@@ -106,15 +105,6 @@ public class OrdineBean implements Serializable {
 	}
 	
 	
-	
-	public Carrello getCarrello() {
-		return carrello;
-	}
-
-	public void setCarrello(Carrello carrello) {
-		this.carrello = carrello;
-	}
-
 	@Override
 	public boolean equals(Object other) {
 		return (this.getId_ordine() ==  ((OrdineBean) other).getId_ordine());

@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 
 import it.unisa.model.AccountUserBean;
 import it.unisa.model.AccountUserModelDS;
+import it.unisa.model.Carrello;
 import it.unisa.model.CategoriaBean;
 import it.unisa.model.CategoriaModelDS;
 import it.unisa.model.OrdineBean;
@@ -118,6 +119,30 @@ public class ClienteControl extends HttpServlet {
 				
 			case "/reg":
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/regEffettuata.jsp").forward(request, response);
+				break;
+				
+			case "/aggiungiAlCarrello":
+				
+		        Carrello carrello = (Carrello) session.getAttribute("Carrello");
+		        if(carrello == null)
+		        	carrello = new Carrello();
+		        
+		        ProdottoModelDS service = new ProdottoModelDS(ds);
+		        ProdottoBean prodotto = null;
+		        
+				try {
+					prodotto = service.doRetrieveByKey(Integer.parseInt(request.getParameter("id")));			
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		        carrello.aggiungiProdotto(prodotto);
+		        session.removeAttribute("Carrello");
+		        session.setAttribute("Carrello", carrello);
+		        response.sendRedirect(request.getContextPath() + "/it/home");
+				break;
+				
+			case "/mostraCarrello" :
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/carrello.jsp").forward(request,response);
 				break;
 		}
 	    }

@@ -68,7 +68,7 @@
  						</li>
  						
  						<li>
- 							<a href="#"><img class="carrello" src="/LaTanaDelGamer/icone/carrello.png" alt="Carrello"></a>
+ 							<a href="<%=request.getAttribute("context")%>/it/mostraCarrello"><img class="carrello" src="/LaTanaDelGamer/icone/carrello.png" alt="Carrello"></a>
  						</li>
  						
  						<li>

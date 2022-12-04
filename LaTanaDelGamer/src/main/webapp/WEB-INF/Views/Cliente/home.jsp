@@ -49,8 +49,11 @@
 		
 		 		<div class ="prodotto">
 		 			<h2><%=prodotto.getNome()%></h2>
-		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">
-		 			<button class="bottonecarrello" onClick="">Aggiungi al Carrello</button>		 		
+		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
+		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" method = "GET">
+		 			<input class = "bottonecarrello" type="submit" value="Aggiungi Al Carrello">
+		 			<input type="hidden" name="id" value=<%=prodotto.getId_prodotto()%>>
+		 			</form>		
 		 		</div>
 		          
 		      <% }
