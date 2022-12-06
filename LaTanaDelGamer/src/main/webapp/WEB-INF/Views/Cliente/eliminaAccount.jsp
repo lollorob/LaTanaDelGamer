@@ -12,19 +12,21 @@
 </head>
 <body>
 			<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>        	  
-			<div class="pagina">
+			<div class="pagina1">
 				<section>
-				<div class="form-container">
+				<div class="container">
 					<h1><b>Sei Sicuro Di Voler Eliminare L'Account?</b></h1>
 					    <h4>Facendo così perderai tutti i tuoi dati</h4>
 					   
 	          		<form  method="POST" name="utente1" class="form"  action="<%=response.encodeURL("/LaTanaDelGamer/it/eliminaAccount")%>" name="utente">
-						<input class="bt" type="submit" value="Elimina Account">
+						<input class="bottone" type="submit" value="Elimina Account">
 					</form>
+					
 					<form method="GET" action="<%=response.encodeURL("/LaTanaDelGamer/it/home")%>">
-						<input class="bt" type="submit" value="Torna Alla Home">	
+						<input class="bottone2" type="submit" value="Torna Alla Home">	
 						</form>
 					</div>
+				
 			</section>	
 		</div>
 		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>

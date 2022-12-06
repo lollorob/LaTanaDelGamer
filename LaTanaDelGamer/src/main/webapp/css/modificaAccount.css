@@ -38,7 +38,7 @@ h1{
 	padding-top: 50px;
     margin: auto;
     text-align: center;
-    background: linear-gradient(#0000002b,#f2f2f23b);
+    background: linear-gradient(#0000002b,#f2f2f20f);
     width: 500px;
     margin-top: 5em;
     border-radius: 10px;
@@ -126,59 +126,14 @@ label{
 .link:hover{
 	color: var(--blu);
 }
-/**
-.form-container{
-	position: absolute;
-	top: 90%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	background: linear-gradient(#f9f9f96e,#f2f2f23b);
-	width: 380px;
-	padding: 50px 30px;
-	border-radius: 10px;
-	box-shadow: 7px 7px 60px #00ffff6b;
-}
 
-h1{
-	text-transform: uppercase;
-	font-size: 2em;
-	text-align: center;
-	margin-bottom: 0em;
-	color : #00ffff6b;
+@media screen and (max-width: 600px){
+	
+	.form-container{
+	width:90%
+	}
+	
+	.control{
+		margin-bottom:20px;
+	}
 }
-
-.control input[type="submit"]{
-	background: var(--primary);
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 1.2em;
-	opacity: .7;
-	transition: opacity .3s ease;
-}
-
-.control input[type="submit"]:hover{
-	opacity: 1;
-}
-
-.link{
-	text-align: center;
-	color: black;
-}
-
-.link a{
-	text-decoration: none;
-	color: black;
-	opacity: .6;
-	transition: opacity .3s ease;
-}
-
-.link a:hover{
-	opacity: 1;
-}
-
-
-.errore{
-	text-align:center;
-	color:red;	
-}
-*/

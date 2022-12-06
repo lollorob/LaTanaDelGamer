@@ -41,8 +41,16 @@ button{
     color: white;
     padding: 10px 20px;
     text-align: center;
+    transition: opacity .3s ease;	
     text-decoration: none;
     font-size: 15px;
+    transition : 0.6s;
+}
+
+button:hover{
+	background-color: white;
+	color: var(--blu);
+	transition : 0.6s;
 }
 
 p {
@@ -91,3 +99,76 @@ p {
 	padding:15px;
 	margin-top:10px;
 }
+
+
+@media only screen and (max-width: 1000px) { 
+     /* Forza la tabella a non comportarsi come una normale tabella */ 
+  	
+ 	#tabella table,  
+ 	#tabella thead,  
+ 	#tabella tbody,  
+ 	#tabella th,  
+ 	#tabella td,  
+ 	#tabella tr {  
+ 		display: block;  
+ 	} 
+  
+ 	/* Nasconde le intestazioni della tabella */ 
+  
+ 	#tabella thead tr {  
+ 		position: absolute; 
+ 		top:-9999px; 
+ 		left:-9999px; 
+ 	} 
+   
+ 	#tabella tr {    
+ 	 	border: 4px solid var(--blu); 
+ 	 	border-radius: 10px;
+    	margin-top: 17px;
+ 	 } 
+  
+ 	#tabella td {  
+ 		/* Inserisce il comportamento come una riga */ 
+  
+ 	border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    padding-top: 30px;
+    text-align: left;
+ 	} 
+  
+ 	#tabella td:before {  
+ 		/* Inserisce il comportamento come un'intestazione di tabella */ 
+  
+ 		position: absolute; 
+ 		/* I valori top/left agiscono come padding */ 
+  
+ 		top: 0; 
+ 		left: 6px; 
+ 		width: 45%;  
+ 		padding-right: 10px;  
+ 		white-space: nowrap; 
+ 		text-align:left; 
+ 		font-weight: bold; 
+ 	} 
+  
+  	.tab2{
+  	border : none;
+  	}
+ 	
+ 	
+ 	/* Aggiunge l'etichetta ai dati della tabella */ 
+  
+ 	#tabella td:before { 
+ 		content: attr(data-title);
+ 		color: var(--blu);
+ 	} 
+ }  
+ 
+ @media only screen and (max-width: 480px){
+ 	#tabella td{
+ 	padding-left : 10%;
+ 	}
+ }

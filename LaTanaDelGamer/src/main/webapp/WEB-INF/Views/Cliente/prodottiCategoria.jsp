@@ -5,7 +5,7 @@
 <head>
 <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Prodotti | Cliente"/>
- 	<jsp:param name="style" value = "modificaAccount.css"/>
+ 	<jsp:param name="style" value = "prodottiCategoria.css"/>
  	<jsp:param name="script" value = "modificaAccount.js"/>
 </jsp:include>
 
@@ -20,6 +20,7 @@
 <body>
 	  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
  
+ 		<div class = "pagina1">
  		 	<%
 				if(prodotticategoria != null && prodotticategoria.size() > 0) {
 					
@@ -36,6 +37,9 @@
 		          
 		      <% }
 				}  %> 
+				
+		</div>
 
+			<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 </body>
 </html>
