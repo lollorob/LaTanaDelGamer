@@ -11,12 +11,12 @@
  
  </head>
  
- 
  <body>
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
  		
  		
  		<div class="pagina">
+ 		<%Carrello carrello = (Carrello) request.getSession().getAttribute("Carrello");%>
  			
 		    <div class="slider">
 		    	<img class="frecciaSinistra" src="/LaTanaDelGamer/icone/frecciaSinistra.png" onclick="return precedente()">
@@ -50,9 +50,18 @@
 		 		<div class ="prodotto">
 		 			<h2><%=prodotto.getNome()%></h2>
 		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
-		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" method = "GET">
-		 			<input class = "bottonecarrello" type="submit" value="Aggiungi Al Carrello">
-		 			<input type="hidden" name="id" value=<%=prodotto.getId_prodotto()%>>
+		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  method = "GET">
+		 			
+			 			<input type="hidden"  name="id" value=<%=prodotto.getId_prodotto()%>>
+			 			<input type="hidden" id ="quantityOriginale" name="quantityOriginale" value="<%=prodotto.getQuantita()%>">
+			 			<%if(carrello!=null) {
+			 			int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	%>
+			 			<input type="hidden" id="quantity" name="quantity" value="<%=quantity+1%>">
+			 			<%} 
+			 			 else { %>
+			 			<input type="hidden" id="quantity" name="quantity" value="1">
+			 			<%} %>
+			 			<button class ="aggiungi" type="submit"  onClick="return checkQuantity()" value="Aggiungi Al Carrello"></button>
 		 			</form>		
 		 		</div>
 		          

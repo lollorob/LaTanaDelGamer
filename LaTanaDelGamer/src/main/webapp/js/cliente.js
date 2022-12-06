@@ -79,3 +79,18 @@ function precedente(){
 	
 	
 }
+
+function checkQuantity(){
+		alert("ciao");
+		var quantityOriginale=document.addCart.quantityOriginale;
+		var quantity=document.addCart.quantity;
+		alert("quantità nuova = " +quantity);
+		alert("quantità originale = " + quantityOriginale);
+		
+		if(quantity>quantityOriginale){
+			alert("E' presente già la massima quantità acquistabile nel carrello")
+			return false;
+		}
+	}
+		
+		

@@ -3,23 +3,26 @@ import java.util.ArrayList;
 
 public class Carrello {
 	
-    private ArrayList<ProdottoBean> nelCarrello = new ArrayList<>();
+    private ArrayList<ItemCarrello> nelCarrello = new ArrayList<>();
     private Double totale = 0.0;
     
-    public void aggiungiProdotto(ProdottoBean prodotto) {
+    public void aggiungiProdotto(ItemCarrello item) {
     	
     	boolean presente = false;
     	for(int i = 0; i < nelCarrello.size(); i++) {
-        if (nelCarrello.get(i).getId_prodotto() == prodotto.getId_prodotto())
+        if (nelCarrello.get(i).getProdotto().getId_prodotto() == item.getProdotto().getId_prodotto())
             {
                 presente = true;
+                nelCarrello.get(i).setQuantity(item.getQuantity());
             }
         }
-        if (prodotto != null && presente == false)
+        if (item.getProdotto() != null && presente == false)
         {
-            this.nelCarrello.add(prodotto);
-            this.totale = prodotto.getPrezzo() + totale;
+            this.nelCarrello.add(item);
+            
+ 
         }
+       
             		
     }
     
@@ -29,21 +32,29 @@ public class Carrello {
         this.totale = 0.0;
     }
     
-    public ProdottoBean doretrieveById(int id)
+    public ItemCarrello doretrieveById(int id)
     {
-    	ProdottoBean quadro = null;
+    	ItemCarrello prodotto = null;
         for (int i = 0; i < nelCarrello.size(); i++)
         {
-            if (nelCarrello.get(i).getId_prodotto() == id)
+            if (nelCarrello.get(i).getProdotto().getId_prodotto() == id)
             {
-                quadro = nelCarrello.get(i);
+                prodotto = nelCarrello.get(i);
             }
         }
-        return quadro;
+        return prodotto;
+    }
+    
+    public int getQuantityById(int id) {
+    	ItemCarrello item =doretrieveById(id);
+    	if(item==null)
+    		return 1;
+    	else
+    	return item.getQuantity();
     }
     
     //funzione usata per scorrere la lista di prodotti nel carrello
-    public ProdottoBean doretrieveByIndex(int index)
+    public ItemCarrello doretrieveByIndex(int index)
     {
         return nelCarrello.get(index);
     }
@@ -51,7 +62,12 @@ public class Carrello {
     
     public Double getTotale()
     {
-        return this.totale;
+    	this.totale=(double) 0;
+    	for(int i = 0; i < nelCarrello.size(); i++) {
+    		ItemCarrello item = nelCarrello.get(i);
+    		this.totale += item.getProdotto().getPrezzo() * item.getQuantity();	
+    	}
+    	return this.totale;
     }
     
     public int getSize()
@@ -63,10 +79,10 @@ public class Carrello {
     {
         for (int i = 0; i < nelCarrello.size(); i++)
         {
-            ProdottoBean temp = nelCarrello.get(i);
-            if (temp.getId_prodotto() == id)
+            ItemCarrello temp = nelCarrello.get(i);
+            if (temp.getProdotto().getId_prodotto() == id)
             {
-                this.totale = this.totale - temp.getPrezzo();
+                this.totale = this.totale - (temp.getProdotto().getPrezzo() * temp.getQuantity());
                 nelCarrello.remove(i);
             }
         }

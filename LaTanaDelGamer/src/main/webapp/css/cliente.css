@@ -80,6 +80,25 @@
 	visibility:hidden;
 }
 
+.aggiungi{
+	background: var(--primary);
+    width: 60%;
+    margin: auto;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    opacity: .7;
+    transition: opacity .3s ease;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.aggiungi:hover{
+	opacity: 1;
+	border: var(--blu) solid;
+}
+
 @media screen and (max-width: 870px) {
   .slider {
     max-width: 88%;
