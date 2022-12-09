@@ -79,18 +79,23 @@ function precedente(){
 	
 	
 }
-
+/*
 function checkQuantity(){
-		alert("ciao");
+		
 		var quantityOriginale=document.addCart.quantityOriginale;
 		var quantity=document.addCart.quantity;
-		alert("quantità nuova = " +quantity);
-		alert("quantità originale = " + quantityOriginale);
+		var id_prodotto=document.getElementById('id');
 		
-		if(quantity>quantityOriginale){
+		alert("id " + id_prodotto.value);
+		alert("quantità massima " + quantityOriginale.value);
+		alert("quantità attuale " + quantity.value);
+		
+		
+		
+		if(quantity.value>quantityOriginale.value){
 			alert("E' presente già la massima quantità acquistabile nel carrello")
 			return false;
 		}
 	}
-		
+	*/	
 		

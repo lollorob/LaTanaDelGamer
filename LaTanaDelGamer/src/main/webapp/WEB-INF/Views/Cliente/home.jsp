@@ -51,17 +51,25 @@
 		 			<h2><%=prodotto.getNome()%></h2>
 		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
 		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  method = "GET">
-		 			
-			 			<input type="hidden"  name="id" value=<%=prodotto.getId_prodotto()%>>
-			 			<input type="hidden" id ="quantityOriginale" name="quantityOriginale" value="<%=prodotto.getQuantita()%>">
+		 
+		 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
 			 			<%if(carrello!=null) {
-			 			int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	%>
-			 			<input type="hidden" id="quantity" name="quantity" value="<%=quantity+1%>">
-			 			<%} 
+			 				int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
+				 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
+				 			%> 
+				 				<p>Già nel carrello</p> 
+				 			<% 
+				 			}
+				 			else { %>
+				 			<input type="hidden" id="quantity" name="quantity" value="1">
+				 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
+				 			<%} 
+			 			} 
 			 			 else { %>
 			 			<input type="hidden" id="quantity" name="quantity" value="1">
+			 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
 			 			<%} %>
-			 			<button class ="aggiungi" type="submit"  onClick="return checkQuantity()" value="Aggiungi Al Carrello"></button>
+			 			
 		 			</form>		
 		 		</div>
 		          

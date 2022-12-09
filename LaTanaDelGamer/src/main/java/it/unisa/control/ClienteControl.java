@@ -100,10 +100,14 @@ public class ClienteControl extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/login.jsp").forward(request,response);
 				break;
 				
-			case "/logout": 
+			case "/logout": {
+				Carrello carrello = (Carrello) session.getAttribute("Carrello");
 				session.invalidate();
+				session=request.getSession();
+				session.setAttribute("Carrello", carrello);
 	            response.sendRedirect(request.getContextPath()+"/it/home");
 				break;
+			}
 				
 			case "/modificaAccount": 
 				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
@@ -122,7 +126,7 @@ public class ClienteControl extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/regEffettuata.jsp").forward(request, response);
 				break;
 				
-			case "/aggiungiAlCarrello":
+			case "/aggiungiAlCarrello":	{
 				
 		        Carrello carrello = (Carrello) session.getAttribute("Carrello");
 		        if(carrello == null)
@@ -137,18 +141,24 @@ public class ClienteControl extends HttpServlet {
 					e.printStackTrace();
 				}
 				int quantity = 1;
+			
+				
 				if(request.getParameter("quantity")!=null)
 					quantity =Integer.parseInt(request.getParameter("quantity"));
+				
 		        carrello.aggiungiProdotto(new ItemCarrello(prodotto,quantity));
 		        session.removeAttribute("Carrello");
 		        session.setAttribute("Carrello", carrello);
 		        response.sendRedirect(request.getContextPath() + "/it/mostraCarrello");
 				break;
+			}
 				
 			case "/mostraCarrello" :
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/carrello.jsp").forward(request,response);
 				break;
-		}
+		
+			
+			}
 	    }
 	 
 	 
