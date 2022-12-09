@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Carrello {
 	
     private ArrayList<ItemCarrello> nelCarrello = new ArrayList<>();
-    private Double totale = 0.0;
+    private float totale = 0;
     
     public void aggiungiProdotto(ItemCarrello item) {
     	
@@ -29,7 +29,7 @@ public class Carrello {
     public void svuotaCarrello()
     {
         nelCarrello.removeAll(nelCarrello);
-        this.totale = 0.0;
+        this.totale = 0;
     }
     
     public ItemCarrello doretrieveById(int id)
@@ -60,9 +60,9 @@ public class Carrello {
     }
 
     
-    public Double getTotale()
+    public float getTotale()
     {
-    	this.totale=(double) 0;
+    	this.totale= 0;
     	for(int i = 0; i < nelCarrello.size(); i++) {
     		ItemCarrello item = nelCarrello.get(i);
     		this.totale += item.getProdotto().getPrezzo() * item.getQuantity();	

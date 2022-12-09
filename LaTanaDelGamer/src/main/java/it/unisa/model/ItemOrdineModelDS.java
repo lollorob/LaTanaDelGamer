@@ -112,7 +112,7 @@ public class ItemOrdineModelDS implements EntityModel<ItemOrdineBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO itemordini" + " (id_ordine, nome_prodotto, prezzo_prodotto, descrizione_prodotto, quantita_prodotto) VALUES (?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO itemordine" + " (id_ordine, nome_prodotto, prezzo_prodotto, descrizione_prodotto, quantita_prodotto) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();

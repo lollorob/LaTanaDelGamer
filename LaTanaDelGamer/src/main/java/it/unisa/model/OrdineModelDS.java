@@ -122,7 +122,7 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO ordine" + " (id_prodotto,data_ordine,username,email_spedizione,importo,tipo_pagamento,metodo_pagamento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO ordine" + " (id_ordine,data_ordine,username,email_spedizione,importo,tipo_pagamento,metodo_pagamento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -137,8 +137,6 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 			preparedStatement.setString(6, item.getTipo_pagamento());
 			preparedStatement.setString(7, item.getMetodo_pagamento());
 			
-			
-
 			Utility.print("doSave: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 
@@ -355,6 +353,40 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 		
 		return ordini;
 
+	}
+	
+	public int doRetrieveLastId() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		int lastId;
+		
+		String selectSQL = "SELECT * FROM ordine";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL,ResultSet.TYPE_SCROLL_INSENSITIVE , 
+			         ResultSet.CONCUR_UPDATABLE ,
+			         ResultSet.HOLD_CURSORS_OVER_COMMIT);
+			
+			Utility.print("doRetriveLastID: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.last();
+			lastId = rs.getInt("id_ordine");
+			
+		} finally {
+			try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			}finally {
+			if(connection != null)
+				connection.close();
+			}
+		  }
+		
+		return lastId;
+		
 	}
 }
 

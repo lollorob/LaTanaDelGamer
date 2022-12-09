@@ -1,7 +1,9 @@
 package it.unisa.control;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
@@ -19,11 +21,14 @@ import it.unisa.model.Carrello;
 import it.unisa.model.CategoriaBean;
 import it.unisa.model.CategoriaModelDS;
 import it.unisa.model.ItemCarrello;
+import it.unisa.model.ItemOrdineBean;
+import it.unisa.model.ItemOrdineModelDS;
 import it.unisa.model.OrdineBean;
 import it.unisa.model.OrdineModelDS;
 import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
 import it.unisa.utils.Utility;
+
 
 @WebServlet(name= "ClienteControl" , value="/it/*")
 public class ClienteControl extends HttpServlet {
@@ -39,6 +44,18 @@ public class ClienteControl extends HttpServlet {
 			case "/": 
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request, response);
 				break;
+				
+			case "/checkOut": {
+				AccountUserBean user = (AccountUserBean)session.getAttribute("clienteBean");
+				
+				if(user == null) {
+					request.getRequestDispatcher("/WEB-INF/Views/Cliente/login.jsp").forward(request, response);
+				} else {
+					request.getRequestDispatcher("/WEB-INF/Views/Cliente/checkOut.jsp").forward(request, response);
+				}
+				
+				break;
+			}
 			
 			case "/ordini" : {
 				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
@@ -78,7 +95,13 @@ public class ClienteControl extends HttpServlet {
 			break;
 				
 			case "/eliminaAccount" : {
-				request.getRequestDispatcher("/WEB-INF/Views/Cliente/eliminaAccount.jsp").forward(request, response);
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				if(cliente==null) {
+					response.sendRedirect(request.getContextPath() + "/it/login");
+				} else {
+					request.getRequestDispatcher("/WEB-INF/Views/Cliente/eliminaAccount.jsp").forward(request, response);
+				}
+				
 			}
 			break;
 			
@@ -204,6 +227,69 @@ public class ClienteControl extends HttpServlet {
 				}	
 			}
 			break;
+			
+			case "/acquista": {
+	            OrdineBean ordine = new OrdineBean();
+	            OrdineModelDS model = new OrdineModelDS(ds);
+	            AccountUserBean utente = (AccountUserBean) session.getAttribute("clienteBean");
+	            Carrello carrello = (Carrello) session.getAttribute("Carrello");
+	            String email = request.getParameter("email_spedizione");
+	            String tipo_pagamento = request.getParameter("tipo_pagamento");
+	            String metodo_pagamento = request.getParameter("metodo_pagamento");
+	            int id_tmp = 0;
+	            try {
+					id_tmp = model.doRetrieveLastId()+1;
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+	            
+	            ordine.setId_ordine(id_tmp);
+	            ordine.setData_ordine(LocalDate.now());
+	            ordine.setUsername(utente.getUsername());
+	            ordine.setEmail_spedizione(email);
+	            ordine.setImporto(carrello.getTotale());
+	            ordine.setTipo_pagamento(tipo_pagamento);
+	            ordine.setMetodo_pagamento(metodo_pagamento);
+	            
+	            AccountUserModelDS model3 = new AccountUserModelDS(ds);	            
+	            utente.setn_Ordini(utente.getn_Ordini()+1);
+	            
+	            try {
+	            	model3.doUpdateNumeroOrdini(utente);
+					model.doSave(ordine);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+	            
+	            for(int i = 0; i < carrello.getSize(); i++) {
+	            	ItemCarrello item = carrello.doretrieveByIndex(i);
+	            	ProdottoBean prodotto = item.getProdotto();
+	            	ItemOrdineBean itemOrdine = new ItemOrdineBean();
+	            	ItemOrdineModelDS model1 = new ItemOrdineModelDS(ds); 
+	            	
+	            	itemOrdine.setId_ordine(id_tmp);
+	            	itemOrdine.setNome(prodotto.getNome());
+	            	itemOrdine.setPrezzo(prodotto.getPrezzo());
+	            	itemOrdine.setDescrizione(prodotto.getDescrizione());
+	            	itemOrdine.setQuantita(item.getQuantity());
+	            	
+	            	ProdottoModelDS model2 = new ProdottoModelDS(ds);
+	            	System.out.println(item.getQuantity());
+	            	prodotto.setQuantita(prodotto.getQuantita() - item.getQuantity());
+
+	            	try {
+						model1.doSave(itemOrdine);
+						model2.doUpdate(prodotto);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+	            }
+	            
+	            carrello.svuotaCarrello();
+	            request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request,response);
+
+				break;
+			}
 			
 			case "/home":
 				ProdottoModelDS proDS = new ProdottoModelDS(ds);

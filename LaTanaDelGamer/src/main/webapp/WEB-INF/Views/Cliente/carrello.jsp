@@ -70,6 +70,10 @@
      
        </div>
        
+          	<form action="/LaTanaDelGamer/it/checkOut" method="GET">
+            <input id="checkoutButton" type="submit" name="checkout" value="Checkout">
+        </form>
+       
        </div>
        <%} %>
 </body>

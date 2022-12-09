@@ -54,6 +54,10 @@
 		 
 		 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
 			 			<%if(carrello!=null) {
+				 			 if(prodotto.getQuantita() == 0) {%>
+				 			 <p>Non Disponibile</p>
+				 			 <%
+				 			 }else {
 			 				int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
 				 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
 				 			%> 
@@ -74,7 +78,8 @@
 		 		</div>
 		          
 		      <% }
-				}  %> 
+					}
+					}%> 
 				    
 		    
 		    <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 

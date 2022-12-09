@@ -212,6 +212,41 @@ public class AccountUserModelDS implements EntityModel<AccountUserBean> {
 		
 
 	}
+	
+	public void doUpdateNumeroOrdini(AccountUserBean item) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String updateSQL = "UPDATE accountuser SET " + " n_ordini = ? WHERE username = ?";
+
+		try {
+			connection = ds.getConnection();
+			connection.setAutoCommit(false);
+			preparedStatement = connection.prepareStatement(updateSQL);
+
+			
+			preparedStatement.setInt(1, item.getn_Ordini());			
+			
+			preparedStatement.setString(2, item.getUsername());
+
+			Utility.print("doUpdateNumeroOrdini: " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+
+			connection.commit();
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		
+
+	}
 
 	@Override
 	public void doDelete(AccountUserBean item) throws SQLException {
