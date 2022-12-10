@@ -82,7 +82,6 @@ public class Carrello {
             ItemCarrello temp = nelCarrello.get(i);
             if (temp.getProdotto().getId_prodotto() == id)
             {
-                this.totale = this.totale - (temp.getProdotto().getPrezzo() * temp.getQuantity());
                 nelCarrello.remove(i);
             }
         }

@@ -150,7 +150,6 @@ public class ClienteControl extends HttpServlet {
 				break;
 				
 			case "/aggiungiAlCarrello":	{
-				
 		        Carrello carrello = (Carrello) session.getAttribute("Carrello");
 		        if(carrello == null)
 		        	carrello = new Carrello();
@@ -163,6 +162,13 @@ public class ClienteControl extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+				
+				if(request.getParameter("eliminaProdotto") != null) {
+					carrello.rimuoviProdottobyId(prodotto.getId_prodotto());
+				    response.sendRedirect(request.getContextPath() + "/it/mostraCarrello");
+				    return;
+				}
+				
 				int quantity = 1;
 			
 				
@@ -179,6 +185,21 @@ public class ClienteControl extends HttpServlet {
 			case "/mostraCarrello" :
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/carrello.jsp").forward(request,response);
 				break;
+				
+			case "/prodotto" : {
+				ProdottoModelDS model = new ProdottoModelDS(ds);
+				ProdottoBean prodotto = new ProdottoBean();
+				
+				try {
+					prodotto = model.doRetrieveByKey(Integer.parseInt(request.getParameter("id")));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				request.setAttribute("dettagliProdotto", prodotto);
+				request.getRequestDispatcher("/WEB-INF/Views/Cliente/prodotto.jsp").forward(request,response);
+				break;
+			}
 		
 			
 			}
@@ -286,7 +307,7 @@ public class ClienteControl extends HttpServlet {
 	            }
 	            
 	            carrello.svuotaCarrello();
-	            request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request,response);
+	            response.sendRedirect(request.getContextPath() + "/it/home");
 
 				break;
 			}

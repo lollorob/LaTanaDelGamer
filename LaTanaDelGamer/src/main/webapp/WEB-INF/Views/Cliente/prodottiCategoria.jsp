@@ -31,7 +31,10 @@
 			%>
 		
 		 		<div class ="prodotto">
-		 			<h2><%=prodottocat.getNome()%></h2>
+		 			<form action="/LaTanaDelGamer/it/prodotto" method="GET">
+		 			<input type="submit" name="<%=prodottocat.getNome()%>" value = "<%=prodottocat.getNome()%>">
+		 			<input type="hidden" id="id" name="id" value=<%=prodottocat.getId_prodotto()%>>		 			
+		 			</form>
 		 			<button class="bottonecarrello" onClick="">Aggiungi al Carrello</button>		 		
 		 		</div>
 		          

@@ -35,7 +35,13 @@
 								<label for="tipo_pagamento">Circuito Di Pagamento:</label>
 							</div>
 							<div class="second">
-							<input  class="update" id="tipo_pagamento" name="tipo_pagamento" type="text" placeholder="Es. MasterCard - Visa" ><br>	
+							<select class="update" id="tipo_pagamento" name="tipo_pagamento">
+							<option value="MasterCard"> MasterCard </option>
+							<option value="Visa"> Visa </option>
+							<option value="AmericanExpress"> AmericanExpress </option>
+							<option value="Discover"> Discover </option>
+							<option value="JCB"> JBC </option>
+							</select><br>	
 					    	</div>
 					    </div>
 					

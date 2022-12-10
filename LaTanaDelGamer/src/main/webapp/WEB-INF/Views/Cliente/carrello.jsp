@@ -60,6 +60,11 @@
 						</form>
 						
 						<p>Totale : <%=item.getSomma() %></p>
+						<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" method = "GET">
+						<input type="hidden" name ="eliminaProdotto" value="1">
+						<input type="hidden" name="id" value=<%=prodotto.getId_prodotto()%>>
+						<input type="submit" value="Elimina"> 
+						</form>
 		 				
 		 				
 		 		</div>

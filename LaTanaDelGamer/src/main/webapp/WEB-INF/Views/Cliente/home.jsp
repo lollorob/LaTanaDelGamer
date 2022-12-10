@@ -48,7 +48,10 @@
 			%>
 		
 		 		<div class ="prodotto">
-		 			<h2><%=prodotto.getNome()%></h2>
+		 			<form action="/LaTanaDelGamer/it/prodotto" method="GET">
+		 			<input type="submit" name="<%=prodotto.getNome()%>" value = "<%=prodotto.getNome()%>">
+		 			<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>		 			
+		 			</form>
 		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
 		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  method = "GET">
 		 
@@ -58,7 +61,7 @@
 				 			 <p>Non Disponibile</p>
 				 			 <%
 				 			 }else {
-			 				int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
+			 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
 				 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
 				 			%> 
 				 				<p>Già nel carrello</p> 
@@ -68,7 +71,7 @@
 				 			<input type="hidden" id="quantity" name="quantity" value="1">
 				 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
 				 			<%} 
-			 			} 
+			 			} }
 			 			 else { %>
 			 			<input type="hidden" id="quantity" name="quantity" value="1">
 			 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
@@ -79,7 +82,7 @@
 		          
 		      <% }
 					}
-					}%> 
+					%> 
 				    
 		    
 		    <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
