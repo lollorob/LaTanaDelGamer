@@ -13,6 +13,7 @@
 	<% ProdottoBean prodotto = new ProdottoBean();
 	   prodotto = (ProdottoBean) request.getAttribute("dettagliProdotto");%>
 
+
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>
 
 </body>
