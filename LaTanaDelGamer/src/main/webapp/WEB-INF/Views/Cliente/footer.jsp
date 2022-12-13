@@ -1,5 +1,6 @@
 <div id="footer">
 		        <p class="foot">@Copyright,2023 - LaTanaDelGamer - All Rights Reserved</p>
+		        <img src="/LaTanaDelGamer/immagini/paymentsmethods.png" class="metodi">
 </div>
 
 <style>
@@ -14,6 +15,14 @@ div#footer{
     width: 100%;
     text-align: center;
 }
+
+.metodi{
+float: right;
+width: 200px;
+margin-top: -50px;
+margin-right: 15px;
+}
+
 
 .foot{
 padding-top:40px;

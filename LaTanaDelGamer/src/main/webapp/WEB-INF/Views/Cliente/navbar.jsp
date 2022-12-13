@@ -31,11 +31,11 @@
  							<ul class="dropMenu" onmouseover="mostra()" onmouseleave="nascondi()">
  								<li>
  									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Azione"%>">Azione</a>
- 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Avventura"%>">Avventura</a>
- 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="GDR"%>">GDR</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Indie"%>">Indie</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Sparatutto"%>">Sparatutto</a>
  									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Simulazione"%>">Simulazione</a>
  									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Sportivi"%>">Sportivi</a>
- 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="Guida"%>">Guida</a>
+ 									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="MMO"%>">MMO</a>
  									<a href="/LaTanaDelGamer/it/prodottiCategoria?str=<%="MostraTutto"%>">Mostra tutto</a>
  								</li>
  							</ul>
