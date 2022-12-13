@@ -49,7 +49,7 @@
 		
 		 		<div class ="prodotto">
 		 			<form action="/LaTanaDelGamer/it/prodotto" method="GET">
-		 			<input type="submit" name="<%=prodotto.getNome()%>" value = "<%=prodotto.getNome()%>">
+		 			<input type="submit" name="titolo" value = "<%=prodotto.getNome()%>">
 		 			<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>		 			
 		 			</form>
 		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 

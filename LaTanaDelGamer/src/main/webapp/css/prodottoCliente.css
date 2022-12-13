@@ -1,0 +1,145 @@
+.pagina1{
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo6.jpg);
+    width:100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    top:70px;
+    box-shadow: 0 0 60px 60px #000000 inset;
+}
+
+.prodotto{
+	width: 995px;
+    height: 554px;
+    border: 3px solid var(--blu);
+    margin: auto;
+    margin-top: 30px;
+    display:flex;
+    
+    background: linear-gradient(#0000002b,#f2f2f20f);
+    border-radius: 10px;
+    box-shadow: 7px 7px 60px #00ffff6b;
+}
+
+.galleria{
+	margin-top: 30px;
+    width: 350px;
+    height: 530px;
+    margin-left: 40px;
+}
+
+.contenitoreCopertina{
+	float: left;
+    width: 290px;
+    height: 400px;
+    border-radius: 10px;
+    border: 4px solid var(--blu);
+}
+
+.copertina{
+	width: 100%;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.altreFoto{
+	margin-bottom: 20px;
+    margin-top: 20px;
+    border: 3px solid var(--blu);
+    position: relative;
+    top: 2%;
+    border-radius: 5px;
+    height: 44px;
+    display: inline-flex;
+    width: 283px;
+    align-items: center;
+    
+}
+
+.foto{
+	height: 100%;
+    width: 62px;
+    margin-left: 21px;
+    border: 2px solid white;
+	
+}
+
+.schedaProdotto{
+	width:60%;
+}
+
+.nome{
+	color:white;
+	text-align:center;
+}
+
+.nome h1{
+	text-transform : uppercase;
+}
+
+.casaProduttrice{
+	color : white;
+	font-size:0.7em;
+}
+
+.dettagli{
+	margin-top: 40px;
+    height: 30%;
+    color: white;
+}
+.dettagli p{
+	font-family: cursive;
+}
+
+.prezzo{
+	color:white;
+}
+
+.prezzo h4{
+	font-size: 1.2em;
+}
+ .prezzo p{
+ 	font-size: 1.1em;
+ }
+ 
+ .bottone{
+ 	text-align:center;
+ 	margin-top: 50px;
+ }
+ 
+ .acquista{
+    background-color: var(--blu);
+    border: 2px solid black;
+    font-size: 1.2em;
+    color: white;
+    transition: 0.6s;
+    font-style: bold;
+    border-radius: 14px;
+    font-family: 'Andika';
+ 	
+ }
+ 
+ .acquista:hover{
+ 	font-size:1.35em;
+ 	border: 2px solid white;
+ 	color: black;
+ 	transition : 0.6s;
+ 	border-radius:15px;
+ }
+ .informazione{
+ 	display:flex;
+ 	color:white;
+ 	width:100%
+ }
+ .quantità{
+ width:50%;
+ }
+ 
+ .genere{
+     width: 50%;
+    text-align: end;
+    margin-right: 110px;
+ }
+ 

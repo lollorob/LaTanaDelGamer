@@ -15,6 +15,8 @@ public class ProdottoBean implements Serializable {
     int quantita;
     String copertina;
     InputStream copertina1;
+    String nomeCategoria;
+    private CategoriaBean categoria;
     
 
 
@@ -38,8 +40,7 @@ public class ProdottoBean implements Serializable {
 		this.copertina = copertina;
 	}
 
-	String nomeCategoria;
-    private CategoriaBean categoria;
+	
     
 
 	public ProdottoBean() {
