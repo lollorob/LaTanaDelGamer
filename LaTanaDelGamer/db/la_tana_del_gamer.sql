@@ -64,7 +64,7 @@ create table Ordine(
 DROP TABLE IF EXISTS ItemOrdine;
 create table ItemOrdine(
 id_ordine int NOT NULL,
-nome_prodotto varchar(20) NOT NULL,
+nome_prodotto varchar(70) NOT NULL,
 prezzo_prodotto float NOT NULL,
 descrizione_prodotto varchar(500) NOT NULL,
 quantita_prodotto int NOT NULL,
