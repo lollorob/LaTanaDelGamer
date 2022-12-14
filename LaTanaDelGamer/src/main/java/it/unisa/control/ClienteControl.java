@@ -76,17 +76,23 @@ public class ClienteControl extends HttpServlet {
 			
 			case "/prodottiCategoria" : {
 				String str = request.getParameter("str");
+				CategoriaModelDS modelCategoria= new CategoriaModelDS(ds);
+				CategoriaBean categoria=null;
+				
 				ProdottoModelDS prodotto = new ProdottoModelDS(ds);
 				Collection<?> prodotti;
 				try {
+					categoria=modelCategoria.doRetrieveByKey(str);
 					if(str.equals("MostraTutto"))  {
 						prodotti = prodotto.doRetrieveAll("");
+						categoria=null;
 					}else {
 						 prodotti = prodotto.doRetrieveProdottiByCategoria(str);
 					}
 					
 					
 					request.setAttribute("prodottiCategoria", prodotti);
+					request.setAttribute("categoria", categoria );
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -295,7 +301,6 @@ public class ClienteControl extends HttpServlet {
 	            	itemOrdine.setQuantita(item.getQuantity());
 	            	
 	            	ProdottoModelDS model2 = new ProdottoModelDS(ds);
-	            	System.out.println(item.getQuantity());
 	            	prodotto.setQuantita(prodotto.getQuantita() - item.getQuantity());
 
 	            	try {

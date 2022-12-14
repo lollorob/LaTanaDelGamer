@@ -9,15 +9,108 @@
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
     
-	display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 10px;
+	
+}
+
+.descrizioneCategoria{
+	width:80%;
+	margin:auto;
+	margin-top:40px;
+	margin-bottom: 50px;
+	color:white;
+	border: 3px solid var(--blu);
+	border-radius : 11px;
+	text-align:center;
+}
+
+.prodotti{
+  	display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin: auto;
+    margin-top: 50px;
+  
 }
 
 .prodotto{
-	background-color: aqua;
-    border: 5px solid white;
+	border: 5px solid white;
+    border-radius: 20px;
+    text-align: center;
+    width: 200px;
+    height: 340px;
+    margin: auto;
+    margin-bottom:20px;
+	
+}
+
+.contenitoreFoto{
+	height:75%;
+	width:100%;
+}
+
+.contenitoreInfo{
+	height:25%;
+	width:100%;
+	background:white;
+	border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.copertina{
+	width:100%;
+	height:100%;
+}
+
+.foto{
+	width:100%;
+	height:100%;
+	border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+}
+
+.nome{
+	height:35%;
+	
+}
+
+.bottone{
+	height:65%;
+	width: 99%;
+}
+
+.titolo{
+	border: none;
+    color: var(--primary);
+    background-color: white;
     border-radius: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.titolo:hover{
+	color: var(--blu);
+}
+
+.aggiungi{
+	height: 93%;
+    width: 99%;
+    background: var(--blu);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 17px;
+    border-bottom-right-radius: 16px;
+    border: 2px solid var(--blu);
+    text-transform: uppercase;
+    color: cornsilk;
+    transition : 0.4s;
+}
+
+.aggiungi:hover{
+	background:black;
+	color: var(--blu);
+	border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 17px;
+    border-bottom-right-radius: 16px;
+    border: 2px solid black;
+	font-size : 0.88em;
+	transition : 0.2s;
 }

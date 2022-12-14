@@ -17,7 +17,7 @@
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>
  	
  	<div class="pagina1">
- 	
+ 	<%Carrello carrello = (Carrello) request.getSession().getAttribute("Carrello");%>
 	 	
 	 	
 	 	<div class="prodotto">
@@ -25,12 +25,13 @@
 				 	<div class="contenitoreCopertina">
 						<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">
 					</div>
-					
+				<!--  
 					<div class = "altreFoto">
 						<div class="foto"></div>
 						<div class="foto"></div>
 						<div class="foto"></div>
 					</div>
+				-->	
 				</div>
 				
 				
@@ -58,7 +59,31 @@
 					</div>
 					
 					<div class="bottone">
-						<button class="acquista"> Aggiungi al Carrello</button>
+						<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  class="aggiungi" method = "GET">
+							 
+							 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
+								 			<%if(carrello!=null) {
+									 			 if(prodotto.getQuantita() == 0) {%>
+									 			 <p>Non Disponibile</p>
+									 			 <%
+									 			 }else {
+								 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
+									 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
+									 			%> 
+									 				<p>Già nel carrello</p> 
+									 			<% 
+									 			}
+									 			else { %>
+									 			<input type="hidden" id="quantity" name="quantity" value="1">
+									 			<button class ="acquista" type="submit">Aggiungi Al Carrello</button>
+									 			<%} 
+								 			} }
+								 			 else { %>
+								 			<input type="hidden" id="quantity" name="quantity" value="1">
+								 			<button class ="acquista" type="submit">Aggiungi Al Carrello</button>
+								 			<%} %>
+								 			
+							 			</form>
 					</div>
 					
 				</div>

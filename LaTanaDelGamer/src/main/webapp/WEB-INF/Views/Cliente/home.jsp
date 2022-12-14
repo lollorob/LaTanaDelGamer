@@ -12,24 +12,26 @@
  </head>
  
  <body>
+ 
+ 	
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
+ 	<div class="pagina1">	
  		
  		
- 		<div class="pagina">
  		<%Carrello carrello = (Carrello) request.getSession().getAttribute("Carrello");%>
  			
-		    <div class="slider">
-		    	<img class="frecciaSinistra" src="/LaTanaDelGamer/icone/frecciaSinistra.png" onclick="return precedente()">
-		    	<img class="frecciaDestra" src="/LaTanaDelGamer/icone/frecciaDestra.png"  onclick="return successiva()">
-			    
-		    	<div class="immagini">
-					 <img src="/LaTanaDelGamer/immagini/assassinHome.jpg" class="immagine-slider1" />
-					 <img src="/LaTanaDelGamer/immagini/fifa22Home.jpg" class="immagine-slider2" />
-					 <img src="/LaTanaDelGamer/immagini/nba22Home.jpg" class="immagine-slider3" />
-				</div>	
-		    </div> 
+			    <div class="slider">
+			    	<img class="frecciaSinistra" src="/LaTanaDelGamer/icone/frecciaSinistra.png" onclick="return precedente()">
+			    	<img class="frecciaDestra" src="/LaTanaDelGamer/icone/frecciaDestra.png"  onclick="return successiva()">
+				    
+			    	<div class="immagini">
+						 <img src="/LaTanaDelGamer/immagini/assassinHome.jpg" class="immagine-slider1" />
+						 <img src="/LaTanaDelGamer/immagini/fifa22Home.jpg" class="immagine-slider2" />
+						 <img src="/LaTanaDelGamer/immagini/nba22Home.jpg" class="immagine-slider3" />
+					</div>	
+			    </div> 
 		   
-				   
+			<div class="prodotti">
 				  	<%
 		 	Collection<?> prodotti = (Collection<?>)session.getAttribute("listaProdotti");
 		 
@@ -38,58 +40,75 @@
 		 		return;
 		 	}
 		 	%>
-		 	<%
-				if(prodotti != null && prodotti.size() > 0) {
-					
-					Iterator<?> it = prodotti.iterator();
-					while(it.hasNext()) {
-						ProdottoBean prodotto = (ProdottoBean)it.next();
-					
-			%>
-		
-		 		<div class ="prodotto">
-		 			<form action="/LaTanaDelGamer/it/prodotto" method="GET">
-		 			<input type="submit" name="titolo" value = "<%=prodotto.getNome()%>">
-		 			<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>		 			
-		 			</form>
-		 			<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
-		 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  method = "GET">
+		 	
+		 	
+				 	<%
+						if(prodotti != null && prodotti.size() > 0) {
+							
+							Iterator<?> it = prodotti.iterator();
+							while(it.hasNext()) {
+								ProdottoBean prodotto = (ProdottoBean)it.next();
+							
+					%>
+				
+				 		<div class ="prodotto">
+				 			
+						 		<div class="contenitoreFoto">	
+						 			<div class="copertina">
+						 				<img  class ="foto" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
+						 			</div>
+						 			
+						 		</div>
+						 			
+						 		<div class ="contenitoreInfo">
+						 			<div class="nome">
+						 				<form action="/LaTanaDelGamer/it/prodotto" method="GET">
+						 					<input type="submit"  class="titolo" name="titolo" value = "<%=prodotto.getNome()%>">
+						 					<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>		 			
+						 				</form>
+						 			</div>
+						 			
+						 			<div class="bottone">
+							 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  class="aggiungi" method = "GET">
+							 
+							 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
+								 			<%if(carrello!=null) {
+									 			 if(prodotto.getQuantita() == 0) {%>
+									 			 <p>Non Disponibile</p>
+									 			 <%
+									 			 }else {
+								 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
+									 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
+									 			%> 
+									 				<p>Già nel carrello</p> 
+									 			<% 
+									 			}
+									 			else { %>
+									 			<input type="hidden" id="quantity" name="quantity" value="1">
+									 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
+									 			<%} 
+								 			} }
+								 			 else { %>
+								 			<input type="hidden" id="quantity" name="quantity" value="1">
+								 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
+								 			<%} %>
+								 			
+							 			</form>
+						 			</div>
+						 		</div>		
+				 		</div>
+				     <% }
+							}
+							%> 
+						
+				
+		     </div>
+		     
+	</div>
+		   
+		   
 		 
-		 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
-			 			<%if(carrello!=null) {
-				 			 if(prodotto.getQuantita() == 0) {%>
-				 			 <p>Non Disponibile</p>
-				 			 <%
-				 			 }else {
-			 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
-				 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
-				 			%> 
-				 				<p>Già nel carrello</p> 
-				 			<% 
-				 			}
-				 			else { %>
-				 			<input type="hidden" id="quantity" name="quantity" value="1">
-				 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
-				 			<%} 
-			 			} }
-			 			 else { %>
-			 			<input type="hidden" id="quantity" name="quantity" value="1">
-			 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
-			 			<%} %>
-			 			
-		 			</form>		
-		 		</div>
-		          
-		      <% }
-					}
-					%> 
-				    
-		    
 		    <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
-		 
- 			
- 		</div>
- 		
 	    
  </body>
  

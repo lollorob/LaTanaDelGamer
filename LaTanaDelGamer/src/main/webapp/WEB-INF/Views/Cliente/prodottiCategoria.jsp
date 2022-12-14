@@ -10,10 +10,12 @@
 </jsp:include>
 
  	<%
- 	Collection<?> prodotticategoria = (Collection<?>)request.getAttribute("prodottiCategoria");
- 	if(prodotticategoria == null) {
+ 	Collection<?> prodottiCategoria = (Collection<?>)request.getAttribute("prodottiCategoria");
+ 	if(prodottiCategoria == null) {
  		System.out.println("Collection PRODOTTI PER CATEGORIA NULL");
  	}
+ 	
+ 	CategoriaBean categoria = (CategoriaBean) request.getAttribute("categoria");
  %>
 
 </head>
@@ -21,25 +23,68 @@
 	  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
  
  		<div class = "pagina1">
- 		 	<%
-				if(prodotticategoria != null && prodotticategoria.size() > 0) {
-					
-					Iterator<?> it = prodotticategoria.iterator();
-					while(it.hasNext()) {
-						ProdottoBean prodottocat = (ProdottoBean)it.next();
-					
-			%>
-		
-		 		<div class ="prodotto">
-		 			<form action="/LaTanaDelGamer/it/prodotto" method="GET">
-		 			<input type="submit" name="<%=prodottocat.getNome()%>" value = "<%=prodottocat.getNome()%>">
-		 			<input type="hidden" id="id" name="id" value=<%=prodottocat.getId_prodotto()%>>		 			
-		 			</form>
-		 			<button class="bottonecarrello" onClick="">Aggiungi al Carrello</button>		 		
-		 		</div>
-		          
-		      <% }
-				}  %> 
+ 		 	
+ 		 	
+	 		 	<%if(categoria!=null){ %>
+	 		 	
+			 		 <div class = "descrizioneCategoria">
+			 		 
+			 		 	<p class = "testoDescrizione"><%=categoria.getDidascalia() %> </p>
+			 		 
+			 		 </div>	
+		 		 <%} %>	
+
+			
+			<div class="prodotti">
+				  	
+		 	
+				 	<%
+				 	if(prodottiCategoria != null && prodottiCategoria.size() > 0) {
+							
+							Iterator<?> it = prodottiCategoria.iterator();
+							while(it.hasNext()) {
+								ProdottoBean prodotto = (ProdottoBean)it.next();
+							
+					%>
+				
+				 		<div class ="prodotto">
+				 			
+						 		<div class="contenitoreFoto">	
+						 			<div class="copertina">
+						 				<img  class ="foto" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
+						 			</div>
+						 			
+						 		</div>
+						 			
+						 		<div class ="contenitoreInfo">
+						 			<div class="nome">
+						 				<form action="/LaTanaDelGamer/it/prodotto" method="GET">
+						 					<input type="submit"  class="titolo" name="titolo" value = "<%=prodotto.getNome()%>">
+						 					<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>		 			
+						 				</form>
+						 			</div>
+						 			
+						 			<div class="bottone">
+							 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  class="aggiungi" method = "GET">
+							 
+							 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
+								 			<input type="hidden" id="quantity" name="quantity" value="1">
+									 		<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
+									 			
+								 			 
+								 			
+							 			</form>
+						 			</div>
+						 		</div>		
+				 		</div>
+				     <% }
+							}
+							%> 
+						
+				
+		     </div>
+			
+			
 				
 		</div>
 

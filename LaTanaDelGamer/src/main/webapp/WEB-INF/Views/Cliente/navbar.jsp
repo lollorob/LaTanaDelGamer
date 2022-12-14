@@ -71,9 +71,7 @@
  							<a href="<%=request.getAttribute("context")%>/it/mostraCarrello"><img class="carrello" src="/LaTanaDelGamer/icone/carrello.png" alt="Carrello"></a>
  						</li>
  						
- 						<li>
- 							<a><input type="search"  class="cerca" placeholder="Cerca sul sito"></a>
- 						</li>
+ 						
  					</ul>
  				</nav>
  				

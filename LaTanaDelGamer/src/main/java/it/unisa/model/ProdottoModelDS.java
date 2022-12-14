@@ -309,7 +309,6 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 
 			preparedStatement.setInt(8, item.getId_prodotto());
 			
-			Utility.print("doUpdate: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 
 			connection.commit();
