@@ -27,6 +27,8 @@ import it.unisa.model.OrdineBean;
 import it.unisa.model.OrdineModelDS;
 import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
+import it.unisa.model.RecensioneBean;
+import it.unisa.model.RecensioneModelDS;
 import it.unisa.utils.Utility;
 
 
@@ -195,13 +197,17 @@ public class ClienteControl extends HttpServlet {
 			case "/prodotto" : {
 				ProdottoModelDS model = new ProdottoModelDS(ds);
 				ProdottoBean prodotto = new ProdottoBean();
+				RecensioneModelDS model1 = new RecensioneModelDS(ds);
+				Collection<RecensioneBean> recensioni = null;
+				int id_prodotto = Integer.parseInt(request.getParameter("id"));
 				
 				try {
-					prodotto = model.doRetrieveByKey(Integer.parseInt(request.getParameter("id")));
+					prodotto = model.doRetrieveByKey(id_prodotto);
+					recensioni = model1.doRetrieveRecensioniByIdProdotto(id_prodotto);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-				
+				session.setAttribute("recensioni", recensioni);
 				request.setAttribute("dettagliProdotto", prodotto);
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/prodotto.jsp").forward(request,response);
 				break;

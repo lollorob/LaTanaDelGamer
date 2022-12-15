@@ -21,7 +21,6 @@ public class ProdottoBean implements Serializable {
 
 
 	private List<RecensioneBean> recensioni;
-    private List<GalleriaBean> galleria;
     
     
     public InputStream getCopertina1() {
@@ -115,13 +114,6 @@ public class ProdottoBean implements Serializable {
 		this.recensioni = recensioni;
 	}
 
-	public List<GalleriaBean> getGalleria() {
-		return galleria;
-	}
-
-	public void setGalleria(List<GalleriaBean> galleria) {
-		this.galleria = galleria;
-	}
 
 	@Override
 	public boolean equals(Object other) {

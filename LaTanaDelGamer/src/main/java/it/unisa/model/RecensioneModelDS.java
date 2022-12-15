@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
-
+import java.util.LinkedList;
 
 import javax.sql.DataSource;
 
@@ -58,6 +58,46 @@ public class RecensioneModelDS implements EntityModel<RecensioneBean> {
 		}
 
 		return recensione;
+	}
+	
+	public Collection<RecensioneBean> doRetrieveRecensioniByIdProdotto(int id_prodotto) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<RecensioneBean> recensioni = new LinkedList<RecensioneBean>();
+
+		String selectSQL = "SELECT * FROM recensione r WHERE r.id_prodotto = '" + id_prodotto + "'";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			Utility.print("doRetriveRecensioniByIdProdotto: " + preparedStatement.toString());
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				RecensioneBean recensione = new RecensioneBean();
+				recensione.setId_recensione(rs.getInt("id_recensione"));
+				recensione.setNome(rs.getString("nome"));
+				recensione.setValutazione(rs.getInt("valutazione"));
+				recensione.setDescrizione(rs.getString("descrizione"));
+				recensione.setId_prodotto(rs.getInt("id_prodotto"));
+				
+				recensioni.add(recensione);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+
+		return recensioni;
 	}
 
 	@Override
@@ -171,8 +211,6 @@ public class RecensioneModelDS implements EntityModel<RecensioneBean> {
 			}
 		}
 	}
-
-
 }
 	
 	

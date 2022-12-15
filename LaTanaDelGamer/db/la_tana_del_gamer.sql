@@ -71,18 +71,6 @@ quantita_prodotto int NOT NULL,
 FOREIGN KEY(id_ordine) REFERENCES Ordine(id_ordine) ON UPDATE cascade ON DELETE cascade
 );
 
-DROP TABLE IF EXISTS Incluso;
-create table Incluso
-(
-	id_ordine int NOT NULL,
-    id_prodotto int NOT NULL,
-    quantita int NOT NULL,
-    PRIMARY KEY(id_ordine,id_prodotto),
-    FOREIGN KEY(id_ordine) REFERENCES Ordine(id_ordine) ON UPDATE cascade ON DELETE cascade,
-	FOREIGN KEY(id_prodotto) REFERENCES Prodotto(id_prodotto) ON UPDATE cascade ON DELETE cascade
-);
-
-
 DROP TABLE IF EXISTS Recensione;
 create table Recensione
 (
@@ -92,17 +80,6 @@ create table Recensione
     descrizione varchar(500),
     id_prodotto int NOT NULL,
     PRIMARY KEY(id_recensione),
-    FOREIGN KEY(id_prodotto) REFERENCES Prodotto(id_prodotto) ON UPDATE cascade ON DELETE cascade
-);
-
-DROP TABLE IF EXISTS Galleria;
-create table Galleria
-(
-	id_media int NOT NULL AUTO_INCREMENT,
-    immagine mediumblob NOT NULL,
-    video longblob NOT NULL,
-    id_prodotto int NOT NULL,
-    PRIMARY KEY(id_media),
     FOREIGN KEY(id_prodotto) REFERENCES Prodotto(id_prodotto) ON UPDATE cascade ON DELETE cascade
 );
 
@@ -176,12 +153,56 @@ INSERT INTO Prodotto VALUES (29,"World Of Warcraft: Dragonflight",49.99,"World o
 INSERT INTO Prodotto VALUES (30,"Duke Nukem Manhattan Project",12.06,"Manhattan Project ha come protagonista Duke Nukem, impegnato a combattere contro Mech Morphix, uno scienziato pazzo che sta usando una melma radioattiva chiamata G.L.O.P.P. (Gluon Liquid Omega-Phased Plasma) per mutare le creature terrestri in mostri mortali per conquistare Manhattan, a New York.","GameDivision",4,"","Arcade");
 
 
-
-
-INSERT INTO Incluso VALUES (1,3,2);
-INSERT INTO Incluso VALUES (1,2,1);
-INSERT INTO Incluso VALUES (2,4,3);
-
 INSERT INTO Recensione VALUES(1,"Giorgio",4,"A parte qualche bug,gioco molto divertente",1);
 INSERT INTO Recensione VALUES(2,"Matteo",1,"GIOCO PESSIMO. SVILUPPATO SENZA VOGLIA,SOLDI BUTTATI",1);
-INSERT INTO Recensione VALUES(3,"Roby",1,"",2);
+INSERT INTO Recensione VALUES(3,"Roby",1,"Veramente mi domando se sia legale vendere un gioco simile. XD",2);
+INSERT INTO Recensione VALUES(4,"Xanonimo",3,"Piccole incongruenze nella storia ma Gran Gioco",3);
+INSERT INTO Recensione VALUES(5,"Bombarolo",3,"Consigliato se non pretendete troppo",3);
+INSERT INTO Recensione VALUES(6,"Lupogamer",2,"Trovo questo gioco veramente fatto male...",4);
+INSERT INTO Recensione VALUES(7,"Matty00",2,"Bisognerebbe migliorare molto il multiplayer",4);
+INSERT INTO Recensione VALUES(8,"Carseb",4,"Nonostante la storia non mi piaccia mi ci sono Chiuso...",5);
+INSERT INTO Recensione VALUES(9,"Nonsonodread",4,"Ottimo per chi vuole nerdare maledettamente",5);
+INSERT INTO Recensione VALUES(10,"Demon",4,"Amo questo gioco.. Aspetto il sequel con ansia",5);
+INSERT INTO Recensione VALUES(11,"Vampirix",5,"Finito in due giorni... non so che giorno e'...",5);
+INSERT INTO Recensione VALUES(12,"Mattogig",5,"Ci sto passando ore ed ore... PERFETTO",6);
+INSERT INTO Recensione VALUES(13,"Ilsupremo",5,"AMO QUESTO TIPO DI GIOCHI",6);
+INSERT INTO Recensione VALUES(14,"Filippo",1,"Gioco ottimizzato con i piedi... Con una RTX3070 laggo tantissimo",7);
+INSERT INTO Recensione VALUES(15,"Marco",1,"Esigo il rimborsoooo",7);
+INSERT INTO Recensione VALUES(16,"Creeper",1,"Fa veramente penaaa... toglietelo dalla vendita",7);
+INSERT INTO Recensione VALUES(17,"Pycho",2,"Basterebbero alcune migliorie e sarebbe un gran gioco.",8);
+INSERT INTO Recensione VALUES(18,"Lamandowsky",2,"Troppo Hype... mi aspettavo molto meglio",8);
+INSERT INTO Recensione VALUES(19,"Lebon",3,"Ci sono molti bug ma a questo titolo gli perdono tutto",8);
+INSERT INTO Recensione VALUES(20,"Mastino22",3,"Videogioco mediocre",9);
+INSERT INTO Recensione VALUES(21,"Ilcecchino",1,"Arrestate la casa produttriceeee",9);
+INSERT INTO Recensione VALUES(22,"Sparalollo",1,"Un vero e proprio furto di soldi",9);
+INSERT INTO Recensione VALUES(23,"Surrywastaken",3,"Nulla da dire.... tutto sommato bel gioco",10);
+INSERT INTO Recensione VALUES(24,"Masterchief",5,"Mi sono letteralmente innamoratoo",10);
+INSERT INTO Recensione VALUES(25,"Ronin",2,"Troppe cose che non vannoo... Necessita di una patch",11);
+INSERT INTO Recensione VALUES(26,"Decay",2,"Sviluppato veramente maleeee",11);
+INSERT INTO Recensione VALUES(27,"Mietitore",4,"Spettacoloo... alcuni bug si possono perdonare",12);
+INSERT INTO Recensione VALUES(28,"Gianmarco",4,"Compratelo subitoo.. non ve ne pentirete",12);
+INSERT INTO Recensione VALUES(29,"Domenico",5,"Ho dimenticato perche' sono qui.. torno a giocareee",12);
+INSERT INTO Recensione VALUES(30,"MikeKiller",3,"Sto imparando ad apprezzarlo nonostante i problemi che ha.",1);
+INSERT INTO Recensione VALUES(31,"Masterbomb",5,"Nulla da direeee... Chapeau!",13);
+INSERT INTO Recensione VALUES(32,"HarryDotter",4,"E' questo di cui abbiamo bisogno",14);
+INSERT INTO Recensione VALUES(33,"CerealKiller",4,"Apettavo solo questo titolo",15);
+INSERT INTO Recensione VALUES(34,"KillMeAgain",5,"Poi i miei si lamentano che sono nerd",16);
+INSERT INTO Recensione VALUES(35,"Smufus",5,"Non riesco a staccarmi dalla tv Aiutooo.. Anzi no non aiutatemi",17);
+INSERT INTO Recensione VALUES(36,"Brocode",1,"Per favore.. Delete subito",18);
+INSERT INTO Recensione VALUES(37,"DonkeyBong",1,"Toglietelo dal commercio",19);
+INSERT INTO Recensione VALUES(38,"BreadPitt",2,"Male maleee",20);
+INSERT INTO Recensione VALUES(39,"HarryPoster",2,"Non so cosa dire. 2 stelle sulla fiducia",21);
+INSERT INTO Recensione VALUES(40,"IWinEveryTime",3,"Poco impegno ma le idee ci sono",22);
+INSERT INTO Recensione VALUES(41,"SealTeamThiccc",3,"I programmatori hanno molto da lavoraree",22);
+INSERT INTO Recensione VALUES(42,"Ultre",4,"Molto bello ma ci sono alcune cose che non vanno",23);
+INSERT INTO Recensione VALUES(43,"Minimalism",4,"Vi benedico ogni singolo euro speso",24);
+INSERT INTO Recensione VALUES(44,"Tonio",5,"Che lavoro che avete fattooooo",25);
+INSERT INTO Recensione VALUES(45,"MarcoTognonee",5,"Aspettare 2 anni ne e' valsa la pena",26);
+INSERT INTO Recensione VALUES(46,"DizzyFrizzy",1,"Mi hanno regalato questo titolo.. Vergognoso",27);
+INSERT INTO Recensione VALUES(47,"Halzenut",1,"Avevo speranzeee ma nienteee",28);
+INSERT INTO Recensione VALUES(48,"Nutellino",2,"Come buttare soldi?? comprate sto gioco",29);
+INSERT INTO Recensione VALUES(49,"Marcellino",2,"Non so veramente da dove iniziare... parlano le stelle",29);
+INSERT INTO Recensione VALUES(50,"MikeKiller",3,"Sto imparando ad apprezzarlo nonostante i problemi che ha.",30);
+
+
+

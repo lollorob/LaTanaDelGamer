@@ -89,8 +89,60 @@
 				</div>
 			
 		</div>
+		<div class="recensione">
+								  	<%
+		 	Collection<?> recensioni = (Collection<?>)session.getAttribute("recensioni");
+		 
+		 	if(recensioni == null) {
+		 		System.out.println("Collection Recensioni Null");
+		 		return;
+		 	}
+		 	%>
+		 	
+		 	
+				 	<%
+						if(recensioni != null && recensioni.size() > 0) {
+							
+							Iterator<?> it = recensioni.iterator();
+							while(it.hasNext()) {
+								RecensioneBean recensione = (RecensioneBean)it.next();
+							
+					%>
+					
+					<div class="recensioneProdotto">
+					
+						<div class="nomeUtente">
+							<p>Nome: <%=recensione.getNome()%></p>
+						</div> 
+						
+						<div class="valutazione">
+						<%if(recensione.getValutazione() == 1)  {%>
+							<img class="stelle" src="/LaTanaDelGamer/icone/stelle1.png">
+							<%} %>
+						<%if(recensione.getValutazione() == 2)  {%>
+							<img class="stelle" src="/LaTanaDelGamer/icone/stelle2.png">
+							<%} %>
+						<%if(recensione.getValutazione() == 3)  {%>
+							<img class="stelle" src="/LaTanaDelGamer/icone/stelle3.png">
+							<%} %>
+						<%if(recensione.getValutazione() == 4)  {%>
+							<img class="stelle" src="/LaTanaDelGamer/icone/stelle4.png">
+							<%} %>
+						<%if(recensione.getValutazione() == 5)  {%>
+							<img class="stelle" src="/LaTanaDelGamer/icone/stelle5.png">
+							<%} %>
+						</div> 
+						
+						<div class="descrizione">
+							<p>Descrizione: <%=recensione.getDescrizione()%></p> <br>
+						</div> 
 		
+					</div>
+		<% }
+			 }%>
 		
+		</div>
+		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 	</div>
 </body>
 </html>
