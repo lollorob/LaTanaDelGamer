@@ -88,11 +88,16 @@
 									 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
 									 			<%} 
 								 			} }
+							 				
 								 			 else { %>
-								 			<input type="hidden" id="quantity" name="quantity" value="1">
-								 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
-								 			<%} %>
-								 			
+								 				<%if(prodotto.getQuantita() == 0) {%>
+									 			 <p>Non Disponibile</p>
+									 			 <%
+									 			 } else {%> 
+									 	    <input type="hidden" id="quantity" name="quantity" value="1">
+								 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">								 			
+								 			<%} 
+								 			}%>								 			
 							 			</form>
 						 			</div>
 						 		</div>		

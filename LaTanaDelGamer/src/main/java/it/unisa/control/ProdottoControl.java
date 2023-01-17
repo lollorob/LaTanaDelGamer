@@ -41,6 +41,7 @@ public class ProdottoControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = (request.getPathInfo() != null) ? request.getPathInfo() : "/";
 		DataSource ds = (DataSource)getServletContext().getAttribute("DataSource");
+		HttpSession session=request.getSession();
 		
 		switch (path) {
 			case "/": 
@@ -72,6 +73,14 @@ public class ProdottoControl extends HttpServlet {
 				}
 			}
 			break;
+			
+			case "/recensione": {
+				String id = request.getParameter("rec");
+				session.setAttribute("formRecensione", true);
+				session.setAttribute("prodottoRecensione", id);
+				response.sendRedirect(request.getContextPath() + "/it/prodotto");
+				break;
+			}
 				
 			case "/crea":			
 				request.getRequestDispatcher("/WEB-INF/Views/Dashboard/prodotto.jsp").forward(request, response);
@@ -136,6 +145,12 @@ public class ProdottoControl extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/Dashboard/prodotti");
 			}
 			break;
+			
+			
+			case "/aggiungiRecensione": {
+				
+				break;
+			}
 			
 			case "/dettagli":
 			{	

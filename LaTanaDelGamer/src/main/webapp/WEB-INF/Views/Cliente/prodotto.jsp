@@ -25,15 +25,13 @@
 				 	<div class="contenitoreCopertina">
 						<img class="copertina" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">
 					</div>
-				<!--  
-					<div class = "altreFoto">
-						<div class="foto"></div>
-						<div class="foto"></div>
-						<div class="foto"></div>
-					</div>
-				-->	
-				</div>
-				
+				  
+					<div class = "inserisciRec">
+				    	<form method="GET" action="/LaTanaDelGamer/prodotti/recensione">
+             		       <button type="submit" name="rec" id="rec" class="bottoneRec" value="<%=prodotto.getId_prodotto()%>">Inserisci Recensione</button>
+             	    </form>
+				    </div>
+					     </div>		
 				
 				<div class="schedaProdotto">
 				
@@ -78,10 +76,15 @@
 									 			<button class ="acquista" type="submit">Aggiungi Al Carrello</button>
 									 			<%} 
 								 			} }
-								 			 else { %>
+								 			 else { 
+								 			 	if(prodotto.getQuantita() == 0) {%>
+									 			 <p class="aggiunto">Non Disponibile</p>
+									 			 <%
+									 			 } else {%>
 								 			<input type="hidden" id="quantity" name="quantity" value="1">
 								 			<button class ="acquista" type="submit">Aggiungi Al Carrello</button>
-								 			<%} %>
+								 			<%} 
+								 			   }%>
 								 			
 							 			</form>
 					</div>
@@ -90,7 +93,46 @@
 			
 		</div>
 		<div class="recensione">
-								  	<%
+			<%if(session.getAttribute("formRecensione") != null) { 
+			session.removeAttribute("formRecensione");
+			%>
+			
+			<div class="Form">
+			<form method="POST" name="aggiungiRecensione" class="aggiungiRecensione" action="<%=response.encodeURL("/LaTanaDelGamer/prodotti/aggiungiRecensione")%>">
+				
+					<h4><b>Scrivi Una Recensione</b></h4>
+					
+					
+					<div class="riga">
+						<div class="nome">
+							<label for="username">Nome:</label>
+						</div>
+						<div class="area">
+							<input id="id" name="id" readonly type="text" maxlength="70" placeholder="Nome Utente"><br>
+						</div>
+					</div>
+					
+					<div class="riga">
+						<div class="nome">
+							<label for="valutazione">Valutazione</label>
+						</div>
+						<div class="area">
+							<input id="valutazione" name="valutazione" type="text"><br>
+						</div>
+					</div>
+					
+					<div class="riga">
+						<div class="nome">	
+							<label for="descrizione">Descrizione</label>
+						</div>
+						<div class="area">
+							<input id="descrizione" name="descrizione" type="text" maxlength="500" ><br>
+						</div>
+					</div>
+					</form>
+					</div>
+			
+								  	<% }
 		 	Collection<?> recensioni = (Collection<?>)session.getAttribute("recensioni");
 		 
 		 	if(recensioni == null) {
