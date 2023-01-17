@@ -46,6 +46,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 				prodotto.setCasaproduttrice(rs.getString("casaproduttrice"));
 				prodotto.setQuantita(rs.getInt("quantita"));
 				prodotto.setnomeCategoria(rs.getString("nome_categoria"));
+				prodotto.setCopertina1(rs.getBinaryStream("copertina"));
 				
 			}
 
@@ -172,7 +173,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 			preparedStatement.setString(3, item.getDescrizione());
 			preparedStatement.setString(4, item.getCasaProduttrice());
 			preparedStatement.setInt(5,item.getQuantita());
-			preparedStatement.setString(6, item.getCopertina());
+			preparedStatement.setBlob(6, item.getCopertina1());
 			preparedStatement.setString(7, item.getnomeCategoria());
 
 			preparedStatement.setInt(8, item.getId_prodotto());

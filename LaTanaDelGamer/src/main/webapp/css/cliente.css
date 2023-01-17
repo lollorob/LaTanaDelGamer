@@ -80,8 +80,10 @@
 	height:400px;
 	position:absolute;
 	margin-left:0px;
-	border: 4px solid white;
+	border: 4px solid var(--blu);
+	border-radius: 8px;
 	object-fit: cover;
+	box-shadow: 7px 7px 60px #00ffff6b;
 }
 
 .immagine-slider2{

@@ -55,7 +55,7 @@
 					
 					<div class="informazione">
 						<div class="quantità">Quantità disponibile: <%=prodotto.getQuantita()%></div>
-						<div class="genere">Genere: <%=prodotto.getnomeCategoria()%></div>
+						<div class="genere">Genere: <a class="linkGen" href="/LaTanaDelGamer/it/prodottiCategoria?str=<%=prodotto.getnomeCategoria()%>"> <%=prodotto.getnomeCategoria()%></a></div>
 					</div>
 					
 					<div class="bottone">
@@ -64,13 +64,13 @@
 							 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
 								 			<%if(carrello!=null) {
 									 			 if(prodotto.getQuantita() == 0) {%>
-									 			 <p>Non Disponibile</p>
+									 			 <p class="aggiunto">Non Disponibile</p>
 									 			 <%
 									 			 }else {
 								 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
 									 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
 									 			%> 
-									 				<p>Già nel carrello</p> 
+									 				<p class="aggiunto">Già nel carrello</p> 
 									 			<% 
 									 			}
 									 			else { %>

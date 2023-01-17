@@ -6,12 +6,6 @@
     box-shadow: 0 0 60px 60px #000000 inset;
 }
 
-.toltedapagina1{
-	    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    position: absolute;
-}
 
 .recensioneProdotto{
 	width: 500px;
@@ -64,6 +58,18 @@
     margin-left: 40px;
 }
 
+.linkGen{
+	color:white;
+}
+
+.aggiunto{
+	color: var(--blu);
+    font-weight: bolder;
+    border: 2px solid;
+    width: 30%;
+    margin: auto;
+    border-radius: 10px;
+}
 .contenitoreCopertina{
 	float: left;
     width: 290px;
