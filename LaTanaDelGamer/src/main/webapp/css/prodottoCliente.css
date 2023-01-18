@@ -59,6 +59,8 @@
     width: 350px;
     height: 530px;
     margin-left: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .linkGen{
@@ -89,19 +91,27 @@
 }
 
 .inserisciRec{
-	margin-bottom: 20px;
-    margin-top: 20px;
-    border: 3px solid var(--blu);
-    position: relative;
-    top: 2%;
-    border-radius: 5px;
-    height: 44px;
+	margin-top: 5%;
+    margin-left: 16%;
     display: inline-flex;
-    width: 283px;
-    align-items: center;
-    
 }
 
+.bottoneRec:hover{
+	border: 3px solid var(--blu);
+	color: white;
+	font-size : 1.25em;
+	border-radius:2px;
+	transition : 0.3s;
+}
+
+.bottoneRec{
+	background: transparent;
+    color: white;
+    font-size: 1.2em;
+    border: 2px solid var(--blu);
+    border-radius: 8px;
+    transition : 0.3s;
+}
 .foto{
 	height: 100%;
     width: 62px;
@@ -186,4 +196,108 @@
     text-align: end;
     margin-right: 110px;
  }
+ 
+ 
+.form-container{
+	margin: auto;
+    margin-top: 50px;
+    /* text-align: center; */
+    background: linear-gradient(#020202e6,#00000052);
+    width: 50%;
+    border: 3px solid var(--blu);
+    /* margin-top: 5em; */
+    border-radius: 10px;
+    box-shadow: 7px 7px 60px #00ffff6b;
+}
+
+.control{
+	color: white;
+    padding: 0.5em;
+    margin-left: 20px;
+}
+
+.control1{
+	padding-top : 1em;
+	padding-bottom : 1em;
+	text-align: center;
+}
+
+
+.update{
+    width: 80%;
+    padding: 7px;
+    border-width: 2px;
+    outline: none;
+    margin: 0.2em 0;
+    border-radius: 5px;
+    border-style: double;
+    background-color: #26262600;
+    color: white;
+    border-color: var(--blu);
+}
+
+.first{
+	
+    width: 100%;
+   
+}
+
+.second{
+	width: 100%;
+    margin-left: 30px;
+}
+
+h5{
+	text-transform: uppercase;
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 0em;
+	color : #00ffff6b;
+}
+
+select option{
+	color:black;
+}
+
+.inputAggiorna{
+	    background: var(--primary);
+    width: 60%;
+    margin: auto;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    opacity: .7;
+    transition: opacity .3s ease;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+.inputAggiorna:hover{
+	opacity: 1;
+	border: var(--blu) solid;
+}
+
+.alink{
+	margin: auto;
+    color: #fff;
+    font-size: 1.2em;
+    opacity: .7;
+    transition: opacity .3s ease;
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 30px;
+    text-decoration: auto;
+    padding-right: 30px;
+}
+
+.link{
+	padding:10px;
+	text-align: center;
+}
+
+.link:hover{
+	color: var(--blu);
+}
  

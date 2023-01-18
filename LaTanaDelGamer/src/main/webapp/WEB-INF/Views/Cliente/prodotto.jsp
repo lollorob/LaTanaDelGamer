@@ -97,40 +97,54 @@
 			session.removeAttribute("formRecensione");
 			%>
 			
-			<div class="Form">
-			<form method="POST" name="aggiungiRecensione" class="aggiungiRecensione" action="<%=response.encodeURL("/LaTanaDelGamer/prodotti/aggiungiRecensione")%>">
-				
-					<h4><b>Scrivi Una Recensione</b></h4>
-					
-					
-					<div class="riga">
-						<div class="nome">
-							<label for="username">Nome:</label>
+			<div class="form-container">
+			
+				<h5><b>Inserisci recensione</b></h5>
+				<form  method="POST" name="recensioneForm" class="form"  action="/LaTanaDelGamer/prodotti/aggiungiRecensione" >
+		
+						
+							<div class="control">	
+								<div class="first"> 				
+									<label for="nomeUtente">Nome Utente:</label>
+								</div>	
+								<div class="second">				
+								    <input class="update" id="nomeUtente" name="nomeUtente" type="text" placeholder="Inserisci nome"><br>
+						    	</div>
+						    </div>
+						
+							<div class="control">
+								<div class="first">Valutazione:</label>
+								</div>
+								<div class="second">
+								<select class="update" id="valutazione" name="valutazione">
+								<option value="1"> 1 Stella </option>
+								<option value="2"> 2 Stelle </option>
+								<option value="3"> 3 Stelle </option>
+								<option value="4"> 4 Stelle </option>
+								<option value="5"> 5 Stelle </option>
+								</select><br>	
+						    	</div>
+						    </div>
+						
+							<div class="control">
+								<div class="first"> 	
+									<label for="descrizione">Descrizione:</label>
+								</div>
+								<div class="second">
+								<input class="update" id="descrizione" name="descrizione" type="text" placeholder="Ottimo prodotto...!"><br>
+						    	</div>
+						    </div>
+						    
+						    <div class="control1">
+							<input class="inputAggiorna" type="submit" value="Inserisci">
 						</div>
-						<div class="area">
-							<input id="id" name="id" readonly type="text" maxlength="70" placeholder="Nome Utente"><br>
+						
+						<div class="link">
+							<a class="alink" href="<%=request.getAttribute("context")%>/it/prodotto">Annulla</a>
 						</div>
-					</div>
-					
-					<div class="riga">
-						<div class="nome">
-							<label for="valutazione">Valutazione</label>
-						</div>
-						<div class="area">
-							<input id="valutazione" name="valutazione" type="text"><br>
-						</div>
-					</div>
-					
-					<div class="riga">
-						<div class="nome">	
-							<label for="descrizione">Descrizione</label>
-						</div>
-						<div class="area">
-							<input id="descrizione" name="descrizione" type="text" maxlength="500" ><br>
-						</div>
-					</div>
+							
 					</form>
-					</div>
+				</div>
 			
 								  	<% }
 		 	Collection<?> recensioni = (Collection<?>)session.getAttribute("recensioni");

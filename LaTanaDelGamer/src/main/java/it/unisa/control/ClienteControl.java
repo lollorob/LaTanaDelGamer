@@ -199,12 +199,12 @@ public class ClienteControl extends HttpServlet {
 				ProdottoBean prodotto = new ProdottoBean();
 				RecensioneModelDS model1 = new RecensioneModelDS(ds);
 				Collection<RecensioneBean> recensioni = null;
-				int id_prodotto;
+				int id_prodotto=0;
 				if(session.getAttribute("prodottoRecensione") != null) {
 					String temp = (String) session.getAttribute("prodottoRecensione");
 					id_prodotto = Integer.parseInt(temp);
-					session.removeAttribute("prodottoRecensione");
-				} else {
+					} 
+				if(request.getParameter("id")!=null){
 				id_prodotto = Integer.parseInt(request.getParameter("id"));
 				}
 				try {
