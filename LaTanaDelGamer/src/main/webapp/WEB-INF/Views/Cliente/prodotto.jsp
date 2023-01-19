@@ -40,10 +40,6 @@
 						<h1> <%=prodotto.getNome()%></h1>
 					</div>
 					
-					<div class="nome">
-						<h1> <%=prodotto.getDataDiUscita()%></h1>
-					</div>
-					
 					<div class="casaProduttrice">
 						<p><%=prodotto.getCasaProduttrice() %></p>
 					</div>

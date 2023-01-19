@@ -27,9 +27,10 @@ public class ItemCarrello {
 		this.quantity = quantity;
 	}
 	
-	public double getSomma() {
-		if(prodotto!=null)
+	public float getSomma() {
+		if(prodotto!=null) {
 			return prodotto.getPrezzo() * quantity;
+		}
 		else return -1;
 	}
 	

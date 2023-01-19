@@ -1,42 +1,157 @@
 .pagina1{
 	
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo.jpg);
+ 	
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo3.jpg);
     width:100%;
     height: 100%;
-    -webkit-background-size: cover;
-    background-size: cover;
+    
     background-position: center center;
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
-    
-	display: grid;
-  	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  	grid-gap: 10px;
+    color:white;
+	min-height: 708px;
+
+}
+
+.prodotti{
+  	display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin: auto;
+    margin-top: 50px;
+  
 }
 
 .prodotto{
-	background-color: aqua;
     border: 5px solid white;
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
-    max-width: 40%;
-    max-height: 500px;
-    text-align:center;
+    border-radius: 20px;
+    text-align: center;
+    width: 200px;
+    height: 500px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
-.prodotto img{
-	max-height: 200px;
+.contenitoreFoto{
+	height: 54%;
+    width: 100%;
+}
+
+.contenitoreInfo{
+	height: 46%;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.copertina{
+	width:100%;
+	height:100%;
+}
+
+.foto{
+	width:100%;
+	height:100%;
+	border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+}
+
+.nome{
+	height:20%;
+}
+
+.titolo{
+	color: var(--blu);
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.quantita{
+	height:30%;
+}
+
+.displayQuantita{
+	border-radius: 10px;
+    border: 2px solid var(--blu);
+}
+
+.titolo{
+	border: none;
+    color: var(--primary);
+    background-color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+
+.titolo:hover{
+	color: var(--blu);
+}
+
+.checkoutForm{
+	width: 28%;
+	margin: auto;
+	background: linear-gradient(#0000002b,#f2f2f20f);
+	box-shadow: 7px 7px 60px #00ffff6b;
+}
+
+.field{
+	border: 2px solid var(--blu);
+	border-radius:10px;
+}
+.totaleOrdine{
+	text-align: end;
+	margin-right: 5%;
+}
+
+.checkoutButton, .elimina{
+	background: var(--blu);
+	color: white;
+	border: 2px solid black;
+	border-radius: 10px;
+	width: 100px;
+	height: 33px;
+	font-size: 1.1em;
+	transition:0.3s;
+}
+.checkoutButton:hover{
+	color:black;
+	border: 2px solid white;
+	font-size:1.15em;
+	
+	transition:0.3s;
+}
+
+.elimina:hover{
+	color:red;
+	border: 2px solid red;
+	font-size:1.15em;
+	background:black;
+	transition:0.3s;
+}
+.bottoneDiv{
+	text-align:center;
+}
+.nomeClick{
+	height: 60%;
+}
+
+.noProducts{
 	text-align: center;
+	color: white;
+	font-size: 2em;
+	transform: translate(40px,181%);
+	
 }
 
-.bottoneQuantitaLess{
-	float:left;
-	margin-left:50px;
+.home{
+	color : var(--blu);
+	transition:0.3s;
 }
-
-.bottoneQuantitaPlus{
-	float:right;
-	margin-right:50px;
+.home:hover{
+	font-size:1.1em;
+	color: var(--primary);
+	transition:0.3s;
 }
-

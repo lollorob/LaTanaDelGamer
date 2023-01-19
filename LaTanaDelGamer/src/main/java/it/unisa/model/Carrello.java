@@ -67,6 +67,9 @@ public class Carrello {
     		ItemCarrello item = nelCarrello.get(i);
     		this.totale += item.getProdotto().getPrezzo() * item.getQuantity();	
     	}
+    	String temp = String.format("%.2f",this.totale);
+    	temp= temp.replaceAll("," , ".");
+    	this.totale= Float.parseFloat(temp);
     	return this.totale;
     }
     
