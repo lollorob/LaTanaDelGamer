@@ -11,6 +11,7 @@ public class ProdottoBean implements Serializable {
 	String nome ;
     float prezzo ;
     String descrizione ;
+    String dataDiUscita ;
     String casaProduttrice;
     int quantita;
     String copertina;
@@ -47,13 +48,22 @@ public class ProdottoBean implements Serializable {
     	nome="" ;
         prezzo=-1;
         descrizione="" ;
+        dataDiUscita="" ;
         casaProduttrice="";
         quantita = 0;
         copertina="";
         nomeCategoria="";
     }
     
-    public int getQuantita() {
+    public String getDataDiUscita() {
+		return dataDiUscita;
+	}
+
+	public void setDataDiUscita(String dataDiUscita) {
+		this.dataDiUscita = dataDiUscita;
+	}
+
+	public int getQuantita() {
 		return quantita;
 	}
 
@@ -122,7 +132,7 @@ public class ProdottoBean implements Serializable {
 	
 	@Override
 	public String toString() {
-		return id_prodotto + " (" +nome+ ", " + prezzo + ", " + descrizione + ", " + casaProduttrice + ", " +nomeCategoria + ") ";
+		return id_prodotto + " (" +nome+ ", " + prezzo + ", " + descrizione + ", " + dataDiUscita + ", " + casaProduttrice + ", " +nomeCategoria + ") ";
 	}
 
 	

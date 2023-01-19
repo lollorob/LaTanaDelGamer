@@ -74,6 +74,15 @@
 					
 					<div class="riga">	
 						<div class="nome">
+							<label for="descrizione">Data Di Uscita</label>
+						</div>
+						<div class="area">
+							<input type="date" name="datadiuscita" id="datadiuscita"><br>
+						</div>
+					</div>
+					
+					<div class="riga">	
+						<div class="nome">
 							<label for="casaproduttrice">Casa produttrice</label>
 						</div>
 						<div class="area">

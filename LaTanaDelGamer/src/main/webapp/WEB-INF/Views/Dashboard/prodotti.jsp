@@ -65,6 +65,7 @@
 					<th>Nome</th>
 					<th>Prezzo</th>
 					<th>Descrizione</th>
+					<th>Data Di Uscita</th>
 					<th>Casa Produttrice</th>
 					<th>Quantità</th>
 					<th>Copertina</th>
@@ -77,6 +78,7 @@
 					<td data-title="Nome"><%=prodotto.getNome()%></td>
 					<td data-title="Prezzo"><%=prodotto.getPrezzo()%></td>
 					<td data-title="Descrizione"><%=prodotto.getDescrizione()%></td>
+					<td data-title="Data Di Uscita"><%=prodotto.getDataDiUscita()%></td>
 					<td data-title="Casa Produttrice"><%=prodotto.getCasaProduttrice()%></td>
 					<td data-title="Quantità"><%=prodotto.getQuantita()%></td>
 					<td data-title="Copertina"><img src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" alt="no photo"  width="80" height="100"></td>
@@ -124,6 +126,15 @@
 						</div>
 						<div class="area">
 							<input id="descrizione" name="descrizione" type="text" maxlength="500" placeholder="Descrizione" value="<%=prodotto.getDescrizione()%>"><br>
+						</div>
+					</div>
+					
+					<div class="riga">	
+						<div class="nome">
+							<label for="descrizione">Data Di Uscita</label>
+						</div>
+						<div class="area">
+							<input type="date" name="datadiuscita" id="datadiuscita" value="<%=prodotto.getDataDiUscita()%>"><br>
 						</div>
 					</div>
 					
@@ -198,6 +209,7 @@
         <th>Nome</th>
         <th>Prezzo</th>
         <th>Descrizione</th>
+        <th>Data Di Uscita</th>
         <th>Casa Produttrice</th>
         <th>Quantità</th>
         <th>Categoria</th>
@@ -220,6 +232,7 @@
              <td data-title="Nome"><%=bean.getNome() %></td> 
              <td data-title="Prezzo"><%=bean.getPrezzo() %></td> 
              <td data-title="Descrizione"><%=bean.getDescrizione() %></td> 
+             <td data-title="Data Di Uscita"><%=bean.getDataDiUscita() %></td> 
              <td data-title="Casa Produttrice"><%=bean.getCasaProduttrice() %></td> 
              <td data-title="Quantità"><%=bean.getQuantita()%></td> 
              <td data-title="Categoria"><%=bean.getnomeCategoria() %></td> 

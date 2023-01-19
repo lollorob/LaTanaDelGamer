@@ -18,6 +18,8 @@ import javax.sql.DataSource;
 
 import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
+import it.unisa.model.RecensioneBean;
+import it.unisa.model.RecensioneModelDS;
 import it.unisa.utils.Utility;
 
 
@@ -115,6 +117,7 @@ public class ProdottoControl extends HttpServlet {
 					prodotto.setNome(request.getParameter("nome"));
 					prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 					prodotto.setDescrizione(request.getParameter("descrizione"));
+					prodotto.setDataDiUscita(request.getParameter("datadiuscita"));
 					prodotto.setCasaproduttrice(request.getParameter("casaproduttrice"));
 					prodotto.setQuantita(Integer.parseInt(request.getParameter("quantita")));
 					InputStream inputStream = null; // input stream of the upload file
@@ -148,7 +151,21 @@ public class ProdottoControl extends HttpServlet {
 			
 			
 			case "/aggiungiRecensione": {
+				RecensioneBean bean = new RecensioneBean();
+				RecensioneModelDS model = new RecensioneModelDS(ds);
+				int id = Integer.parseInt(request.getParameter("idProdotto"));
+
+				try {
+					bean.setNome(request.getParameter("nomeUtente"));
+					bean.setValutazione(Integer.parseInt(request.getParameter("valutazione")));
+					bean.setDescrizione(request.getParameter("descrizione"));
+					bean.setId_prodotto(id);
 				
+					model.doSave(bean);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				response.sendRedirect(request.getContextPath() + "/it/prodotto");
 				break;
 			}
 			
@@ -208,6 +225,7 @@ public class ProdottoControl extends HttpServlet {
 					prodotto.setNome(request.getParameter("nome"));
 					prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 					prodotto.setDescrizione(request.getParameter("descrizione"));
+					prodotto.setDataDiUscita(request.getParameter("datadiuscita"));
 					prodotto.setCasaproduttrice(request.getParameter("casaproduttrice"));
 					prodotto.setQuantita(Integer.parseInt(request.getParameter("quantita")));
 

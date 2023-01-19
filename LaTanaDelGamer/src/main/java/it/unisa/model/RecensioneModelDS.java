@@ -110,18 +110,17 @@ public class RecensioneModelDS implements EntityModel<RecensioneBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO recensione" + " (id_recensione,nome,valutazione,descrizione,id_prodotto) VALUES (?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO recensione" + " (nome,valutazione,descrizione,id_prodotto) VALUES (?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
 			connection.setAutoCommit(false);
 			preparedStatement = connection.prepareStatement(insertSQL);
 
-			preparedStatement.setInt(1, item.getId_recensione());
-			preparedStatement.setString(2, item.getNome());
-			preparedStatement.setInt(3, item.getValutazione());
-			preparedStatement.setString(4, item.getDescrizione());
-			preparedStatement.setInt(5, item.getId_prodotto());
+			preparedStatement.setString(1, item.getNome());
+			preparedStatement.setInt(2, item.getValutazione());
+			preparedStatement.setString(3, item.getDescrizione());
+			preparedStatement.setInt(4, item.getId_prodotto());
 			
 			Utility.print("doSave: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();

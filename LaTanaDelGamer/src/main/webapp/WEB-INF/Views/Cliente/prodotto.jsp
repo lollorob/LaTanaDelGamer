@@ -11,7 +11,8 @@
  </head>
 <body>
 	<% ProdottoBean prodotto = new ProdottoBean();
-	   prodotto = (ProdottoBean) request.getAttribute("dettagliProdotto");%>
+	   prodotto = (ProdottoBean) request.getAttribute("dettagliProdotto");
+	   %>
 
 
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>
@@ -37,6 +38,10 @@
 				
 					<div class="nome">
 						<h1> <%=prodotto.getNome()%></h1>
+					</div>
+					
+					<div class="nome">
+						<h1> <%=prodotto.getDataDiUscita()%></h1>
 					</div>
 					
 					<div class="casaProduttrice">
@@ -100,7 +105,7 @@
 			<div class="form-container">
 			
 				<h5><b>Inserisci recensione</b></h5>
-				<form  method="POST" name="recensioneForm" class="form"  action="/LaTanaDelGamer/prodotti/aggiungiRecensione" >
+				<form  method="POST" name="recensioneForm" class="form" action="/LaTanaDelGamer/prodotti/aggiungiRecensione" >
 		
 						
 							<div class="control">	
@@ -142,7 +147,7 @@
 						<div class="link">
 							<a class="alink" href="<%=request.getAttribute("context")%>/it/prodotto">Annulla</a>
 						</div>
-							
+							<input type="hidden" id="idProdotto" name="idProdotto" type="text" value="<%=prodotto.getId_prodotto()%>">
 					</form>
 				</div>
 			

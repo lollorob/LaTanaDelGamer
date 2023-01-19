@@ -43,6 +43,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 				prodotto.setNome(rs.getString("nome"));
 				prodotto.setPrezzo(rs.getFloat("prezzo"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
+				prodotto.setDataDiUscita(rs.getString("dataDiUscita"));
 				prodotto.setCasaproduttrice(rs.getString("casaproduttrice"));
 				prodotto.setQuantita(rs.getInt("quantita"));
 				prodotto.setnomeCategoria(rs.getString("nome_categoria"));
@@ -93,6 +94,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 				prodotto.setNome(rs.getString("nome"));
 				prodotto.setPrezzo(rs.getFloat("prezzo"));
 				prodotto.setDescrizione(rs.getString("descrizione"));
+				prodotto.setDataDiUscita(rs.getString("dataDiUscita"));
 				prodotto.setCasaproduttrice(rs.getString("casaproduttrice"));
 				prodotto.setQuantita(rs.getInt("quantita"));
 				prodotto.setCopertina(rs.getString("copertina"));
@@ -122,7 +124,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO prodotto" + " (nome, prezzo, descrizione, casaproduttrice, quantita, copertina, nome_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO prodotto" + " (nome, prezzo, descrizione, datadiuscita, casaproduttrice, quantita, copertina, nome_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -132,10 +134,11 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 			preparedStatement.setString(1, item.getNome());
 			preparedStatement.setFloat(2, item.getPrezzo());
 			preparedStatement.setString(3, item.getDescrizione());
-			preparedStatement.setString(4, item.getCasaProduttrice());
-			preparedStatement.setInt(5, item.getQuantita());
-			preparedStatement.setString(6, item.getCopertina());
-			preparedStatement.setString(7, item.getnomeCategoria());
+			preparedStatement.setString(4, item.getDataDiUscita());
+			preparedStatement.setString(5, item.getCasaProduttrice());
+			preparedStatement.setInt(6, item.getQuantita());
+			preparedStatement.setString(7, item.getCopertina());
+			preparedStatement.setString(8, item.getnomeCategoria());
 			
 			Utility.print("doSave: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
@@ -160,7 +163,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String updateSQL = "UPDATE prodotto SET " + "nome = ?, prezzo = ?, descrizione = ?, casaproduttrice = ?, quantita = ?, copertina = ?, nome_categoria = ? WHERE id_prodotto = ?";
+		String updateSQL = "UPDATE prodotto SET " + "nome = ?, prezzo = ?, descrizione = ?, datadiuscita = ?, casaproduttrice = ?, quantita = ?, copertina = ?, nome_categoria = ? WHERE id_prodotto = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -171,12 +174,13 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 			preparedStatement.setString(1, item.getNome());
 			preparedStatement.setFloat(2, item.getPrezzo());
 			preparedStatement.setString(3, item.getDescrizione());
-			preparedStatement.setString(4, item.getCasaProduttrice());
-			preparedStatement.setInt(5,item.getQuantita());
-			preparedStatement.setBlob(6, item.getCopertina1());
-			preparedStatement.setString(7, item.getnomeCategoria());
+			preparedStatement.setString(4, item.getDataDiUscita());
+			preparedStatement.setString(5, item.getCasaProduttrice());
+			preparedStatement.setInt(6,item.getQuantita());
+			preparedStatement.setBlob(7, item.getCopertina1());
+			preparedStatement.setString(8, item.getnomeCategoria());
 
-			preparedStatement.setInt(8, item.getId_prodotto());
+			preparedStatement.setInt(9, item.getId_prodotto());
 			
 			Utility.print("doUpdate: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
@@ -292,7 +296,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String updateSQL = "UPDATE prodotto SET " + "nome = ?, prezzo = ?, descrizione = ?, casaproduttrice = ?, quantita = ?, copertina = ?, nome_categoria = ? WHERE id_prodotto = ?";
+		String updateSQL = "UPDATE prodotto SET " + "nome = ?, prezzo = ?, descrizione = ?, datadiuscita = ?, casaproduttrice = ?, quantita = ?, copertina = ?, nome_categoria = ? WHERE id_prodotto = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -303,12 +307,13 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 			preparedStatement.setString(1, item.getNome());
 			preparedStatement.setFloat(2, item.getPrezzo());
 			preparedStatement.setString(3, item.getDescrizione());
-			preparedStatement.setString(4, item.getCasaProduttrice());
-			preparedStatement.setInt(5,item.getQuantita());
-			preparedStatement.setBlob(6, inputStream);
-			preparedStatement.setString(7, item.getnomeCategoria());
+			preparedStatement.setString(4, item.getDataDiUscita());
+			preparedStatement.setString(5, item.getCasaProduttrice());
+			preparedStatement.setInt(6,item.getQuantita());
+			preparedStatement.setBlob(7, inputStream);
+			preparedStatement.setString(8, item.getnomeCategoria());
 
-			preparedStatement.setInt(8, item.getId_prodotto());
+			preparedStatement.setInt(9, item.getId_prodotto());
 			
 			preparedStatement.executeUpdate();
 
@@ -365,7 +370,7 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO prodotto" + " (nome, prezzo, descrizione, casaproduttrice, quantita, copertina, nome_categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String insertSQL = "INSERT INTO prodotto" + " (nome, prezzo, descrizione, datadiuscita, casaproduttrice, quantita, copertina, nome_categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -375,10 +380,11 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 			preparedStatement.setString(1, item.getNome());
 			preparedStatement.setFloat(2, item.getPrezzo());
 			preparedStatement.setString(3, item.getDescrizione());
-			preparedStatement.setString(4, item.getCasaProduttrice());
-			preparedStatement.setInt(5, item.getQuantita());
-			preparedStatement.setBlob(6, inputStream);
-			preparedStatement.setString(7, item.getnomeCategoria());
+			preparedStatement.setString(4, item.getDataDiUscita());
+			preparedStatement.setString(5, item.getCasaProduttrice());
+			preparedStatement.setInt(6, item.getQuantita());
+			preparedStatement.setBlob(7, inputStream);
+			preparedStatement.setString(8, item.getnomeCategoria());
 			
 			Utility.print("doSave: " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
