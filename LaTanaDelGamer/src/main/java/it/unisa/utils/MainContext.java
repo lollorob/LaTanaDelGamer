@@ -80,7 +80,6 @@ public class MainContext implements ServletContextListener {
 		try {
 			prodotti = modelDS.doRetrieveAll("");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

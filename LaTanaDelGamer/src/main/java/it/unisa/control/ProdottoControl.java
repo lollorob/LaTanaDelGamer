@@ -214,41 +214,51 @@ public class ProdottoControl extends HttpServlet {
 			case "/aggiorna" :{			
 				ProdottoModelDS model = new ProdottoModelDS(ds);
 				ProdottoBean prodotto = new ProdottoBean();
+				ProdottoBean temp = new ProdottoBean();
 				
-				try {	
-							
-					
-					String id = request.getParameter("id");
-					int chiave=Integer.parseInt(id);
+				
+				String id = request.getParameter("id");
+				int chiave=Integer.parseInt(id);
+				
+				try {
+					temp = model.doRetrieveByKey(chiave);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				InputStream c = temp.getCopertina1();
 
-					prodotto.setId_prodotto(chiave);
-					prodotto.setNome(request.getParameter("nome"));
-					prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
-					prodotto.setDescrizione(request.getParameter("descrizione"));
-					prodotto.setDataDiUscita(request.getParameter("datadiuscita"));
-					prodotto.setCasaproduttrice(request.getParameter("casaproduttrice"));
-					prodotto.setQuantita(Integer.parseInt(request.getParameter("quantita")));
-
-					 InputStream inputStream = null; // input stream of the upload file
-			         
-				        // obtains the upload file part in this multipart request
-				        Part filePart = request.getPart("copertina");
-				        if (filePart != null) {
-				            // prints out some information for debugging
-				            System.out.println(filePart.getName());
-				            System.out.println(filePart.getSize());
-				            System.out.println(filePart.getContentType());
-				             
-				            // obtains input stream of the upload file
-				            inputStream = filePart.getInputStream();
-				        }
-					prodotto.setnomeCategoria(request.getParameter("nome_categoria"));
-					model.doUpdatePhoto(prodotto, inputStream);
-					request.setAttribute("message", "Prodotto" + prodotto.getNome() + " AGGIUNTO");
-					
-				}  catch (SQLException e) {
+				prodotto.setId_prodotto(chiave);
+				prodotto.setNome(request.getParameter("nome"));
+				prodotto.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
+				prodotto.setDescrizione(request.getParameter("descrizione"));
+				prodotto.setDataDiUscita(request.getParameter("datadiuscita"));
+				prodotto.setCasaproduttrice(request.getParameter("casaproduttrice"));
+				prodotto.setQuantita(Integer.parseInt(request.getParameter("quantita")));
+				prodotto.setCopertina1(c);
+/*
+				 InputStream inputStream = null; // input stream of the upload file
+				 
+				    // obtains the upload file part in this multipart request
+				    Part filePart = request.getPart("copertina");
+				    if (filePart != null) {
+				        // prints out some information for debugging
+				        System.out.println(filePart.getName());
+				        System.out.println(filePart.getSize());
+				        System.out.println(filePart.getContentType());
+				         
+				        // obtains input stream of the upload file
+				        inputStream = filePart.getInputStream();
+				    }
+				    model.doUpdatePhoto(prodotto, inputStream);
+				    */
+				prodotto.setnomeCategoria(request.getParameter("nome_categoria"));
+				try {
+					model.doUpdate(prodotto);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
-			}
+				}
+				request.setAttribute("message", "Prodotto" + prodotto.getNome() + " AGGIUNTO");
 				response.sendRedirect(request.getContextPath() + "/Dashboard/prodotti");
 	}
 			break;

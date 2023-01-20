@@ -434,7 +434,7 @@ public class ClienteControl extends HttpServlet {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-	                request.getRequestDispatcher("/WEB-INF/Views/Cliente/home.jsp").forward(request, response);
+	                response.sendRedirect("/LaTanaDelGamer/it/home");
 	                
 	            	}else{ // ALTRIMENTI NON SEI AUTORIZZATO
 	                session.removeAttribute("username");

@@ -156,15 +156,6 @@
 						</div>
 					</div>
 					
-					<div class="riga">	
-						<div class="nome">
-							<label for="copertina">Copertina</label>
-						</div>
-						<div class="area">
-							<input id="copertina" name="copertina" type="file" placeholder="Copertina" value="<%=prodotto.getCopertina()%>"><br>
-						</div>
-					</div>
-
 					<div class="riga">
 						<div class="nome">	
 							<label for="nome_categoria">Categoria</label>
