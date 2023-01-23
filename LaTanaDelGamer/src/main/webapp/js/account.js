@@ -196,7 +196,9 @@ function valida1() {
 		alert("Inserire una provincia valida");
 		provincia.focus();
 		return false
-	}
-	
+	}	
 }
+
+        
+       
 

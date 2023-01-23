@@ -25,13 +25,13 @@
 			    	<img class="frecciaDestra" src="/LaTanaDelGamer/icone/frecciaDestra.png"  onclick="return successiva()">
 				    
 			    	<div class="immagini">
-			    	<a href="http://localhost:8080/LaTanaDelGamer/it/prodotto?titolo=Fifa+2023&id=3" target="_self"> 
+			    	<a href="/LaTanaDelGamer/it/prodotto?titolo=Fifa+2023&id=3" target="_self"> 
    						<img src="/LaTanaDelGamer/immagini/slider1.jpg" class="immagine-slider1"/> 
 					</a>
-					<a href="http://localhost:8080/LaTanaDelGamer/it/prodotto?titolo=Formula+1+2022&id=2" target="_self"> 
+					<a href="/LaTanaDelGamer/it/prodotto?titolo=Formula+1+2022&id=2" target="_self"> 
    						<img src="/LaTanaDelGamer/immagini/slider2.jpg" class="immagine-slider2"/> 
 					</a>
-					<a href="http://localhost:8080/LaTanaDelGamer/it/prodotto?titolo=Life+is+Strange%3A+True+Colors&id=9" target="_self"> 
+					<a href="/LaTanaDelGamer/it/prodotto?titolo=Life+is+Strange%3A+True+Colors&id=9" target="_self"> 
    						<img src="/LaTanaDelGamer/immagini/slider3.jpg" class="immagine-slider3"/> 
 					</a>
 					<!--  
