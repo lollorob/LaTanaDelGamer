@@ -45,6 +45,7 @@
 		<div class="control">
 			<label for="username">Username</label>
 			<input type="text" name="username" id="usernameRegistration" placeholder="Username" oninput="checkUser(this)">
+			<div id="errorSpace"></div>
 			</div>
 		<div class="control">
 			<label for="datadinascita">Data Di Nascita</label>
@@ -72,7 +73,7 @@
 			</div>
 			
 		<div class="control">
-			<input type="submit" onClick="return valida()" value="Registrati">
+			<input type="submit" value="Registrati" onClick="return valida()">
 		</div>
 		<div class="link">
 			<a href="<%=request.getAttribute("context")%>/it/home">Annulla</a>
@@ -83,110 +84,5 @@
 	</div>
 </section>
 </div>
-
-<script>
-function checkUser(input) {
-    //Reperiamo il valore del campo
-    var check = input.value;
-
-    //Se non è stato inserito nulla la funzione non viene eseguita
-    if(check == "" )
-        return false;
-
-    //Un utente non può registrarsi con l'username admin in quanto è username speciale
-    //Se è stato inserito questo username la registrazione non può continuare
-    if(check.match(/admin/i))
-    {
-        alert("Username riservato! Inserire un'altro username per continuare");
-        reg_input = false;
-        return false;
-    }
-            //Vengono reperiti tutti gli username dal database
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-    	
-        if(xhttp.readyState == 4 && xhttp.status == 200)
-        {
-        	alert(xhttp.responseText);
-            var JSONobj = JSON.parse(xhttp.responseText);
-            	
-			
-            var flag = false;
-
-            //Tra tutti gli username si cerca se esiste uno uguale a quello inserito
-            for( i = 0; i < JSONobj.length; i++)
-            {
-                var item = JSONobj[i];
-                console.log(item.Username);
-                if(item.Username == check)
-                    flag = true;
-            }
-
-            //Ci reperiamo lo spazio dove viene segnalato se l'username inserito è valido o meno
-            var p_block = document.getElementById("errorSpace");
-
-            //Caso in cui l'username è presente
-            if(flag)
-            {
-                //Se è stato creato il p, allora lo modifico
-                if(document.getElementById("errorSpace").hasChildNodes())
-                {
-                    var p = document.getElementById("errorSpace").childNodes[0];
-                    p.style.color = "red";
-                    p.innerText = "Utente già presente! Inserire un'altro nome";
-
-                }
-                //Altrimenti lo creo
-                else
-                {
-                    var tag = document.createElement("p");
-                    tag.style.color = "red";
-                    tag.style.visibility = "block";
-                    var text = document.createTextNode("Utente già presente! Inserire un'altro nome");
-                    tag.appendChild(text);
-                    p_block.appendChild(tag);
-                }
-
-                //Variabile globale necessaria per non fare proseguire la registrazione
-                reg_input = false;
-
-            }
-            //Caso in cui l'username inserito dall'utente è univoco, ovvero non è presente nel database
-            else
-            {
-
-                //Se esiste il p allora lo modifico
-               if(document.getElementById("errorSpace").hasChildNodes())
-               {
-                   var p = document.getElementById("errorSpace").childNodes[0];
-                   p.style.color = "green";
-                   p.innerText = "Nome valido!";
-
-
-               }
-               //Non esiste il p quindi lo creo
-               else
-               {
-                   var tag = document.createElement("p");
-                   tag.style.color = "green";
-                   tag.style.visibility = "block";
-                   var text = document.createTextNode("Nome valido!");
-                   tag.appendChild(text);
-                   p_block.appendChild(tag);
-               }
-
-               //Registrazione avvenuta con successo, si setta la variabile globale a true
-                reg_input = true;
-
-            }
-
-        }
-    }
-
-    xhttp.open("GET", "AjaxFilter?valore=Utenti", true);
-    xhttp.send();
-
-}</script>
-
 </body>
 </html>

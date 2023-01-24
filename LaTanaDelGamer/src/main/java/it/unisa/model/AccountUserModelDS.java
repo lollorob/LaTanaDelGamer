@@ -7,10 +7,9 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
-
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import javax.sql.DataSource;
-
-import org.json.*;
 
 import it.unisa.utils.Utility;
 
@@ -86,8 +85,6 @@ public class AccountUserModelDS implements EntityModel<AccountUserBean> {
 	    		connection = ds.getConnection();
 				preparedStatement = connection.prepareStatement(selectSQL);
 				
-				Utility.print("doRetriveAll: " + preparedStatement.toString());
-				
 				ResultSet rs = preparedStatement.executeQuery();
 				
 				while(rs.next()) {
@@ -95,18 +92,20 @@ public class AccountUserModelDS implements EntityModel<AccountUserBean> {
 					
 					account.put("username", rs.getString(1));
 					account.put("e_mail", rs.getString(2));
-					account.put("nome", rs.getString(3));
-					account.put("cognome", rs.getString(4));
-					account.put("datadinascita", rs.getString(5));
-					account.put("n_ordini", rs.getInt(6));
-					account.put("via", rs.getString(7));
-					account.put("numero", rs.getInt(8));
-					account.put("cap", rs.getLong(9));
-					account.put("citta", rs.getString(10));
-					account.put("provincia", rs.getString(11));
-					account.put("is_admin", rs.getBoolean(12));
+					account.put("passwd", rs.getString(3));
+					account.put("nome", rs.getString(4));
+					account.put("cognome", rs.getString(5));
+					account.put("datadinascita", rs.getString(6));
+					account.put("n_ordini", rs.getInt(7));
+					account.put("via", rs.getString(8));
+					account.put("numero", rs.getInt(9));
+					account.put("cap", rs.getLong(10));
+					account.put("citta", rs.getString(11));
+					account.put("provincia", rs.getString(12));
+					account.put("is_admin", rs.getBoolean(13));
    
-					array.put(account);
+					array.add(account);
+					
 				}
 	    		} finally {
 	    			try {
@@ -118,6 +117,7 @@ public class AccountUserModelDS implements EntityModel<AccountUserBean> {
 	    				}
 	    			}
 	    		}
+	    		
 				return array;
 	    }
 	            

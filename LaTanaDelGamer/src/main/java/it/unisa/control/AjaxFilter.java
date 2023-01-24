@@ -11,25 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import org.json.*;
+import netscape.javascript.JSObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.JSONParser;
 
 import it.unisa.model.AccountUserModelDS;
 import it.unisa.utils.Utility;
 
 
-@WebServlet("/AjaxFilter")
+@WebServlet("/gestione")
 public class AjaxFilter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = (request.getPathInfo() != null) ? request.getPathInfo() : "/";
-		HttpSession session=request.getSession();
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataSource ds = (DataSource)getServletContext().getAttribute("DataSource");
 		
 		String operazione = request.getParameter("valore");
 		String risposta = "";
-		Utility.print("ENTRATO NELLA SERVLET");
+		
 		
 		if(operazione.equalsIgnoreCase("Utenti")) {
 			AccountUserModelDS model = new AccountUserModelDS(ds);
@@ -46,8 +46,8 @@ public class AjaxFilter extends HttpServlet {
         response.getWriter().append(risposta);
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
 
