@@ -200,19 +200,67 @@ function valida1() {
 }
 
 function checkUser(input) {
+	
     //Reperiamo il valore del campo
     var check = input.value;
+    if(input.value.length <= 4 && input.value.length >= 1) {
+	
+	  var p_block = document.getElementById("errorSpace");
+	  if(document.getElementById("errorSpace").hasChildNodes())
+                {
+                    var p = document.getElementById("errorSpace").childNodes[0];
+                    p.style.color = "red";
+                    p.innerText = "Inserire almeno 5 caratteri";
+
+                }
+                //Altrimenti lo creo
+                else
+                {
+                    var tag = document.createElement("p");
+                    tag.style.color = "red";
+                    tag.style.visibility = "block";
+                    var text = document.createTextNode("Inserire almeno 5 caratteri");
+                    tag.appendChild(text);
+                    p_block.appendChild(tag);
+                }
+                
+	  return false;
+	} else  if(input.value.length > 12) {
+	
+	  var p_block = document.getElementById("errorSpace");
+	  if(document.getElementById("errorSpace").hasChildNodes())
+                {
+                    var p = document.getElementById("errorSpace").childNodes[0];
+                    p.style.color = "red";
+                    p.innerText = "Inserire massimo 12 caratteri";
+
+                }
+                //Altrimenti lo creo
+                else
+                {
+                    var tag = document.createElement("p");
+                    tag.style.color = "red";
+                    tag.style.visibility = "block";
+                    var text = document.createTextNode("Inserire massimo 12 caratteri");
+                    tag.appendChild(text);
+                    p_block.appendChild(tag);
+                }
+                
+	  return false;
+	} 
+	
+	else  {
 
     //Se non è stato inserito nulla la funzione non viene eseguita
     if(check == "" ) {
         
-    if(document.getElementById("errorSpace").hasChildNodes())
-    {
-     var p = document.getElementById("errorSpace").childNodes[0];
-     p.remove();
-    }
+        if(document.getElementById("errorSpace").hasChildNodes()){
+           var p = document.getElementById("errorSpace").childNodes[0];
+           p.remove();
+        }
     return false;
     }
+    
     //Un utente non può registrarsi con l'username admin in quanto è username speciale
     //Se è stato inserito questo username la registrazione non può continuare
     if(check.match(/admin/i))
@@ -238,8 +286,6 @@ function checkUser(input) {
             for( i = 0; i < JSONobj.length; i++)
             {
                 var item = JSONobj[i];
-                console.log(check);
-                console.log(item.username);
                 if(item.username == check)
                     flag = true;
             }
@@ -298,8 +344,7 @@ function checkUser(input) {
     }
 
     xhttp.open("GET", "/LaTanaDelGamer/gestione?valore=Utenti", true);
-    xhttp.send();
-
+    xhttp.send();}
 }
         
        

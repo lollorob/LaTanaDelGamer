@@ -42,7 +42,8 @@
 						<label for="username">Username</label>
 					</div>
 				<div class="area">
-					<input id="username" name="username" type="text" placeholder="Username"><br>
+					<input id="username" name="username" type="text" placeholder="Username" oninput="checkUser(this)"><br>
+					<div id="errorSpace"></div>
 				</div>
 			</div>
 			
