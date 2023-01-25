@@ -21,12 +21,6 @@ function valida() {
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var lettere = /^[A-Za-z ]+$/;
 	
-	if(!email.value.match(mailformat)) {
-		alert("Formato email sbagliato");
-		email.focus();
-		return false;
-	}
-	
 	if(nome.value.length < 3 || nome.value.length > 50 || !nome.value.match(lettere)) {
 		alert("Inserisci un nome corretto");
 		nome.focus();
@@ -39,17 +33,9 @@ function valida() {
 		return false;
 	}	
 	
-	
-		
-	if(!passwd.value.match(password)) {
-		alert("Il campo password deve contenere almeno 1 numero, 1 lettera maiuscola e 1 minuscola");
-		passwd.focus();
-		return false;
-	}	
-		
-	if(username.value.length < 4 || username.value.length > 12 ) {
-		alert("Il campo username deve contenere tra i 5 e i 12 caratteri");
-		username.focus();
+	if(!email.value.match(mailformat)) {
+		alert("Formato email sbagliato");
+		email.focus();
 		return false;
 	}
 	
@@ -57,7 +43,7 @@ function valida() {
 		alert("Formato corretto Data Di Nascita: AAAA-MM-GG");
 		data.focus();
 		return false;
-	}	
+	}
 	
 	if(via.value.length < 2 || via.value.length > 50) {
 		alert("Inserisci una via corretta");

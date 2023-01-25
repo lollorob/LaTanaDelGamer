@@ -73,7 +73,7 @@ public class AccountUserModelDS implements EntityModel<AccountUserBean> {
 		return account;
 	}
 	
-	  public JSONArray AjaxLoadAll() throws SQLException
+	  public JSONArray AjaxLoadAllAccounts() throws SQLException
 	    {
 	            JSONArray array = new JSONArray();
 	    		Connection connection = null;

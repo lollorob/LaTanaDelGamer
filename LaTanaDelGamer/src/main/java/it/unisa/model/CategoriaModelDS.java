@@ -10,6 +10,9 @@ import java.util.LinkedList;
 
 import javax.sql.DataSource;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import it.unisa.utils.Utility;
 
 public class CategoriaModelDS implements EntityModel<CategoriaBean> {
@@ -96,6 +99,40 @@ public class CategoriaModelDS implements EntityModel<CategoriaBean> {
 			}
 		  }
 		return categorie;
+	}
+	
+	public JSONArray AjaxLoadAllCategories() throws SQLException {
+        JSONArray array = new JSONArray();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "SELECT * FROM categoria";
+		
+		try {
+		connection = ds.getConnection();
+		preparedStatement = connection.prepareStatement(selectSQL);
+		
+		ResultSet rs = preparedStatement.executeQuery();
+		
+		while(rs.next()) {
+			JSONObject category = new JSONObject();
+			
+			category.put("nome", rs.getString(1));
+			category.put("didascalia", rs.getString(2));
+
+			array.add(category);		
+		}
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null) {
+					connection.close();
+				}
+			}
+		}
+		return array;
 	}
 
 	@Override

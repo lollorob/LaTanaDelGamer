@@ -16,6 +16,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
 import it.unisa.model.AccountUserModelDS;
+import it.unisa.model.CategoriaModelDS;
 import it.unisa.utils.Utility;
 
 
@@ -30,16 +31,29 @@ public class AjaxFilter extends HttpServlet {
 		String operazione = request.getParameter("valore");
 		String risposta = "";
 		
-		
-		if(operazione.equalsIgnoreCase("Utenti")) {
+		switch(operazione) {
+		case "Utenti" : {
 			AccountUserModelDS model = new AccountUserModelDS(ds);
 			JSONArray listaUtenti = null;
 			try {
-				listaUtenti = model.AjaxLoadAll();
+				listaUtenti = model.AjaxLoadAllAccounts();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			risposta = listaUtenti.toString();	
+			risposta = listaUtenti.toString();		
+			break;
+		    }
+		case "Categoria" : {
+			CategoriaModelDS model = new CategoriaModelDS(ds);
+			JSONArray listaCategorie = null;
+			try {
+				listaCategorie = model.AjaxLoadAllCategories();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+			risposta=listaCategorie.toString();
+			break;
+		}
 		}
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

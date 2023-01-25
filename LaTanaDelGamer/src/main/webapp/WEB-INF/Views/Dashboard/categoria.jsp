@@ -49,7 +49,8 @@
 							<label for="nome">Nome</label>
 						</div>
 						<div class="area">
-							<input id="nome" name="nome" type="text" maxlength="70" placeholder="Nome"><br>
+							<input id="nome" name="nome" type="text" maxlength="70" placeholder="Nome" oninput="checkCategories(this)"><br>
+							<div id="errorSpace"></div>
 						</div>
 					</div>
 					

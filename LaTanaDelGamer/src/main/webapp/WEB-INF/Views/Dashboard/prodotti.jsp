@@ -8,6 +8,7 @@
  	<jsp:param name="style" value = "prodotti.css"/>
  	<jsp:param name="script" value = "dashboard.js"/>
  </jsp:include>
+ <script type="text/javascript" src="/LaTanaDelGamer/js/prodotto.js"></script>
  
  
  

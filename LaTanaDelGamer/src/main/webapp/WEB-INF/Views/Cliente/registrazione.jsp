@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,11 +38,12 @@
 			</div>
 		<div class="control">
 			<label for="e_mail">E-Mail</label>
-			<input type="text" name="e_mail" id="e_mail" placeholder="Es. prova@prova.pr">
+			<input type="text" name="e_mail" id="e_mail" placeholder="Es. prova@prova.pr" oninput="checkEmail(this)">
+			<div id="errorSpace1"></div>
 			</div>
 		<div class="control">
 			<label for="passwd">Password</label>
-			<input type="password" name="passwd" id="passwd">
+			<input type="password" name="passwd" id="passwd" placeholder="*******">
 			</div>
 		<div class="control">
 			<label for="username">Username</label>

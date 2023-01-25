@@ -10,7 +10,7 @@ function valida(){
 	var descrizione=document.prodotto.descrizione;
 	var casaproduttrice=document.prodotto.casaproduttrice;
 	var quantita=document.prodotto.quantita;
-	var copertina=document.prodotto.copertina.value;
+
 	
 	var intero = /^[+]?[0-9]+$/;
 	var decimale = /^[+]?[0-9]+\.[0-9]+$/;
@@ -60,13 +60,6 @@ function valida(){
 		prezzo.focus();
 		return false;
 	}
-
-
-	var estensione= getExt(copertina);
-	if (!((estensione == "jpg") || (estensione == "jpeg") || (estensione== "png"))) {
-        alert("Per favore carica un immagine! (png/jpeg/jpg)");
-        return false;
-    }
 }
 
 

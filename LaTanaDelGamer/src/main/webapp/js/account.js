@@ -21,6 +21,18 @@ function valida() {
 	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	var lettere = /^[A-Za-z ]+$/;
 	
+	if(username.value.length < 4 || username.value.length > 12 ) {
+		alert("Il campo username deve contenere tra i 5 e i 12 caratteri");
+		username.focus();
+		return false;
+	}
+	
+	if(!passwd.value.match(password)) {
+		alert("Il campo password deve contenere almeno 1 numero, 1 lettera maiuscola e 1 minuscola");
+		passwd.focus();
+		return false;
+	}
+	
 	if(!email.value.match(mailformat)) {
 		alert("Formato email sbagliato");
 		email.focus();
@@ -38,20 +50,6 @@ function valida() {
 		cognome.focus();
 		return false;
 	}	
-	
-	
-		
-	if(!passwd.value.match(password)) {
-		alert("Il campo password deve contenere almeno 1 numero, 1 lettera maiuscola e 1 minuscola");
-		passwd.focus();
-		return false;
-	}	
-		
-	if(username.value.length < 4 || username.value.length > 12 ) {
-		alert("Il campo username deve contenere tra i 5 e i 12 caratteri");
-		username.focus();
-		return false;
-	}
 	
 	if(!data.value.match(datas)) {
 		alert("Formato corretto Data Di Nascita: AAAA-MM-GG");
@@ -202,7 +200,9 @@ function valida1() {
 function checkUser(input) {
 	
     //Reperiamo il valore del campo
-    var check = input.value;
+    let temp = input.value;
+    let check = temp.toLowerCase();
+    
     if(input.value.length <= 4 && input.value.length >= 1) {
 	
 	  var p_block = document.getElementById("errorSpace");
@@ -346,6 +346,96 @@ function checkUser(input) {
     xhttp.open("GET", "/LaTanaDelGamer/gestione?valore=Utenti", true);
     xhttp.send();}
 }
+
+function checkEmail(input) {
+	
+    //Reperiamo il valore del campo
+    let temp = input.value;
+    let check = temp.toLowerCase();
+            //Vengono reperiti tutti gli username dal database
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+    	
+        if(xhttp.readyState == 4 && xhttp.status == 200)
+        {	
+            var JSONobj = JSON.parse(xhttp.responseText);
+
+			
+            var flag = false;
+
+            //Tra tutte le email si cerca se esiste una uguale a quella inserita
+            for( i = 0; i < JSONobj.length; i++)
+            {
+                var item = JSONobj[i];
+                if(item.e_mail == check)
+                    flag = true;
+            }
+
+            //Ci reperiamo lo spazio dove viene segnalato se la mail inserita è valida o meno
+            var p_block = document.getElementById("errorSpace1");
+            
+                if(check == "" ) {
+        
+        if(document.getElementById("errorSpace1").hasChildNodes()){
+           var p = document.getElementById("errorSpace1").childNodes[0];
+           p.remove();
+        }
+    return false;
+    }
+
+            //Caso in cui la mail è presente
+            if(flag)
+            {
+                //Se è stato creato il p, allora lo modifico
+                if(document.getElementById("errorSpace1").hasChildNodes())
+                {
+                    var p = document.getElementById("errorSpace1").childNodes[0];
+                    p.style.color = "red";
+                    p.innerText = "E-Mail già presente!";
+
+                }
+                //Altrimenti lo creo
+                else
+                {
+                    var tag = document.createElement("p");
+                    tag.style.color = "red";
+                    tag.style.visibility = "block";
+                    var text = document.createTextNode("E-Mail già presente!");
+                    tag.appendChild(text);
+                    p_block.appendChild(tag);
+                }
+            }
+            //Caso in cui la mail inserita dall'utente è univoca, ovvero non è presente nel database
+            else
+            {
+
+                //Se esiste il p allora lo modifico
+               if(document.getElementById("errorSpace1").hasChildNodes())
+               {
+                   var p = document.getElementById("errorSpace1").childNodes[0];
+                   p.style.color = "green";
+                   p.innerText = "Email Valida!";
+
+
+               }
+               //Non esiste il p quindi lo creo
+               else
+               {
+                   var tag = document.createElement("p");
+                   tag.style.color = "green";
+                   tag.style.visibility = "block";
+                   var text = document.createTextNode("Email Valida!");
+                   tag.appendChild(text);
+                   p_block.appendChild(tag);
+               }
+            }
+
+        }
+    }
+
+    xhttp.open("GET", "/LaTanaDelGamer/gestione?valore=Utenti", true);
+    xhttp.send();}
+
         
        
 

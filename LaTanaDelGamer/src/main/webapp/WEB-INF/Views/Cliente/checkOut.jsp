@@ -7,7 +7,7 @@
  <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Carrello | Check Out"/>
  	<jsp:param name="style" value = "checkout.css"/>
- 	<jsp:param name="script" value = "modificaAccount.js"/>
+ 	<jsp:param name="script" value = "checkout.js"/>
  </jsp:include>
  </head>
 <body>
@@ -15,7 +15,7 @@
  	
  		<div class="pagina1">
 					
-	          	<form  method="POST" name="utente1" class="form-container"  action="/LaTanaDelGamer/it/acquista" name="utente">
+	          	<form  method="POST" name="utente1" class="form-container"  action="/LaTanaDelGamer/it/acquista">
 	
 					<h1>Checkout</h1>
 					<div class="control">	
@@ -51,7 +51,7 @@
 					    	</div>
 					    </div>
 						<div class="control1">
-							<input class="inputAggiorna" type="submit" value="Compra Prodotti">
+							<input class="inputAggiorna" type="submit" value="Compra Prodotti" onClick="return valida()">
 						</div>
 						
 						<div class="link">

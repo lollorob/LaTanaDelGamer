@@ -8,6 +8,7 @@
  	<jsp:param name="style" value = "prodottoCliente.css"/>
  	<jsp:param name="script" value = "cliente.js"/>
  </jsp:include>
+ <script type="text/javascript" src="/LaTanaDelGamer/js/recensione.js"></script>
  </head>
 <body>
 	<% ProdottoBean prodotto = new ProdottoBean();
@@ -137,7 +138,7 @@
 						    </div>
 						    
 						    <div class="control1">
-							<input class="inputAggiorna" type="submit" value="Inserisci">
+							<input class="inputAggiorna" type="submit" value="Inserisci" onClick="return valida()">
 						</div>
 						
 						<div class="link">

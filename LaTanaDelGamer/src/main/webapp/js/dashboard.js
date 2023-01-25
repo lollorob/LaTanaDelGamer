@@ -20,7 +20,9 @@ function closeMenu(){
 function checkUser(input) {
 	
     //Reperiamo il valore del campo
-    var check = input.value;
+    let temp = input.value;
+    let check = temp.toLowerCase();
+   
     if(input.value.length <= 4 && input.value.length >= 1) {
 	
 	  var p_block = document.getElementById("errorSpace");
@@ -142,7 +144,7 @@ function checkUser(input) {
                {
                    var p = document.getElementById("errorSpace").childNodes[0];
                    p.style.color = "green";
-                   p.innerText = "Nome valido!";
+                   p.innerText = "Nome Categoria valido!";
 
 
                }
@@ -164,6 +166,7 @@ function checkUser(input) {
     xhttp.open("GET", "/LaTanaDelGamer/gestione?valore=Utenti", true);
     xhttp.send();}
 }
+
         
        
 
