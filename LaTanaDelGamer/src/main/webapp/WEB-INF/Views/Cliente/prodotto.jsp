@@ -18,7 +18,7 @@
 
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>
  	
- 	<div class="pagina1">
+ 	<div class="pagina1" id="pagina1">
  	<%Carrello carrello = (Carrello) request.getSession().getAttribute("Carrello");%>
 	 	
 	 	

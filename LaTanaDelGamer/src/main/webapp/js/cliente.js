@@ -1,4 +1,21 @@
 
+jQuery.extend({
+	rand: function(val) {
+            return Math.floor(val * (Math.random() % 1))+1;
+	}
+});
+
+var intervalId = window.setInterval(function(){
+	var num = $.rand(18);
+	$("#pagina1").css('background', 'linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo'+num+'.jpg)');
+	$("#pagina1").css('width', '100%');
+	$("#pagina1").css('height', '100%');
+	$("#pagina1").css('background-position', 'center center');
+	$("#pagina1").css('position', 'relative');
+	$("#pagina1").css('box-shadow', '0 0 60px 60px #000000 inset');
+	$("#pagina1").css('color', 'white');
+  
+}, 7000);
 
 
 function successiva(){

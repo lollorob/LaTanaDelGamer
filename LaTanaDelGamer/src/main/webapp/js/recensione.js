@@ -1,6 +1,7 @@
 /**
  * 
  */
+
  
  function valida() {
 	var nome = document.recensioneForm.nomeUtente;
