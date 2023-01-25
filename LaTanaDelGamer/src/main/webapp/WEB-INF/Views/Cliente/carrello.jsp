@@ -35,7 +35,7 @@
 							       	ProdottoBean prodotto = item.getProdotto();
 							      %>
 							      <li class="nomeOrdine">
-							      	<%=prodotto.getNome()%> x <%=item.getQuantity()%> = <%=item.getSomma() %>
+							      	<%=prodotto.getNome()%> x <%=item.getQuantity()%> = <%=item.getSomma() %>€
 							      </li> <%
 								
 								}

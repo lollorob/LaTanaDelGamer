@@ -13,7 +13,6 @@
 <body>
 			<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %>        	  
 			<div class="pagina1">
-				<section>
 				<div class="container">
 					<h1><b>Sei Sicuro Di Voler Eliminare L'Account?</b></h1>
 					    <h4>Facendo così perderai tutti i tuoi dati</h4>
@@ -26,8 +25,6 @@
 						<input class="bottone2" type="submit" value="Torna Alla Home">	
 						</form>
 					</div>
-				
-			</section>	
 		</div>
 		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>
 </body>

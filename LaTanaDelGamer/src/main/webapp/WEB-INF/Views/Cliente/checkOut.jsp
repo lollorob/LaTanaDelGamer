@@ -6,27 +6,24 @@
 <head>
  <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Carrello | Check Out"/>
- 	<jsp:param name="style" value = "modificaAccount.css"/>
+ 	<jsp:param name="style" value = "checkout.css"/>
  	<jsp:param name="script" value = "modificaAccount.js"/>
  </jsp:include>
  </head>
 <body>
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
  	
- 				<div class="pagina1">
-				<section>
-				<div class="form-container">
-					<h1><b>Concludi Il Tuo Ordine</b></h1>
+ 		<div class="pagina1">
 					
-	          		<form  method="POST" name="utente1" class="form"  action="/LaTanaDelGamer/it/acquista" name="utente">
+	          	<form  method="POST" name="utente1" class="form-container"  action="/LaTanaDelGamer/it/acquista" name="utente">
 	
-					
-						<div class="control">	
-							<div class="first"> 				
-								<label for="email_spedizione">E-Mail Spedizione:</label>
-							</div>	
-							<div class="second">				
-							    <input class="update" id="email_spedizione" name="email_spedizione" type="text" placeholder="Inserisci E-Mail Spedizione"><br>
+					<h1>Checkout</h1>
+					<div class="control">	
+						<div class="first"> 				
+							<label for="email_spedizione">E-Mail Spedizione:</label>
+						</div>	
+						<div class="second">				
+						    <input class="update" id="email_spedizione" name="email_spedizione" type="text" placeholder="Inserisci E-Mail Spedizione"><br>
 					    	</div>
 					    </div>
 					
@@ -60,9 +57,8 @@
 						<div class="link">
 							<a class="alink" href="<%=request.getAttribute("context")%>/it/mostraCarrello">Torna Al Carrello</a>
 						</div>
-					</form>
-				</div>
-			</section>
+				
+				</form>
 		</div>
 		
 		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 

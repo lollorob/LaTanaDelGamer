@@ -9,25 +9,32 @@
  	<jsp:param name="script" value = "dashboard.js"/>
  </jsp:include>
 
-<%	String usernameAccount="Tra Noi...";
+<%	String usernameAccount="utente";
 	if (request.getAttribute("usernameAccount")!=null)
-		usernameAccount = (String) request.getAttribute("usernameAccount");%>
+		usernameAccount = (String) request.getAttribute("usernameAccount");
+	else
+		response.sendRedirect("./home");
+	%>
 	
 </head>
 
 <body>
  	<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 
-<div class="paginareg">
-	
-	<header>
-	<div id="testo-header">
-		<h1>Benvenuto <%=usernameAccount %>!</h1>
-	</div>
-	</header>
-	
-	<div id="tasto-home">
-		<a href="<%=request.getAttribute("context")%>/it/home" class="link">Entra nella nostra Home</a>
+
+
+<div class="pagina1">
+
+	<div class="benvenuto">	
+		<div id="testoBenvenuto">
+			<h1>Benvenuto <%=usernameAccount %>!</h1>
+		</div>
+		
+		<div id="tastoHome">
+			<a href="<%=request.getAttribute("context")%>/it/home" class="link">Entra nella nostra Home</a>
+		</div>
 	</div>
 </div>
+
+  <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <div id="footer">
 		        <p class="foot">@Copyright,2023 - LaTanaDelGamer - All Rights Reserved</p>
-		        <img src="/LaTanaDelGamer/immagini/paymentsmethods.png" class="metodi">
+		       
 </div>
 
 <style>

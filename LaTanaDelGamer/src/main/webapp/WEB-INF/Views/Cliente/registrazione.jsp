@@ -18,10 +18,11 @@
  		errore=(int) request.getAttribute("error");
  	}%>
 
-<div class="reg">
-	<section>
+<div class="pagina1">
 		<div class="form-container">
-			<h1>Registrati</h1>
+			<div class="titolo">
+				<h1>Registrati</h1>
+			</div>
 		<form name="utente" action="<%=response.encodeURL("/LaTanaDelGamer/it/registrazione")%>" method="POST">
 		<%if (errore==1062){ %>
 			<p class="errore">Username/Email già esistente</p>	
@@ -82,7 +83,8 @@
 	</form>
 		
 	</div>
-</section>
 </div>
+
+  <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 </body>
 </html>

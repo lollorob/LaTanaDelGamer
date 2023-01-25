@@ -11,17 +11,12 @@ body{
 	overflow:auto;
 }
 .pagina1{
-	
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo5.jpg);
+	background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo5.jpg);
     width:100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    position: relative;
+    top:70px;
     box-shadow: 0 0 60px 60px #000000 inset;
-    color:white;
-
-
+    min-height: 739px;
 }
 
 .tabella{
@@ -100,7 +95,14 @@ p {
 	margin-top:10px;
 }
 
-
+.noOrdini{
+	width: 90%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    color: var(--blu);
+    transform: translate(0, 400%);
+}
 @media only screen and (max-width: 1000px) { 
      /* Forza la tabella a non comportarsi come una normale tabella */ 
   	
@@ -114,6 +116,10 @@ p {
  	} 
   
  	/* Nasconde le intestazioni della tabella */ 
+  
+  	.tab1{
+  		border : none;
+  	}
   
  	#tabella thead tr {  
  		position: absolute; 
@@ -170,5 +176,11 @@ p {
  @media only screen and (max-width: 480px){
  	#tabella td{
  	padding-left : 10%;
+ 	}
+ }
+ 
+ @media only screen and (max-width: 361px) {
+ 	.noOrdini{
+ 	transform: translate(0, 200%);
  	}
  }

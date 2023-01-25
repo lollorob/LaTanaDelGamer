@@ -51,5 +51,7 @@
 	</div>
 </section>
 </div>
+
+  <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 </body>
 </html>

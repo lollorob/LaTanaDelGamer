@@ -14,51 +14,50 @@ section{
 	width: 100%;  
 }
 
-.reg{
-	
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo4.jpg);
-    width:100%;
-    height: 100%;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: center center;
-    position: absolute;
-    top:70px;
-    box-shadow: 0 0 60px 60px #000000 inset;
-    overflow : auto;
-
-
+.pagina1{
+	background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0)), url(/LaTanaDelGamer/immagini/sfondo4.jpg);
+ 	background-size: auto, auto;
+	width: 100%;
+	height: 100%;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	box-shadow: 0 0 60px 60px #000000 inset;
 }
 
 .form-container{
-	position: absolute;
-	top: 90%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	background: linear-gradient(#f9f9f96e,#f2f2f23b);
+	background: linear-gradient(#00000070,#5db0d52e);
 	width: 380px;
 	padding: 50px 30px;
 	border-radius: 10px;
 	box-shadow: 7px 7px 60px #00ffff6b;
+	width: 50%;
+	margin: auto;
+	margin-top: auto;
+	border: 2px solid var(--blu);
+	margin-top: 6%;
+	max-width: 453px;
 }
 
-h1{
+.titolo{
 	text-transform: uppercase;
-	font-size: 2em;
+	font-size: 1em;
 	text-align: center;
 	margin-bottom: 1em;
 	color : #00ffff6b;
+	width:100%;
 }
 
 .control input{
 	width: 100%;
 	display: block;
 	padding: 10px;
-	color: #222;
-	border: none;
+	color:#efd9d9;
+	border: 2px solid var(--blu);
 	outline: none;
 	margin: 1em 0;
 	border-radius:5px;
+	background:transparent;
 }
 
 .control input[type="submit"]{
@@ -66,8 +65,9 @@ h1{
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 1.2em;
-	opacity: .7;
+	opacity: .85;
 	transition: opacity .3s ease;
+	border: 2px solid var(--blu);
 }
 
 .control input[type="submit"]:hover{
@@ -94,4 +94,10 @@ h1{
 .errore{
 	text-align:center;
 	color:red;	
+}
+
+@media only screen and (max-width: 828px) { 
+	.form-container{
+	width:95%;
+	}
 }

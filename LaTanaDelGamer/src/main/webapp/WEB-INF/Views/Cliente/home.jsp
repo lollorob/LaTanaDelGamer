@@ -34,11 +34,6 @@
 					<a href="/LaTanaDelGamer/it/prodotto?titolo=Life+is+Strange%3A+True+Colors&id=9" target="_self"> 
    						<img src="/LaTanaDelGamer/immagini/slider3.jpg" class="immagine-slider3"/> 
 					</a>
-					<!--  
-						 <img src="/LaTanaDelGamer/immagini/assassinHome.jpg" class="immagine-slider1" />
-						 <img src="/LaTanaDelGamer/immagini/fifa22Home.jpg" class="immagine-slider2" />
-						 <img src="/LaTanaDelGamer/immagini/nba22Home.jpg" class="immagine-slider3" />
-					-->	
 					</div>	
 			    </div> 
 		   

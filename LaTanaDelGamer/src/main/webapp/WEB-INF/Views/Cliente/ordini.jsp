@@ -34,9 +34,9 @@
  			response.sendRedirect("/LaTanaDelGamer/it/login");
  	  	
     %>
- 		
- 		<div class="pagina1">
- 			<section>
+
+ 	<div class="pagina1">
+ 			
  				<%
 		if(ordineSingolo != null) {  
 	%>
@@ -61,7 +61,7 @@
 	             <td data-title="Data Ordine"><%=ordineSingolo.getData_ordine() %></td>
 	             <td data-title="Username"><%=ordineSingolo.getUsername() %></td>
 	             <td data-title="Email Spedizione"><%=ordineSingolo.getEmail_spedizione() %></td>
-	             <td data-title="Importo"><%=ordineSingolo.getImporto() %></td>
+	             <td data-title="Importo"><%=ordineSingolo.getImporto() %>€</td>
 	             <td data-title="Tipo di Pagamento"><%=ordineSingolo.getTipo_pagamento() %></td>
 	             <% String cifreTotali = ordineSingolo.getMetodo_pagamento(); 
 	             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
@@ -89,11 +89,13 @@
 			<%  } %>
       
  		
+ 		 <%
+				if(ordini != null && ordini.size() > 0) {
+					%>
  		
  		
  		
- 		
-		 			<div  class="tabella" id="tabella"> 
+		 	<div  class="tabella" id="tabella"> 
 		    	<table class="tab2"> 
 			       <thead>
 			       	
@@ -105,9 +107,8 @@
 				        <th>Azioni</th>
 			          </tr>
 			   
-		               <%
-				if(ordini != null && ordini.size() > 0) {
-					
+		              
+					<% 
 					Iterator<?> it = ordini.iterator();
 					while(it.hasNext()) {
 						OrdineBean bean = (OrdineBean)it.next();
@@ -117,7 +118,7 @@
 		       <tbody> 
 		          <tr> 
 		          	 <td data-title="Id"><%= bean.getId_ordine()%></td>
-		             <td data-title="Importo"><%=bean.getImporto() %></td>
+		             <td data-title="Importo"><%=bean.getImporto() %>€</td>
 		             <td data-title="Email Spedizione"><%=bean.getEmail_spedizione() %></td>
 		             <td data-title="Data Ordine"><%=bean.getData_ordine() %></td>
 					 <td>
@@ -127,18 +128,17 @@
 		             	
 		             	</td>
 		
-		      <% }
-				} else { %>
-					<td colspan="15">Non ci sono Ordini</td>
-			<% } %>
-			     </tr>
-			    </table>
+		      <% 	} %> </table>
 			    	
-		       	</div>	
-			</section>
-		<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %>  
- 		</div>
+		      </div>	
+				<%}else{
+					%><div class="noOrdini">
+						<h1>Non ci sono ordini! :(</h1>
+					</div>
+				<%} %>
  
+ 		</div>
+ 			<%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
  </body>
  
  </html>

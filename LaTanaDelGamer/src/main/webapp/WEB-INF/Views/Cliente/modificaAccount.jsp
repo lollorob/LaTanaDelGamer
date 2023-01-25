@@ -5,7 +5,7 @@
 <head>
 <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Modifica Account | Cliente"/>
- 	<jsp:param name="style" value = "modificaAccount.css"/>
+ 	<jsp:param name="style" value = "checkout.css"/>
  	<jsp:param name="script" value = "modificaAccount.js"/>
 </jsp:include>
 
@@ -18,12 +18,10 @@
 <body>
 		<%@include file="/WEB-INF/Views/Cliente/navbar.jsp" %> 	       	  
 			<div class="pagina1">
-				<section>
-				<div class="form-container">
-					<h1><b>Modifica Profilo</b></h1>
-					
-	          		<form  method="post" name="utente1" class="form"  action="<%=response.encodeURL("/LaTanaDelGamer/it/modificaCliente")%>" name="utente">
+		
+	          		<form  method="post" name="utente1" class="form-container"  action="<%=response.encodeURL("/LaTanaDelGamer/it/modificaCliente")%>" name="utente">
 	
+						<h1><b>Modifica Profilo</b></h1>
 						
 						<input id="username" name="username" readonly type="hidden" placeholder="Username" value="<%=clienteRole.getUsername()%>"><br>	    
 					    <input id="e_mail" name="e_mail" readonly  type="hidden" placeholder="Inserisci E-Mail" value="<%=clienteRole.geteMail()%>"><br>						
@@ -110,9 +108,8 @@
 							<a class="alink" href="<%=request.getAttribute("context")%>/it/home">Annulla</a>
 						</div>
 					</form>
-				</div>
-			</section>
 		</div>
+		
 <%@include file="/WEB-INF/Views/Cliente/footer.jsp" %> 
 </body>
 </html>

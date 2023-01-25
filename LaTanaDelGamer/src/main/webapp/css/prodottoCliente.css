@@ -56,7 +56,7 @@
 
 .galleria{
 	margin-top: 30px;
-    width: 350px;
+    width: 35%;
     height: 530px;
     margin-left: 40px;
     display: flex;
@@ -78,7 +78,7 @@
 .contenitoreCopertina{
 	float: left;
     width: 290px;
-    height: 400px;
+    max-height: 425px;
     margin-top: 40px;
     border-radius: 10px;
     border: 4px solid var(--blu);
@@ -93,7 +93,6 @@
 .inserisciRec{
 	margin-top: 5%;
     margin-left: 16%;
-    display: inline-flex;
 }
 
 .bottoneRec:hover{
@@ -121,7 +120,8 @@
 }
 
 .schedaProdotto{
-	width:60%;
+	width: 75%;
+    padding-left: 20px;
 }
 
 .nome{
@@ -159,8 +159,9 @@
  }
  
  .bottone{
- 	text-align:center;
- 	margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    margin-top: 28px;
  }
  
  .acquista{
@@ -183,18 +184,19 @@
  	border-radius:15px;
  }
  .informazione{
- 	display:flex;
- 	color:white;
- 	width:100%
+ 	display: flex;
+    color: white;
+    width: 100%;
+    text-align: center;
  }
  .quantità{
- width:50%;
+ 	width: 50%;
+    margin: auto;
  }
  
  .genere{
-     width: 50%;
-    text-align: end;
-    margin-right: 110px;
+    width: 50%;
+    margin: auto;
  }
  
  
@@ -301,3 +303,84 @@ select option{
 	color: var(--blu);
 }
  
+
+@media screen and (max-width: 1040px) {
+	.prodotto{
+		width:95%;
+	}
+
+} 
+
+
+@media screen and (max-width: 850px) {
+	.prodotto{
+		display:block;
+		height:unset;
+    	border: 3px solid var(--blu);
+    	margin: auto;
+    	margin-top: 30px;
+    	background: linear-gradient(#0000002b,#f2f2f20f);
+    	border-radius: 10px;
+    	box-shadow: 7px 7px 60px #00ffff6b;
+	}
+	
+	.galleria{
+		all:initial;
+		width: 100%;
+	}
+	
+	
+	.contenitoreCopertina {
+    	all:initial;
+    	width: 250px;
+    	margin: auto;
+    	display: flex;
+    	margin-top: 40px;
+    	border-radius: 10px;
+    	border: 4px solid var(--blu);
+	}
+
+	.inserisciRec {
+		margin-left:0px;
+    	text-align: center;
+    	margin-top: 5%;
+	}
+	
+	.nome{
+		font-size: 0.9em;
+	}
+	
+	.schedaProdotto{
+		all:initial;
+		font-family: 'Andika';
+    	font-weight: normal;
+    	font-style: normal;
+		width:90%;
+		margin:auto;
+		text-align: center;
+	}
+	
+	.bottone{
+	    width: 100%;
+    	text-align: center;
+    	margin-top: 6%;
+    	margin-bottom: 6%;
+    }
+    
+    .recensione{
+    	width:100%;
+    	min-height: 38px;
+    }
+    
+    .recensioneProdotto {
+    	width: 77%;
+    }
+    
+    .stelle{
+    width:unset;
+    }
+    
+    .form-container{
+    	width:95%;
+    }
+} 

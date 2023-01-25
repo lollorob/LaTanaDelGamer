@@ -9,7 +9,7 @@
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
     
-	
+	min-height: 699px;
 }
 
 .descrizioneCategoria{

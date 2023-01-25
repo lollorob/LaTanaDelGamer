@@ -92,6 +92,7 @@
 
 .checkoutForm{
 	width: 28%;
+	min-width: 470px;
 	margin: auto;
 	background: linear-gradient(#0000002b,#f2f2f20f);
 	box-shadow: 7px 7px 60px #00ffff6b;
@@ -142,7 +143,8 @@
 	text-align: center;
 	color: white;
 	font-size: 2em;
-	transform: translate(40px,181%);
+	margin:auto;
+	transform: translate(0%,181%);
 	
 }
 
@@ -155,3 +157,15 @@
 	color: var(--primary);
 	transition:0.3s;
 }
+
+@media screen and (max-width: 558px) {
+	.checkoutForm{
+		width:90%;
+		min-width: unset;	
+	}
+	
+	.noProducts{
+		transform: translate(0%,112%);
+	
+	}
+} 

@@ -140,7 +140,7 @@ public class ClienteControl extends HttpServlet {
 				break;
 			}
 				
-			case "/modificaAccount": 
+			case "/modificaAccount":{ 
 				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
 				if(cliente==null) {
 					response.sendRedirect(request.getContextPath() + "/it/login");
@@ -148,15 +148,27 @@ public class ClienteControl extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/modificaAccount.jsp").forward(request,response);
 				}
 				break;
+			}
 			
-			case "/registrati":  //registrazione cliente
-				request.getRequestDispatcher("/WEB-INF/Views/Cliente/registrazione.jsp").forward(request,response);
+			case "/registrati":{
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				if(cliente==null) {
+					request.getRequestDispatcher("/WEB-INF/Views/Cliente/registrazione.jsp").forward(request, response);		
+				} else {
+					response.sendRedirect(request.getContextPath() + "/it/home");
+				}
 				break;
+			}
 				
-			case "/reg":
-				request.getRequestDispatcher("/WEB-INF/Views/Cliente/regEffettuata.jsp").forward(request, response);
+			case "/reg":{
+				AccountUserBean cliente = (AccountUserBean) session.getAttribute("clienteBean");
+				if(cliente==null) {
+					response.sendRedirect(request.getContextPath() + "/it/login");
+				} else {
+					request.getRequestDispatcher("/WEB-INF/Views/Cliente/regEffettuata.jsp").forward(request, response);
+				}
 				break;
-				
+			}
 			case "/aggiungiAlCarrello":	{
 		        Carrello carrello = (Carrello) session.getAttribute("Carrello");
 		        if(carrello == null)
@@ -255,6 +267,7 @@ public class ClienteControl extends HttpServlet {
 				model.doSave(account);
 				request.setAttribute("message", "Account " + account.getNome() + " AGGIUNTO");
 				request.setAttribute("usernameAccount", account.getUsername());
+				session.setAttribute("clienteBean",account);
 				
 				request.getRequestDispatcher("/WEB-INF/Views/Cliente/regEffettuata.jsp").forward(request, response);
 				}catch(SQLException e) {
