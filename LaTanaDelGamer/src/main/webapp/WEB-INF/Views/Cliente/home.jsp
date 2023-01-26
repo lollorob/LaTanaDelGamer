@@ -37,7 +37,7 @@
 					</div>	
 			    </div> 
 		   
-			<div class="prodotti">
+			<div class="prodotti" id="prodotti">
 				  	<%
 		 	Collection<?> prodotti = (Collection<?>)session.getAttribute("listaProdotti");
 		 
@@ -57,11 +57,11 @@
 							
 					%>
 				
-				 		<div class ="prodotto">
+				 		<div class ="prodotto" id="prodotto">
 				 			
 						 		<div class="contenitoreFoto">	
-						 			<div class="copertina">
-						 				<img  class ="foto" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
+						 			<div id="copertina" class="copertina">
+						 				<img  class ="foto" id="foto" src="/LaTanaDelGamer/prodotti/immagine?id_prodotto=<%=prodotto.getId_prodotto()%>" onerror="this.src= '/LaTanaDelGamer/immagini/noimage.jpg'" title="copertina">		 
 						 			</div>
 						 			
 						 		</div>

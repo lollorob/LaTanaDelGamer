@@ -1,4 +1,3 @@
-
 jQuery.extend({
 	rand: function(val) {
             return Math.floor(val * (Math.random() % 1))+1;
@@ -16,6 +15,17 @@ var intervalId = window.setInterval(function(){
 	$("#pagina1").css('color', 'white');
   
 }, 7000);
+
+$( ".prodotto").mouseover(function(){
+    $( this ).css('width' , '250px');
+    $( this ).css('height' , '390px');
+    $( this ).css('transition' , '0.15s');
+})
+                 .mouseleave(function(){
+    $( this ).css('width' , '200px');
+    $( this ).css('height' , '340px');
+    $( this ).css('transition' , '0.15s')                
+});
 
 
 function successiva(){

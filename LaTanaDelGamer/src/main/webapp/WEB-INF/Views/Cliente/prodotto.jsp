@@ -6,9 +6,8 @@
  <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Prodotto"/>
  	<jsp:param name="style" value = "prodottoCliente.css"/>
- 	<jsp:param name="script" value = "cliente.js"/>
+ 	<jsp:param name="script" value = "recensione.js"/>
  </jsp:include>
- <script type="text/javascript" src="/LaTanaDelGamer/js/recensione.js"></script>
  </head>
 <body>
 	<% ProdottoBean prodotto = new ProdottoBean();
