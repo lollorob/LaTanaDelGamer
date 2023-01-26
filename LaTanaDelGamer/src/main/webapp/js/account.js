@@ -265,7 +265,7 @@ function checkUser(input) {
     //Se è stato inserito questo username la registrazione non può continuare
     if(check.match(/admin/i))
     {
-        alert("Username riservato! Inserire un'altro username per continuare");
+        alert("Username riservato! Inserire un altro username per continuare");
         input.value = "";
         var p = document.getElementById("errorSpace").childNodes[0];
         p.remove();
@@ -301,7 +301,7 @@ function checkUser(input) {
                 {
                     var p = document.getElementById("errorSpace").childNodes[0];
                     p.style.color = "red";
-                    p.innerText = "Utente già presente! Inserire un'altro nome";
+                    p.innerText = "Utente già presente! Inserire un altro nome";
 
                 }
                 //Altrimenti lo creo
@@ -310,7 +310,7 @@ function checkUser(input) {
                     var tag = document.createElement("p");
                     tag.style.color = "red";
                     tag.style.visibility = "block";
-                    var text = document.createTextNode("Utente già presente! Inserire un'altro nome");
+                    var text = document.createTextNode("Utente già presente! Inserire un altro nome");
                     tag.appendChild(text);
                     p_block.appendChild(tag);
                 }

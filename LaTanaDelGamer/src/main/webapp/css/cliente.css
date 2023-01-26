@@ -1,3 +1,7 @@
+:root{
+	overflow-x: hidden;
+}
+
 .pagina1{
 	
     background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo3.jpg);

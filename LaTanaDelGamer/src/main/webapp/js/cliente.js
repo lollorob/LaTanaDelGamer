@@ -1,3 +1,7 @@
+var widthDiv = $('#prodotti').width();
+var widthDivMax = widthDiv+50;
+
+
 jQuery.extend({
 	rand: function(val) {
             return Math.floor(val * (Math.random() % 1))+1;
@@ -14,18 +18,20 @@ var intervalId = window.setInterval(function(){
 	$("#pagina1").css('position', 'relative');
 	$("#pagina1").css('box-shadow', '0 0 60px 60px #000000 inset');
 	$("#pagina1").css('color', 'white');
+	
   
 }, 7000);
 
 $( ".prodotto").mouseover(function(){
-    $( this ).css('width' , '250px');
-    $( this ).css('height' , '390px');
-    $( this ).css('transition' , '0.15s');
+	$( this ).css('transition' , '0.15s');
+    $( this ).css('height' , '360px');
+
+	   
 })
                  .mouseleave(function(){
-    $( this ).css('width' , '200px');
+	$( this ).css('transition' , '0.15s')  
     $( this ).css('height' , '340px');
-    $( this ).css('transition' , '0.15s')                
+     
 });
 
 
@@ -66,10 +72,9 @@ var intervalSlider = window.setInterval(function(){
 }, 5000);
 
 
+
+
 function successiva(){
-
-
-
 
 	  if(document.getElementsByClassName("immagine-slider1")[0].style.marginLeft==0 || document.getElementsByClassName("immagine-slider1")[0].style.marginLeft=="0px") {
 		  document.getElementsByClassName("immagine-slider2")[0].style.visibility="visible";
