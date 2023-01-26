@@ -4,6 +4,7 @@ jQuery.extend({
 	}
 });
 
+
 var intervalId = window.setInterval(function(){
 	var num = $.rand(18);
 	$("#pagina1").css('background', 'linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo'+num+'.jpg)');
@@ -28,6 +29,43 @@ $( ".prodotto").mouseover(function(){
 });
 
 
+var intervalSlider = window.setInterval(function(){
+	
+	if($( '.immagine-slider1' ).css('marginLeft') == 0 || $( '.immagine-slider1' ).css('marginLeft') == "0px") {
+		
+		$(".immagine-slider2").css('visibility', 'visible');
+		$(".immagine-slider2").css('marginLeft', '0');
+		$(".immagine-slider2").css('transition', '0.35s');
+		$(".immagine-slider1").css('transition', 'none');
+		$(".immagine-slider1").css('visibility', 'hidden');
+		$(".immagine-slider1").css('marginLeft', '800px');
+		return false;
+		}
+  
+  	if($( '.immagine-slider2' ).css('marginLeft') == "0px") {
+	
+		$('.immagine-slider3').css('visibility', 'visible');
+		$('.immagine-slider3').css('marginLeft', '0');
+		$('.immagine-slider3').css('transition', '0.35s');
+		$('.immagine-slider2').css('transition', 'none');
+		$('.immagine-slider2').css('visibility', 'hidden');
+		$('.immagine-slider2').css('marginLeft', '800px');
+		return false;
+		}
+		
+    if($( '.immagine-slider3' ).css('marginLeft') == "0px") {
+	
+		$('.immagine-slider1').css('visibility', 'visible');
+		$('.immagine-slider1').css('marginLeft', '0');
+		$('.immagine-slider1').css('transition', '0.35s');
+		$('.immagine-slider3').css('transition', 'none');
+		$('.immagine-slider3').css('visibility', 'hidden');
+		$('.immagine-slider3').css('marginLeft', '800px');
+		return false;
+		}
+}, 5000);
+
+
 function successiva(){
 
 
@@ -40,7 +78,7 @@ function successiva(){
 		   document.getElementsByClassName("immagine-slider1")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider1")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider1")[0].style.marginLeft="800px";
-		 
+		  
 		  return false;
 	  }
 	  
@@ -52,6 +90,7 @@ function successiva(){
 		  document.getElementsByClassName("immagine-slider2")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider2")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider2")[0].style.marginLeft="800px";
+		  
 		  return false;  
 	  }
 	  
@@ -63,6 +102,7 @@ function successiva(){
 		  document.getElementsByClassName("immagine-slider3")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider3")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider3")[0].style.marginLeft="800px";
+		  
 		  return false;  
 	  }
 	  
@@ -78,7 +118,7 @@ function precedente(){
 		   document.getElementsByClassName("immagine-slider1")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider1")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider1")[0].style.marginLeft="800px";
-		 
+		  
 		  return false;
 	  }
 	  
@@ -90,6 +130,7 @@ function precedente(){
 		  document.getElementsByClassName("immagine-slider2")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider2")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider2")[0].style.marginLeft="800px";
+		  
 		  return false;  
 	  }
 	  
@@ -101,6 +142,7 @@ function precedente(){
 		  document.getElementsByClassName("immagine-slider3")[0].style.visibility="hidden";
 		  document.getElementsByClassName("immagine-slider3")[0].style.transition="none";
 		  document.getElementsByClassName("immagine-slider3")[0].style.marginLeft="800px";
+		  
 		  return false;  
 	  }
 	

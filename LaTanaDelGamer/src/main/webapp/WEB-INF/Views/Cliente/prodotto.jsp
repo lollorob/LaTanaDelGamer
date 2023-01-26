@@ -51,7 +51,7 @@
 					<div class="prezzo">
 						<h4><%=prodotto.getPrezzo()%> €</h4>
 					</div>
-					
+								
 					<div class="informazione">
 						<div class="quantità">Quantità disponibile: <%=prodotto.getQuantita()%></div>
 						<div class="genere">Genere: <a class="linkGen" href="/LaTanaDelGamer/it/prodottiCategoria?str=<%=prodotto.getnomeCategoria()%>"> <%=prodotto.getnomeCategoria()%></a></div>
