@@ -220,3 +220,47 @@ label {
 	width: 100%;
 	margin: auto;
 }
+
+.filtri{
+	display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.forms{
+	 text-align: center;
+}
+.dateForm{
+	width: 40%;
+    margin: auto;
+}
+
+.userForm{
+	width: 40%;
+    margin: auto;
+}
+
+ @media only screen and (max-width: 767px) { 
+
+	.filtri{
+		flex-direction: column;
+	}
+	.forms{
+		display: flex;
+	}
+
+	.dateForm {
+    width: 90%;
+    margin: auto;
+	}
+	
+	.forms input, select{
+	margin:1%;
+	}
+	
+	.userForm {
+    width: 90%;
+    margin: auto;
+	}
+}

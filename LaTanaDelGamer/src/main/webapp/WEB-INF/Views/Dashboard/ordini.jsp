@@ -44,93 +44,94 @@
 	    	session.removeAttribute("itemOrdini");
     	%>
 	    
-	    <div class="dateForm">
-	    	<form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
-	    		<input id="dateFrom" name="dateFrom" type="date" placeholder="YYYY-MM-DD" required><br>
-	    		<input id="dateTo" name="dateTo" type="date" placeholder="YYYY-MM-DD" required>
-	    		<input type="hidden" name="flagDate" id="flagDate" value="1"><br>
-	    		
-	    		<button type="submit" class="bottone" >Cerca</button>	
-	    	</form>
-	    </div>    
+	    <div class="filtri">
+		    <div class="dateForm">
+		    	<form class="forms" action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+		    		<input id="dateFrom" name="dateFrom" type="date" placeholder="YYYY-MM-DD" required><br>
+		    		<input id="dateTo" name="dateTo" type="date" placeholder="YYYY-MM-DD" required>
+		    		<input type="hidden" name="flagDate" id="flagDate" value="1"><br>
+		    		
+		    		<button type="submit" class="bottone" >Cerca</button>	
+		    	</form>
+		    </div>    
           
-         <div class="userFrom">
-         	<form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
-         		
-         		<select id="utente" name="utente">
-	    			<option value="AllUsers">Tutti gli utenti</option>
-											 <%
-					if(utenti != null && utenti.size() > 0) {
-						
-						Iterator<?> it = utenti.iterator();
-						while(it.hasNext()) {
-							AccountUserBean bean = (AccountUserBean)it.next();
-						
-				%>
-					<option value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
-						<%}
-		
-					} %>
-				</select>
-         	
-         	
-         		<input type="hidden" name="flagDate" id="flagDate" value="2"><br>
-         		<button type="submit" class="bottone" >Cerca</button>	
-         	</form>
-         </div>
-          
+	         <div class="userForm">
+	         	<form  class="forms" action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+	         		
+	         		<select id="utente" name="utente">
+		    			<option value="AllUsers">Tutti gli utenti</option>
+												 <%
+						if(utenti != null && utenti.size() > 0) {
+							
+							Iterator<?> it = utenti.iterator();
+							while(it.hasNext()) {
+								AccountUserBean bean = (AccountUserBean)it.next();
+							
+					%>
+						<option value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
+							<%}
+			
+						} %>
+					</select>
+	         	
+	         	
+	         		<input type="hidden" name="flagDate" id="flagDate" value="2"><br>
+	         		<button type="submit" class="bottone" >Cerca</button>	
+	         	</form>
+	         </div>
+          </div>
 	<%
 		if(ordine != null) {  
 	%>
 		<div id="tabella"> 
 	    	<table> 
-	        <thead> 
-		       <tr> 
-			        <th>Id Ordine</th>
-			        <th>Data Ordine</th>
-			        <th>Username</th>
-			        <th>Email Spedizione</th>
-			        <th>Importo</th>
-			        <th>Tipo di Pagamento</th>
-			        <th>Metodo di Pagamento</th>
-			        <th>Prodotti Acquistati</th>
-			        <th>Azioni</th>
-		        </tr>
-	        </thead> 
-	       <tbody> 
-	          <tr> 
-	             <td data-title="Id Ordine"><%=ordine.getId_ordine() %></td> 
-	             <td data-title="Data Ordine"><%=ordine.getData_ordine() %></td>
-	             <td data-title="Username"><%=ordine.getUsername() %></td>
-	             <td data-title="Email Spedizione"><%=ordine.getEmail_spedizione() %></td>
-	             <td data-title="Importo"><%=ordine.getImporto() %></td>
-	             <td data-title="Tipo di Pagamento"><%=ordine.getTipo_pagamento() %></td>
-	             <% String cifreTotali = ordine.getMetodo_pagamento(); 
-	             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
-	             <td data-title="Metodo di Pagamento"><%=metodo %></td>
-	             <td data-title="Prodotti Acquistati"><%  
-	           
-	     		if(itemOrdini != null && itemOrdini.size() > 0) {
-	     			
-	     			Iterator<?> it = itemOrdini.iterator();
-	     			while(it.hasNext()) {
-	     				ItemOrdineBean bean = (ItemOrdineBean)it.next();
-	     			
-	     		%><p>
-	            <%= bean.getNome() %> </p> 
-	            <% } } %></td>
-				 <td><form method="POST" action="/LaTanaDelGamer/ordini/elimina">
-	             		<button type="submit" name="id" class="bottone1" value="<%=ordine.getId_ordine()%>">Elimina</button>
-	             	 </form>
-	     			  <form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
-						<button class="bottone1">Annulla</button>    
-					 </form>        	
-	             </td>
-	          </tr>
-	       </tbody>
-	    </table> 
- </div>	
-			<%  }
+		        <thead> 
+			       <tr> 
+				        <th>Id Ordine</th>
+				        <th>Data Ordine</th>
+				        <th>Username</th>
+				        <th>Email Spedizione</th>
+				        <th>Importo</th>
+				        <th>Tipo di Pagamento</th>
+				        <th>Metodo di Pagamento</th>
+				        <th>Prodotti Acquistati</th>
+				        <th>Azioni</th>
+			        </tr>
+		        </thead> 
+		     	<tbody> 
+		     		 <tr> 
+			             <td data-title="Id Ordine"><%=ordine.getId_ordine() %></td> 
+			             <td data-title="Data Ordine"><%=ordine.getData_ordine() %></td>
+			             <td data-title="Username"><%=ordine.getUsername() %></td>
+			             <td data-title="Email Spedizione"><%=ordine.getEmail_spedizione() %></td>
+			             <td data-title="Importo"><%=ordine.getImporto() %></td>
+			             <td data-title="Tipo di Pagamento"><%=ordine.getTipo_pagamento() %></td>
+			             <% String cifreTotali = ordine.getMetodo_pagamento(); 
+			             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
+			             <td data-title="Metodo di Pagamento"><%=metodo %></td>
+			             <td data-title="Prodotti Acquistati"><%  
+			           
+			     		if(itemOrdini != null && itemOrdini.size() > 0) {
+			     			
+			     			Iterator<?> it = itemOrdini.iterator();
+			     			while(it.hasNext()) {
+			     				ItemOrdineBean bean = (ItemOrdineBean)it.next();%>
+			            		<p><%= bean.getNome() %> </p> 
+			            <% } 
+			     		} %>
+			     		</td>
+						 <td><form method="POST" action="/LaTanaDelGamer/ordini/elimina">
+			             		<button type="submit" name="id" class="bottone1" value="<%=ordine.getId_ordine()%>">Elimina</button>
+			             	 </form>
+			     			  <form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+								<button class="bottone1">Annulla</button>    
+							 </form>        	
+			             </td>
+		            </tr>
+		      	</tbody>
+	    	</table> 
+ 		</div>	
+			<%}
 	
 			if(ordini != null && ordini.size() > 0) {%>
       
@@ -174,6 +175,6 @@
 		 <%} %>
 	     	
 
-</div>
+	</div>
 </body>
 </html>
