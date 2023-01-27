@@ -6,7 +6,7 @@
  <jsp:include page="/WEB-INF/Views/PagineComuni/head.jsp"> 
  	<jsp:param name="title" value ="Carrello"/>
  	<jsp:param name="style" value = "carrello.css"/>
- 	<jsp:param name="script" value = "cliente.js"/>
+ 	<jsp:param name="script" value = ""/>
  </jsp:include>
  </head>
 <body>
