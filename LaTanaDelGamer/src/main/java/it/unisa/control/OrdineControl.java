@@ -70,15 +70,8 @@ public class OrdineControl extends HttpServlet {
 			
 		}
 		break;
+	
 		
-		case "/aggiorna":
-		{
-			
-			
-			
-			
-		}
-		break;
 		
 		case "/dettagli":
 		{

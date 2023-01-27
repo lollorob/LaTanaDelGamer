@@ -150,16 +150,42 @@ public class DashboardControl extends HttpServlet {
 		case "/ordini":
 		{
 			OrdineModelDS ordDS = new OrdineModelDS(ds);
-			Collection<OrdineBean> ordine;
+			AccountUserModelDS modDS = new AccountUserModelDS(ds);
 			try {
+				Collection<AccountUserBean> utenti = modDS.doRetrieveAll("");
+				session.setAttribute("utentiOrdini", utenti);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			Collection<OrdineBean> ordine;
+			int flag=0;		//flag per filtrare date e username
+			if(request.getParameter("flagDate")!=null)
+				flag= Integer.parseInt(request.getParameter("flagDate"));
+			try {
+				if(flag == 1) { //filtro per Data
+					ordine = ordDS.doRetrieveOrdiniByTwoDates(request.getParameter("dateFrom"), request.getParameter("dateTo"));
+					session.setAttribute("listaOrdini",ordine);
+				}else if(flag==2) { //filtro per nomeUtente
+					if(request.getParameter("utente").equalsIgnoreCase("AllUsers")) { // tutti gli utenti
+						ordine = ordDS.doRetrieveAll("");
+						session.setAttribute("listaOrdini",ordine);
+					} else { //utente specifico
+					ordine = ordDS.doRetrieveOrdiniByUsername1(request.getParameter("utente"));
+					session.setAttribute("listaOrdini",ordine);
+					}
+				}
+				else { //stampa tutto senza filtrare
 				ordine = ordDS.doRetrieveAll("");
 				session.setAttribute("listaOrdini",ordine);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			request.getRequestDispatcher("/WEB-INF/Views/Dashboard/ordini.jsp").forward(request, response);
 		}
 		break;
+		
+		
 			
 		case "/account":
 		{

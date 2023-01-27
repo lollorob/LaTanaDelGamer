@@ -15,7 +15,8 @@
  
   <%
  	Collection<?> ordini = (Collection<?>)session.getAttribute("listaOrdini");
- 
+  	Collection<?> utenti = (Collection<?>)session.getAttribute("utentiOrdini");
+  
  	if(ordini == null) {
  		System.out.println("Collection ORDINI NULL");
  		return;
@@ -42,8 +43,41 @@
 	    	session.removeAttribute("ordini");
 	    	session.removeAttribute("itemOrdini");
     	%>
-	          
+	    
+	    <div class="dateForm">
+	    	<form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+	    		<input id="dateFrom" name="dateFrom" type="date" placeholder="YYYY-MM-DD" required><br>
+	    		<input id="dateTo" name="dateTo" type="date" placeholder="YYYY-MM-DD" required>
+	    		<input type="hidden" name="flagDate" id="flagDate" value="1"><br>
+	    		
+	    		<button type="submit" class="bottone" >Cerca</button>	
+	    	</form>
+	    </div>    
           
+         <div class="userFrom">
+         	<form action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+         		
+         		<select id="utente" name="utente">
+	    			<option value="AllUsers">Tutti gli utenti</option>
+											 <%
+					if(utenti != null && utenti.size() > 0) {
+						
+						Iterator<?> it = utenti.iterator();
+						while(it.hasNext()) {
+							AccountUserBean bean = (AccountUserBean)it.next();
+						
+				%>
+					<option value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
+						<%}
+		
+					} %>
+				</select>
+         	
+         	
+         		<input type="hidden" name="flagDate" id="flagDate" value="2"><br>
+         		<button type="submit" class="bottone" >Cerca</button>	
+         	</form>
+         </div>
           
 	<%
 		if(ordine != null) {  
@@ -96,7 +130,9 @@
 	       </tbody>
 	    </table> 
  </div>	
-			<%  } %>
+			<%  }
+	
+			if(ordini != null && ordini.size() > 0) {%>
       
        	
 	 	<div id="tabella"> 
@@ -130,13 +166,13 @@
              	</td>
 
       <% }
-		} else { %>
-			<td colspan="15">Non ci sono Ordini</td>
-	<% } %>
-	     </tr>
+		}%></tr>
 	    </table>
 	    	
-       	</div>	
+       	</div>
+     <%}else{%><p class="noOrdini">Non ci sono ordini</p>
+		 <%} %>
+	     	
 
 </div>
 </body>
