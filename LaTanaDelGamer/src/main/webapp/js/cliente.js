@@ -18,6 +18,8 @@ var intervalId = window.setInterval(function(){
 	$("#pagina1").css('position', 'relative');
 	$("#pagina1").css('box-shadow', '0 0 60px 60px #000000 inset');
 	$("#pagina1").css('color', 'white');
+	$("#pagina1").css('background-repeat', 'no-repeat');
+	$("#pagina1").css('background-size', 'cover');
 	
   
 }, 7000);

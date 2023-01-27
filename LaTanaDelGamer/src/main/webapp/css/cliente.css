@@ -12,8 +12,27 @@
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
     color:white;
+    background-repeat: no-repeat;
+    background-size: cover;
 
 
+}
+
+.freccia {
+	width: 20%;
+	height: 40%;
+}
+.boxText{
+    text-align: center;
+    margin: 90px;
+    width: 23%;
+    border-top-left-radius: 15px;
+    background: var(--blu);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 5px solid white;
 }
 
 

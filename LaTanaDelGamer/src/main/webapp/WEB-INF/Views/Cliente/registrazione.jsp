@@ -73,8 +73,7 @@
 		<div class="control">
 			<label for="provincia">Provincia</label>
 			<input type="text" name="provincia" id="provincia" placeholder="Es. Napoli">
-			</div>
-			
+			</div>		
 		<div class="control">
 			<input type="submit" value="Registrati" onClick="return valida()">
 		</div>

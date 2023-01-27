@@ -116,9 +116,12 @@ public class ClienteControl extends HttpServlet {
 			case "/home":
 				ProdottoModelDS proDS = new ProdottoModelDS(ds);
 					try {
-						Collection<ProdottoBean> prodotto;
-						prodotto = proDS.doRetrieveAll("");
-						session.setAttribute("listaProdotti",prodotto);
+						Collection<ProdottoBean> prodottiForDate;
+						Collection<ProdottoBean> prodottiCheaper;
+						prodottiForDate = proDS.doRetrieveLastRelease();
+						prodottiCheaper = proDS.doRetrieveCheaper();
+						session.setAttribute("prodottiForDate",prodottiForDate);
+						session.setAttribute("prodottiCheaper",prodottiCheaper);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
