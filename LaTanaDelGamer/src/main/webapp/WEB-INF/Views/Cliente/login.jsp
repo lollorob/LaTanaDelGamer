@@ -39,7 +39,7 @@
 	<div class="link">
 		<a href="<%=request.getAttribute("context")%>/it/registrati">Registrati</a>
 		</div>
-							<% if(session.getAttribute("failedlog") != null){
+							 <% if(session.getAttribute("failedlog") != null){
 		    boolean failedlog = (Boolean) session.getAttribute("failedlog");
 		    if( failedlog == true) {%>
 			<div>
