@@ -14,14 +14,17 @@ var intervalId = window.setInterval(function(){
 	$("#pagina1").css('background', 'linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.8)), url(/LaTanaDelGamer/immagini/sfondo'+num+'.jpg)');
 	$("#pagina1").css('width', '100%');
 	$("#pagina1").css('height', '100%');
-	$("#pagina1").css('background-position', 'center center');
 	$("#pagina1").css('position', 'relative');
 	$("#pagina1").css('box-shadow', '0 0 60px 60px #000000 inset');
 	$("#pagina1").css('color', 'white');
-	$("#pagina1").css('background-repeat', 'no-repeat');
-	$("#pagina1").css('background-size', 'cover');
+	$("#pagina1").css('background-position', 'center center'); 
+	if($("body").width()>850){ //se stiamo su pc non voglio che il background si ripeta
+	$("#pagina1").css('background-size', 'cover');  
 	
-  
+	} else{
+		$("#pagina1").css('background-size', 'unset'); 
+		 
+	}
 }, 7000);
 
 $( ".prodotto").mouseover(function(){

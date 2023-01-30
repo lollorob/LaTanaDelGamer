@@ -75,7 +75,7 @@
 			<input type="text" name="provincia" id="provincia" placeholder="Es. Napoli">
 			</div>		
 		<div class="control">
-			<input type="submit" value="Registrati" onClick="return valida()">
+			<input type="submit" value="Registrati" onClick="return valida3()">
 		</div>
 		<div class="link">
 			<a href="<%=request.getAttribute("context")%>/it/home">Annulla</a>

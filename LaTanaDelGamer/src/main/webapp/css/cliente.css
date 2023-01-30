@@ -12,27 +12,35 @@
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
     color:white;
-    background-repeat: no-repeat;
     background-size: cover;
-
-
 }
 
-.freccia {
-	width: 20%;
-	height: 40%;
+@media only screen and (max-width: 850px) {
+	.pagina1{
+	 background-size: unset;
+	}
 }
+
+.lastRelease{
+	box-shadow: 1px 1px 100px #000;
+	margin-top: 60px;
+}
+
 .boxText{
-    text-align: center;
-    margin: 90px;
-    width: 23%;
-    border-top-left-radius: 15px;
-    background: var(--blu);
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
-    border: 5px solid white;
+    margin-left: 8%;
+	width: fit-content;
+	padding: 5px;
+	font-weight: bold;
+}
+
+.titoloBox{
+	margin-bottom:0;
+	
+}
+
+.descrizioneBox{
+	margin-top:0;
+	color:gray;
 }
 
 
@@ -134,24 +142,37 @@
 
 .prodotti{
   	display: flex;
-    width: 80%;
-    flex-wrap: wrap;
-    margin-left: 50px;
-    margin: auto;
-    margin-top: 50px;
+width: 80%;
+flex-wrap: wrap;
+margin-left: 50px;
+margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+margin-top: 10px;
+margin-bottom: 50px;
   
 }
 
 .prodotto{
 	border: 5px solid white;
-    border-radius: 20px;
-    text-align: center;
-    width: 200px;
-    height: 340px;
-    margin: auto;
-    margin-bottom:20px;
+	border-radius: 20px;
+	text-align: center;
+	width: 200px;
+	height: 340px;
+	margin: auto;
+	margin-bottom: 20px;
+	margin-left:15px;
 	
 }
+
+@media screen and (max-width: 571px) {
+  .prodotto {
+    margin :auto;
+    margin-bottom:10px;
+  }
+}
+
+
 
 .contenitoreFoto{
 	height:75%;
@@ -222,4 +243,26 @@
     border: 2px solid black;
 	font-size : 0.88em;
 	transition : 0.2s;
+}
+
+.moreProducts{
+	text-align: center;
+    width: fit-content;
+    margin: auto;
+    border: 2px solid var(--primary);
+    color: white;
+    transition: 0.2s;
+    text-decoration: none;
+    padding: 7px 36px;
+}
+
+.moreProducts:hover{
+	border : 2px solid white;
+	color:var(--blu);
+	transition:0.2s;
+}
+
+.sfogliaTutto{
+	text-decoration: none;
+    color: white;
 }

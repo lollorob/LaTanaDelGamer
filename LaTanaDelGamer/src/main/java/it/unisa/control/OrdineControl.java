@@ -75,6 +75,8 @@ public class OrdineControl extends HttpServlet {
 		
 		case "/dettagli":
 		{
+			
+			
 			OrdineModelDS model = new OrdineModelDS(ds);
 			try {
 				String id_ordine = request.getParameter("id");

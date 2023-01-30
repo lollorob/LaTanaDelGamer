@@ -61,7 +61,8 @@
 						<label for="e_mail">E-Mail</label>
 					</div>
 				<div class="area">
-					<input id="e_mail" name="e_mail" type="text" placeholder="Inserisci E-Mail"><br>
+					<input id="e_mail" name="e_mail" type="text" placeholder="Inserisci E-Mail" oninput="checkEmail(this)"><br>
+					<div id="errorSpace1"></div>
 				</div>			
 			</div>
 			

@@ -79,17 +79,37 @@ public class ClienteControl extends HttpServlet {
 			case "/prodottiCategoria" : {
 				String str = request.getParameter("str");
 				CategoriaModelDS modelCategoria= new CategoriaModelDS(ds);
+				Collection<?> listaCategorie;
+				try {
+					listaCategorie = modelCategoria.doRetrieveAll("");
+					request.setAttribute("listaCategorie",listaCategorie);
+					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				
 				CategoriaBean categoria=null;
 				
 				ProdottoModelDS prodotto = new ProdottoModelDS(ds);
 				Collection<?> prodotti;
+				
 				try {
-					categoria=modelCategoria.doRetrieveByKey(str);
-					if(str.equals("MostraTutto"))  {
-						prodotti = prodotto.doRetrieveAll("");
-						categoria=null;
+					String order="";
+					if(request.getParameter("order")!=null)
+						order=request.getParameter("order");
+					String ordinatiPer="id_prodotto ";
+					if(request.getParameter("filtro")!=null && !request.getParameter("filtro").equals("false"))
+						ordinatiPer=request.getParameter("filtro");
+					
+					
+					
+					if(str==null || str.equals("MostraTutto") || str.equals("empty"))  { //se non è stata selezionata una categoria
+						prodotti = prodotto.doRetrieveAll(ordinatiPer +" "+ order);
 					}else {
-						 prodotti = prodotto.doRetrieveProdottiByCategoria(str);
+						
+						 categoria=modelCategoria.doRetrieveByKey(str);
+						 prodotti = prodotto.doRetrieveProdottiByCategoria(str,ordinatiPer +" "+ order);
 					}
 					
 					

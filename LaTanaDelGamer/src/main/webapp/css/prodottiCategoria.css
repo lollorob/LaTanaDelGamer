@@ -8,8 +8,13 @@
     background-position: center center;
     position: relative;
     box-shadow: 0 0 60px 60px #000000 inset;
-    
-	min-height: 699px;
+    min-height: 728px;
+}
+
+@media only screen and (max-width: 850px) {
+	.pagina1{
+	 background-size: unset;
+	}
 }
 
 .descrizioneCategoria{
@@ -113,4 +118,73 @@
     border: 2px solid black;
 	font-size : 0.88em;
 	transition : 0.2s;
+}
+
+.noProd{
+	color:white;
+	text-align:center;
+	width:fit-content;
+	margin:auto;
+}
+
+.filtro{
+	border: 2px solid var(--blu);
+    padding: 0 18px;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    margin: auto;
+    margin-top: 11px;
+}
+
+.formFiltro{
+	display:flex;
+	flex-direction: unset;
+	    justify-content: space-around;
+}
+
+@media screen and (max-width: 904px) {
+	.filtro{
+    width:60%;
+	}
+	
+	.formFiltro{
+		width:100%;
+	}
+}
+
+@media screen and (max-width: 700px){
+	.filtro{
+	width:fit-content;
+	}	
+	
+	.formFiltro{
+	align-items: center;
+	    flex-direction: column;
+	}
+}
+
+.bottoneFiltra{
+	background-color: var(--blu);
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 2px 20px;
+    margin: auto 0px;
+	transition:0.2s;
+}
+
+.bottoneFiltra:hover{
+	border:2px solid black;
+	color:black;
+	transition:0.2s;	
+}
+.valore{
+	margin:10px;
+}
+.filtro select{
+	border-radius: 10px;
+    padding: 0 7px;
+    border: 3px solid var(--blu);
 }

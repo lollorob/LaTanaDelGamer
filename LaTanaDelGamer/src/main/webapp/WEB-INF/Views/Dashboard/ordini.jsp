@@ -42,23 +42,28 @@
 		Collection<?> itemOrdini = (Collection<?>)session.getAttribute("itemOrdini");
 	    	session.removeAttribute("ordini");
 	    	session.removeAttribute("itemOrdini");
+	    
+	    String dateInizio="", dateFine="", usernameSelected="";
+	    if(session.getAttribute("dateInizio")!=null){
+	    	dateInizio=(String) session.getAttribute("dateInizio");
+	    	
+	    }
+	    if(session.getAttribute("dateFine")!=null){
+	    	dateFine=(String) session.getAttribute("dateFine");
+	    	
+	    }
+	    if(session.getAttribute("userSelected")!=null){
+	    	usernameSelected=(String) session.getAttribute("userSelected");
+	    	
+	    }
     	%>
 	    
-	    <div class="filtri">
-		    <div class="dateForm">
+	    
+		    <div class="filtri">
 		    	<form class="forms" action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
-		    		<input id="dateFrom" name="dateFrom" type="date" placeholder="YYYY-MM-DD" required><br>
-		    		<input id="dateTo" name="dateTo" type="date" placeholder="YYYY-MM-DD" required>
-		    		<input type="hidden" name="flagDate" id="flagDate" value="1"><br>
-		    		
-		    		<button type="submit" class="bottone" >Cerca</button>	
-		    	</form>
-		    </div>    
-          
-	         <div class="userForm">
-	         	<form  class="forms" action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
-	         		
-	         		<select id="utente" name="utente">
+		    		<input id="dateFrom" name="dateFrom" type="date" placeholder="YYYY-MM-DD" value="<%=dateInizio%>"><br>
+		    		<input id="dateTo" name="dateTo" type="date" placeholder="YYYY-MM-DD" value="<%=dateFine%>" >
+		    		<select id="utente" name="utente">
 		    			<option value="AllUsers">Tutti gli utenti</option>
 												 <%
 						if(utenti != null && utenti.size() > 0) {
@@ -66,20 +71,28 @@
 							Iterator<?> it = utenti.iterator();
 							while(it.hasNext()) {
 								AccountUserBean bean = (AccountUserBean)it.next();
+								if(usernameSelected.equalsIgnoreCase(bean.getUsername())){
+									%> <option selected value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
+							<%} else{ %>
+									<option value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
+								<%} 	
+							}
 							
-					%>
-						<option value="<%= bean.getUsername() %>"><%=bean.getUsername()%></option>
-							<%}
-			
-						} %>
+						%>	
+					<%} %>
+					
 					</select>
-	         	
-	         	
-	         		<input type="hidden" name="flagDate" id="flagDate" value="2"><br>
-	         		<button type="submit" class="bottone" >Cerca</button>	
-	         	</form>
-	         </div>
-          </div>
+		    		<input type="hidden" name="flagDate" id="flagDate" value="1">
+		    		<button type="submit" class="bottone" >Cerca</button>	
+		    	</form>
+		    	
+		    	<form class="formReset" action="/LaTanaDelGamer/Dashboard/ordini" method="POST">
+		    		<input type="hidden" name="flagReset"  value="1">
+		    		<button type="submit" class="bottoneReset" >Reset</button>	
+		    	</form>
+		    </div>
+		  
+          
 	<%
 		if(ordine != null) {  
 	%>
@@ -107,7 +120,7 @@
 			             <td data-title="Importo"><%=ordine.getImporto() %></td>
 			             <td data-title="Tipo di Pagamento"><%=ordine.getTipo_pagamento() %></td>
 			             <% String cifreTotali = ordine.getMetodo_pagamento(); 
-			             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
+			             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-4, cifreTotali.length()); %>
 			             <td data-title="Metodo di Pagamento"><%=metodo %></td>
 			             <td data-title="Prodotti Acquistati"><%  
 			           

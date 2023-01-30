@@ -20,6 +20,11 @@
  		System.out.println("Collection ACCOUNTS NULL");
  		return;
  	}
+ 	
+		int errore=0;	
+ 	if(request.getAttribute("error")!=null){
+ 		errore=(int) request.getAttribute("error");
+ 	}
  %>
 
 	 <script type="text/javascript" src="/LaTanaDelGamer/js/account.js"></script>
@@ -94,8 +99,9 @@
 					</div>
 				<div class="area">
 					<input id="e_mail" name="e_mail" type="text" placeholder="Inserisci E-Mail" value="<%=account1.geteMail()%>"><br>
+				</div>
 				</div>			
-			</div>
+			
 			
 				<div class="riga">
 					<div class="nome">

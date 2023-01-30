@@ -14,7 +14,7 @@
 	}%> 
 
    <%
- 	Collection<?>  categorie = (Collection<?>)session.getAttribute("listaCategorie");
+ 	Collection<?>  categorie = (Collection<?>)request.getAttribute("listaCategorie");
  
  	if(categorie == null) {
  		System.out.println("Categorie non caricate - prodotto.jsp");
@@ -77,7 +77,7 @@
 							<label for="descrizione">Data Di Uscita</label>
 						</div>
 						<div class="area">
-							<input type="date" name="datadiuscita" id="datadiuscita"><br>
+							<input type="date" required name="datadiuscita" id="datadiuscita"><br>
 						</div>
 					</div>
 					
@@ -104,7 +104,7 @@
 							<label for="copertina">Copertina</label>
 						</div>
 						<div class="area">
-							<input id="copertina" name="copertina" type="file" placeholder="Copertina"><br>
+							<input id="copertina" required name="copertina" type="file"  accept="image/jpeg, image/png, image/jpg" placeholder="Copertina" ><br>
 						</div>
 					</div>
 

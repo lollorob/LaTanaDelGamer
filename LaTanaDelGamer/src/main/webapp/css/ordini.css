@@ -222,38 +222,39 @@ label {
 }
 
 .filtri{
-	display: flex;
-    width: 100%;
-    flex-direction: row;
-    margin-top: 20px;
+	width: 50%;
+    margin: auto;
+    margin-top: 22px;
 }
 
 .forms{
 	 text-align: center;
 }
-.dateForm{
-	width: 40%;
-    margin: auto;
+
+.formReset{
+	text-align:center;
+	margin:auto;
 }
 
-.userForm{
-	width: 40%;
-    margin: auto;
+.bottoneReset{
+	background-color:transparent;
+	margin-top:0px;
+	margin-bottom:15px;
+	border:2 px solid var(--blu);
+	border-radius:10px;
+	width:fit-content;
+	padding: 0 13px;
+	cursor:pointer;
 }
 
- @media only screen and (max-width: 767px) { 
+
+
+ @media only screen and (max-width: 670px) { 
 
 	.filtri{
-		flex-direction: column;
+		width:90%;
 	}
-	.forms{
-		display: flex;
-	}
-
-	.dateForm {
-    width: 90%;
-    margin: auto;
-	}
+	
 	
 	.forms input, select{
 	margin:1%;

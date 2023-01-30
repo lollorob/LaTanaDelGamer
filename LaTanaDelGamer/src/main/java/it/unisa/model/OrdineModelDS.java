@@ -87,7 +87,7 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
 			
-			Utility.print("doRetriveAll: " + preparedStatement.toString());
+			Utility.print("doRetrieveAll: " + preparedStatement.toString());
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -394,6 +394,46 @@ public class OrdineModelDS implements EntityModel<OrdineBean> {
 		PreparedStatement preparedStatement = null;
 		
 		String selectSQL = "select * FROM ordine o WHERE o.data_ordine BETWEEN '"+dateFrom+"' AND '"+dateTo+"'";
+		
+		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			Utility.print("doRetrieveOrdiniByTwoDates: " + preparedStatement.toString());
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+					OrdineBean ordine = new OrdineBean();
+					ordine.setId_ordine(rs.getInt("id_ordine"));	
+					ordine.setData_ordine(rs.getDate("data_ordine").toLocalDate());
+					ordine.setUsername(rs.getString("username") );
+					ordine.setEmail_spedizione(rs.getString("email_spedizione"));
+					ordine.setImporto(rs.getFloat("importo"));
+					ordine.setTipo_pagamento(rs.getString("tipo_pagamento"));
+					ordine.setMetodo_pagamento(rs.getString("metodo_pagamento"));
+					ordini.add(ordine);
+					
+				}
+			}
+			finally {
+			try {
+			if(preparedStatement != null)
+				preparedStatement.close();
+			}finally {
+			if(connection != null)
+				connection.close();
+			}
+		  }
+		return ordini;
+	}
+	
+	
+	public Collection<OrdineBean> doRetrieveOrdiniByTwoDatesAndUser(String dateFrom, String dateTo,String user) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String selectSQL = "select * FROM ordine o WHERE o.username='"+user+"' AND o.data_ordine BETWEEN '"+dateFrom+"' AND '"+dateTo+"'";
 		
 		Collection<OrdineBean> ordini = new LinkedList<OrdineBean>();
 		try {

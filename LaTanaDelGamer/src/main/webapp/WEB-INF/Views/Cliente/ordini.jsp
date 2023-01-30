@@ -64,7 +64,7 @@
 	             <td data-title="Importo"><%=ordineSingolo.getImporto() %>€</td>
 	             <td data-title="Tipo di Pagamento"><%=ordineSingolo.getTipo_pagamento() %></td>
 	             <% String cifreTotali = ordineSingolo.getMetodo_pagamento(); 
-	             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-5, cifreTotali.length()); %>
+	             String metodo  = "**** **** **** **** "+cifreTotali.substring(cifreTotali.length()-4, cifreTotali.length()); %>
 	             <td data-title="Metodo di Pagamento"><%=metodo %></td>
 	             <td data-title="Prodotti Acquistati"><%  
 	           

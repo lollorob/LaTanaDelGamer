@@ -120,8 +120,24 @@ public class DashboardControl extends HttpServlet {
 		{
 			ProdottoModelDS proDS = new ProdottoModelDS(ds);
 			CategoriaModelDS catDS = new CategoriaModelDS(ds);
+			String order="ASC";
+			String filtro="id_prodotto";
+			
+			
+			
+			if(request.getParameter("order")!=null) {
+				order=request.getParameter("order");
+				session.setAttribute("order",order);
+			}
+	
+			if(request.getParameter("filtro")!=null) {
+				filtro=request.getParameter("filtro");
+				session.setAttribute("filtro",filtro);
+			}
+			
+			
 			try {
-				Collection<ProdottoBean> prodotto = proDS.doRetrieveAll("");
+				Collection<ProdottoBean> prodotto = proDS.doRetrieveAll(filtro +" "+ order);
 				session.setAttribute("listaProdotti",prodotto);
 				
 				Collection<CategoriaBean> categoria = catDS.doRetrieveAll("");
@@ -149,38 +165,66 @@ public class DashboardControl extends HttpServlet {
 			
 		case "/ordini":
 		{
+			
+			if(request.getParameter("flagReset")!=null) {  //se l'utente ha cliccato reset elimino i parametri di sessione
+				session.removeAttribute("dateInizio");
+				session.removeAttribute("dateFine");
+				session.removeAttribute("userSelected");
+			}
+			
 			OrdineModelDS ordDS = new OrdineModelDS(ds);
 			AccountUserModelDS modDS = new AccountUserModelDS(ds);
-			try {
-				Collection<AccountUserBean> utenti = modDS.doRetrieveAll("");
-				session.setAttribute("utentiOrdini", utenti);
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+			Collection<OrdineBean> ordine=null;
+		try {
+			Collection<AccountUserBean> utenti = modDS.doRetrieveAll("");  //mando alla select del form
+			session.setAttribute("utentiOrdini", utenti);                  //tutti gli username
+			 
+			
+			
+			String dateFrom="2000-01-01";
+			if(session.getAttribute("dateInizio")!=null){					//se c'è già un parametro di inizio data in sessione
+		    	dateFrom=(String) session.getAttribute("dateInizio");		//lo sovrascrivo
+		    }
+			
+			String dateTo="2999-12-31";
+			if(session.getAttribute("dateFine")!=null){						//se c'è già un parametro di fine data in sessione
+		    	dateTo=(String) session.getAttribute("dateFine");  			//lo sovrascrivo
+		    }
+			String username="";
+			if(session.getAttribute("userSelected")!=null){					//se già presente username lo sovrascrivo in sessione
+		    	username=(String) session.getAttribute("userSelected");
+		    }
+			
+			
+				//flag per filtrare date e username
+			if(request.getParameter("dateFrom")!=null && request.getParameter("dateFrom").length()!=0 ) {
+				dateFrom=request.getParameter("dateFrom"); //salvo dateFrom se è stato inserito
+				session.setAttribute("dateInizio", dateFrom);
 			}
-			Collection<OrdineBean> ordine;
-			int flag=0;		//flag per filtrare date e username
-			if(request.getParameter("flagDate")!=null)
-				flag= Integer.parseInt(request.getParameter("flagDate"));
-			try {
-				if(flag == 1) { //filtro per Data
-					ordine = ordDS.doRetrieveOrdiniByTwoDates(request.getParameter("dateFrom"), request.getParameter("dateTo"));
-					session.setAttribute("listaOrdini",ordine);
-				}else if(flag==2) { //filtro per nomeUtente
-					if(request.getParameter("utente").equalsIgnoreCase("AllUsers")) { // tutti gli utenti
-						ordine = ordDS.doRetrieveAll("");
-						session.setAttribute("listaOrdini",ordine);
-					} else { //utente specifico
-					ordine = ordDS.doRetrieveOrdiniByUsername1(request.getParameter("utente"));
-					session.setAttribute("listaOrdini",ordine);
-					}
-				}
-				else { //stampa tutto senza filtrare
-				ordine = ordDS.doRetrieveAll("");
-				session.setAttribute("listaOrdini",ordine);
-				}
-			} catch (SQLException e) {
+			if(request.getParameter("dateTo")!=null && request.getParameter("dateTo").length()!=0) {	
+				dateTo=request.getParameter("dateTo");  //salvo dateTo se è stato inserito
+				session.setAttribute("dateFine",  dateTo );
+			}
+			
+			if(request.getParameter("utente")!=null) {
+				username=request.getParameter("utente");	//salvo l'username selezionato
+				session.setAttribute("userSelected",  username );
+			}	
+				
+			if(username.equalsIgnoreCase("AllUsers") || username.length()==0) 
+						ordine = ordDS.doRetrieveOrdiniByTwoDates(dateFrom, dateTo);  //se non è stato selezionato nessun utente
+																					//mostro gli ordini di tutti in base alle date 
+			else                                                                      
+				ordine = ordDS.doRetrieveOrdiniByTwoDatesAndUser(dateFrom, dateTo, username);  // altrimentifiltro il tutto o con i parametri salvati in}
+			}catch (SQLException e) {														//sessione o con quelli appena inviati dal form
+				
 				e.printStackTrace();
 			}
+				
+			session.setAttribute("listaOrdini",ordine);
+			
+			
+				
 			request.getRequestDispatcher("/WEB-INF/Views/Dashboard/ordini.jsp").forward(request, response);
 		}
 		break;

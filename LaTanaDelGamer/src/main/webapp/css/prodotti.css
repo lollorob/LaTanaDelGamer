@@ -23,7 +23,7 @@
   
  /* Media Query per il No More Tables */ 
   
- @media only screen and (max-width: 767px) { 
+ @media only screen and (max-width: 840px) { 
      /* Forza la tabella a non comportarsi come una normale tabella */ 
   
  	#tabella table,  
@@ -132,7 +132,7 @@ label {
 
 
 @media screen and (max-width: 767px) {
-  .Form, .nome, .area, input[type=submit] {
+  .Form, .nome, .area{
    	min-width:0;
     width: 100%;
     margin-top: 0;
@@ -145,12 +145,27 @@ label {
     font-size: 18px;
     color: white;
     width:100%;
-    padding: 8px 15px;
-    
+    padding: 8px 15px;    
+    cursor: pointer;
+    margin-top: 10px;	
+}
+
+
+
+.bottoneFiltra{
+	border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    padding: 8px 15px;    
     cursor: pointer;
     margin-top: 10px;
-	
+	width:50%;
+	margin-bottom: 10px;
+	transition: .3s;
 }
+
 .bottone:hover{
 	border-color:#2691d9;
 	transition: .5s;
@@ -186,6 +201,7 @@ label {
 	background: #2691d9;
 	color:white;
 	line-height:20px;
+	padding: 5px 13px;
 	
 	
 }
@@ -195,7 +211,45 @@ label {
 	transition: .5s;
 }
 .selezione{
-	width:100%;
+	width:50%;
+	margin:auto;
 	padding: 12px 20px;
 }
+
+.divFormFiltri{
+	width:50%;
+	margin:auto;
+}
+
+.formFiltro{
+	width:70%;
+	margin:auto;
+}
  
+ .filtri{
+ 	width:100%;
+ 	text-align: center;
+ 	margin:auto;
+ 	display:flex;
+ 	margin-top:10px;
+ }
+ 
+ @media only screen and (max-width: 567px) { 
+ 	.filtri{
+ 		flex-direction: column;
+ 	}
+ 	
+ }
+ 
+  @media only screen and (max-width: 460px) { 
+ 	
+ 	.selezione{
+	width:100%;
+	
+}
+
+.divFormFiltri{
+	width:100%;
+	
+}
+ }

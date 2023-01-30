@@ -52,7 +52,77 @@
 		
 		 <% ProdottoBean  prodotto= (ProdottoBean) session.getAttribute("prodotti");
     	    session.removeAttribute("prodotti");
+    	    
+    	    String filtro="";
+    	 	String order="";
+    	 	if(session.getAttribute("filtro")!=null)
+    	 		filtro= (String)session.getAttribute("filtro");
+    	 	
+    	 	if(session.getAttribute("order")!=null)
+    	 		order=(String)session.getAttribute("order");
     	    %>
+	
+	<div class="filtri">
+			<div class="selezione">
+				<a class="add" href="/LaTanaDelGamer/prodotti/crea">Aggiungi Prodotto</a>
+		 	</div>
+		 	
+		 	<div class="divFormFiltri">
+			 	<form name="filtri" class="formFiltro" action="/LaTanaDelGamer/Dashboard/prodotti" method="POST">
+			 			<select name="filtro">
+		 						<option value="id_prodotto">No filter</option>
+		 						<% if(filtro.equalsIgnoreCase("nome")) {%>
+		 							<option selected value="nome">Nome</option>
+		 							<% }else{ %>
+		 							<option value="nome">Nome</option>
+		 							<%}%>
+		 						<% if(filtro.equalsIgnoreCase("prezzo")) {%>
+		 							<option selected value="prezzo">Prezzo</option>
+		 							<% }else{ %>
+		 							<option  value="prezzo">Prezzo</option>
+		 							<%}%>
+		 						<% if(filtro.equalsIgnoreCase("datadiuscita")) {%>
+		 							<option selected value="datadiuscita">Data</option>
+		 							<% }else{ %>
+		 							<option value="datadiuscita">Data</option>
+		 							<%}%>
+		 						<% if(filtro.equalsIgnoreCase("quantita")) {%>
+		 							<option selected value="quantita">Quantità</option>
+		 							<% }else{ %>
+		 							<option  value="quantita">Quantità</option>
+		 							<%}%>
+		 						<% if(filtro.equalsIgnoreCase("casaproduttrice")) {%>
+		 							<option selected value="casaproduttrice">Casa Produttrice</option>
+		 							<% }else{ %>
+		 							<option  value="casaproduttrice">Casa Produttrice</option>
+		 							<%}%>
+		 						<% if(filtro.equalsIgnoreCase("categoria")) {%>
+		 							<option selected value="categoria">Categoria</option>
+		 							<% }else{ %>
+		 							<option  value="categoria">Categoria</option>
+		 							<%}%>
+		 				</select>
+		 				
+		 				<select name="order">
+		 					<% if(order.equalsIgnoreCase("ASC")) {%>
+		 							<option selected value="ASC">Crescente</option>
+		 							<% }else{ %>
+		 							<option value="ASC">Crescente</option>
+		 							<%}%>
+		 					<% if(order.equalsIgnoreCase("DESC")) {%>
+		 							<option selected value="DESC">Decrescente</option>
+		 							<% }else{ %>
+		 							<option value="DESC">Decrescente</option>
+		 							<%}%>
+		 				</select>
+		 				<input type="submit"  class="bottoneFiltra" value="filtra">
+			 	</form>
+		 	</div>
+		 	
+		 	
+	 	</div>
+	
+	
 	
 	<%
 		if(prodotto!= null) {  
@@ -168,16 +238,20 @@
 											Iterator<?> it = categorie.iterator();
 											while(it.hasNext()) {
 												CategoriaBean bean = (CategoriaBean)it.next();
+												if(bean.getNome().equals(prodotto.getnomeCategoria())){
 											
 											%>
-												<option value="<%= bean.getNome() %>"><%= bean.getNome() %></option>
-									<%		}
+													<option selected value="<%= bean.getNome() %>"><%= bean.getNome() %></option>
+												<%} else {%> 
+													<option value="<%= bean.getNome() %>"><%= bean.getNome() %></option>
+											<%} 
+										}	
 										} %>
 								</select>
 					</div>	
 					   
 					
-						<button type="submit" class="bottone" onClick="return valida()">Aggiorna</button>
+						<button type="submit" class="bottone" onClick="return valida1()">Aggiorna</button>
 						
 				
 			</form>
@@ -190,9 +264,6 @@
 		
 	<%  } %>
 		
-		<div class="selezione">
-			<a class="add" href="/LaTanaDelGamer/prodotti/crea">Aggiungi Prodotto</a>
-	 	</div>
 	 	<div id="tabella"> 
     <table> 
        <thead> 

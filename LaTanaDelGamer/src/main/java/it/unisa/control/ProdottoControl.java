@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
+import it.unisa.model.CategoriaModelDS;
 import it.unisa.model.ProdottoBean;
 import it.unisa.model.ProdottoModelDS;
 import it.unisa.model.RecensioneBean;
@@ -84,9 +85,16 @@ public class ProdottoControl extends HttpServlet {
 				break;
 			}
 				
-			case "/crea":			
+			case "/crea":	{	
+				CategoriaModelDS cat = new CategoriaModelDS(ds);
+				try {
+					request.setAttribute("listaCategorie", cat.doRetrieveAll(""));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				request.getRequestDispatcher("/WEB-INF/Views/Dashboard/prodotto.jsp").forward(request, response);
 				break;
+			}
 				
 			case "/cerca":
 				request.getRequestDispatcher("/WEB-INF/Views/Dashboard/cerca.jsp").forward(request, response);

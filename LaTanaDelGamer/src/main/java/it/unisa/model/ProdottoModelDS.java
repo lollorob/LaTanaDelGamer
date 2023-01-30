@@ -501,12 +501,15 @@ public class ProdottoModelDS implements EntityModel<ProdottoBean> {
 
 	}
 	
-	public Collection<ProdottoBean> doRetrieveProdottiByCategoria(String nome) throws SQLException{
+	public Collection<ProdottoBean> doRetrieveProdottiByCategoria(String nome,String ordine) throws SQLException{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
 		String selectSQL = "SELECT * FROM prodotto p WHERE p.nome_categoria = '" + nome + "'";
 		
+		if(ordine != null && !ordine.equals("")) {
+			selectSQL += " ORDER BY " + ordine;
+		}
 		
 		Collection<ProdottoBean> prodotti = new LinkedList<ProdottoBean>();
 		
