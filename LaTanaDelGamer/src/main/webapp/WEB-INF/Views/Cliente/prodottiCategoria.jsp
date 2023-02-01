@@ -9,6 +9,8 @@
  	<jsp:param name="script" value = "prodottiCategoria.js"/>
 </jsp:include>
 
+	<%Carrello carrello = (Carrello) request.getSession().getAttribute("Carrello");%>
+
  	<%
  	Collection<?> prodottiCategoria = (Collection<?>)request.getAttribute("prodottiCategoria");
  	if(prodottiCategoria == null) {
@@ -149,11 +151,32 @@
 							 			<form action="/LaTanaDelGamer/it/aggiungiAlCarrello" name ="addCart"  class="aggiungi" method = "GET">
 							 
 							 				<input type="hidden" id="id" name="id" value=<%=prodotto.getId_prodotto()%>>
-								 			<input type="hidden" id="quantity" name="quantity" value="1">
-									 		<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
-									 			
-								 			 
-								 			
+									 			<%if(carrello!=null) {
+										 			 if(prodotto.getQuantita() == 0) {%>
+										 			 <p>Non Disponibile</p>
+										 			 <%
+										 			 }else {
+									 				// int quantity = carrello.getQuantityById(prodotto.getId_prodotto());	
+										 			if(carrello.doretrieveById(prodotto.getId_prodotto())!=null){
+										 			%> 
+										 				<p>Già nel carrello</p> 
+										 			<% 
+										 			}
+										 			else { %>
+										 			<input type="hidden" id="quantity" name="quantity" value="1">
+										 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">
+										 			<%} 
+									 			} }
+								 				
+									 			 else { %>
+									 				<%if(prodotto.getQuantita() == 0) {%>
+										 			 <p>Non Disponibile</p>
+										 			 <%
+										 			 } else {%> 
+										 	    <input type="hidden" id="quantity" name="quantity" value="1">
+									 			<input class ="aggiungi" type="submit"  value="Aggiungi Al Carrello">								 			
+									 			<%} 
+									 			}%>	
 							 			</form>
 						 			</div>
 						 		</div>		
